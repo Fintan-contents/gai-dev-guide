@@ -8,3 +8,6 @@ no-inline-html:
   - summary
   - Highlight
 blanks-around-lists: false
+
+# no-inline-html: HugoのShort Codesが誤検知されてしまうので無効化
+MD033: false

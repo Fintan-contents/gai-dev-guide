@@ -2,9 +2,20 @@ filters:
   allowlist:
     allow:
       - GitHub Copilot
-rules:
-  preset-ja-technical-writing: true
+rules: 
+  preset-ja-technical-writing:
+    sentence-length: 
+      max: 100
+      skipPatterns: 
+        - /\(.*\)/
+    ja-no-mixed-period: 
+      allowPeriodMarks: 
+        - ":::"
+    max-kanji-continuous-len: 
+      max: 6
+    no-exclamation-question-mark: false
   preset-jtf-style: true
+  textlint-rule-preset-ja-spacing: true
   prh: 
-    rulePaths:
+    rulePaths: 
     - ./prh.yaml
