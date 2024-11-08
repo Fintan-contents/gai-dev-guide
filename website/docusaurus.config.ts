@@ -143,6 +143,7 @@ TODO: コンテンツができたら置き換える
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['java'],
     },
   } satisfies Preset.ThemeConfig,
 };

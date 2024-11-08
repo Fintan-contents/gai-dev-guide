@@ -4,8 +4,7 @@ sidebar_position: 2
 
 # 小さなコードチャンクで作業する
 
-:::note
-- [小さなコードチャンクで作業する](https://gen-ai-docs.jp/%e3%82%b3%e3%83%b3%e3%83%86%e3%83%b3%e3%83%84/%e3%83%8a%e3%83%ac%e3%83%83%e3%82%b8/%e5%b0%8f%e3%81%95%e3%81%aa%e3%82%b3%e3%83%bc%e3%83%89%e3%83%81%e3%83%a3%e3%83%b3%e3%82%af%e3%81%a7%e4%bd%9c%e6%a5%ad%e3%81%99%e3%82%8b)
-:::
+複雑な計算する関数を書くとしましょう。<br/>
+GitHub Copilotに全体の複雑な解決策を求める代わりに、いくつかの関数に分けて、それぞれの関数を生成するように求めることで、より正確なコードを生成してくれます。
 
-- ※引用先の簡単な説明
+参考：[小さなコードチャンクで作業する | GitHub Copilot - Patterns & Exercises](https://ai-native-development.gitbook.io/docs/v/ja/design-patterns/working-on-small-chunk)

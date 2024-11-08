@@ -4,8 +4,7 @@ sidebar_position: 3
 
 # 一貫性のあるコーディングスタイル
 
-:::note
-- [一貫性のあるコーディングスタイル](https://gen-ai-docs.jp/%e3%82%b3%e3%83%b3%e3%83%86%e3%83%b3%e3%83%84/%e3%83%8a%e3%83%ac%e3%83%83%e3%82%b8/%e4%b8%80%e8%b2%ab%e6%80%a7%e3%81%ae%e3%81%82%e3%82%8b%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0%e3%82%b9%e3%82%bf%e3%82%a4%e3%83%ab)
-:::
+GitHub Copilotは既存のソースコードを元に予測し提案を行います。<br/>
+インデント、命名規則、宣言方法、コメントの書き方等のコーディングスタイルを一貫性のあるものにすることで、Copilotも一貫性のある提案を行ってくれるようになります。
 
-- ※引用先の簡単な説明
+参考：[一貫性のあるコーディングスタイル | GitHub Copilot - Patterns & Exercises](https://ai-native-development.gitbook.io/docs/v/ja/design-patterns/consistent-coding-style)

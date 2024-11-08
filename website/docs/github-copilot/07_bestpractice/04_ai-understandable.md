@@ -4,8 +4,11 @@ sidebar_position: 4
 
 # タイプヒンティング・命名規則
 
-:::note
-- [タイプヒンティング・AI が理解可能な命名規則](https://gen-ai-docs.jp/%e3%82%b3%e3%83%b3%e3%83%86%e3%83%b3%e3%83%84/%e3%83%8a%e3%83%ac%e3%83%83%e3%82%b8/%e3%82%bf%e3%82%a4%e3%83%97%e3%83%92%e3%83%b3%e3%83%86%e3%82%a3%e3%83%b3%e3%82%b0ai-%e3%81%8c%e7%90%86%e8%a7%a3%e5%8f%af%e8%83%bd%e3%81%aa%e5%91%bd%e5%90%8d%e8%a6%8f%e5%89%87)
-:::
+GitHub Copilotはコード上の型情報を認識して提案を行います。<br/>
+静的型付け言語の型宣言はもちろん、動的型付け言語においても、タイプヒンティングを用いて型を宣言することで、提案の精度を上げることができます。<br/>
+型宣言がない言語ではDocコメント等で代用できます。<br/>
+また、GitHub Copilotは変数名や関数名もコンテキストとして扱うため、具体的で説明的な命名を行うことでより良い提案を行ってくれます。
 
-- ※引用先の簡単な説明
+参考：[タイプヒンティング | GitHub Copilot - Patterns & Exercises](https://ai-native-development.gitbook.io/docs/v/ja/general/type-hinting)
+
+参考：[AI が理解可能な命名規則 | GitHub Copilot - Patterns & Exercises](https://ai-native-development.gitbook.io/docs/v/ja/design-patterns/ai-readable-naming-convention)

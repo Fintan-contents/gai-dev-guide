@@ -28,3 +28,12 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* 
+デフォルトだと上段行-画像-下行の隙間が詰まって見えるため余白をもたせる 
+上行に関連する画像が多いので、上余白は下余白よりも小さく設定
+*/
+.img_node_modules-\@docusaurus-theme-classic-lib-theme-MDXComponents-Img-styles-module {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}

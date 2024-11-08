@@ -4,16 +4,39 @@ sidebar_position: 1
 
 # 効果的なGitHub Copilotプロンプトの原則
 
-:::note
-- [効果的なGitHub Copilotプロンプトの原則](https://gen-ai-docs.jp/%e3%82%b3%e3%83%b3%e3%83%86%e3%83%b3%e3%83%84/%e3%83%8a%e3%83%ac%e3%83%83%e3%82%b8/%e5%8a%b9%e6%9e%9c%e7%9a%84%e3%81%aacopilot%e3%83%97%e3%83%ad%e3%83%b3%e3%83%97%e3%83%88%e3%81%ae%e5%8e%9f%e5%89%87%e5%9f%b7%e7%ad%86%e4%b8%ad)
-:::
+GitHub Copilotを効果的に扱うコツとして以下の4つが挙げられています。
 
-- スライド（GitHubプロンプトのコツ）を引用
+import {SpeakerDeck} from '@site/src/components/Embedded';
+
+<!-- https://speakerdeck.com/yuhattor/ai-powered-development-with-github-copilot-20240202 -->
+<SpeakerDeck slideId="c183f4601ad7409da0d473f98f93a892"  page={19} />
 
 ## 文脈
 
+GitHub Copilotが予測のために使う文脈を制御すると、より良い結果が生まれやすくなります。
+
+- 文脈として与えたいファイルのみをタブで開く。
+  - GitHub Copilotは現在タブで開かれているファイルを予測のために扱います。
+- GitHub Copilot Chatを使う場合は、@workspaceコマンドや、#file等のコンテキスト変数コマンドを使つことで、文脈の指定を行えます。
+
 ## 意図
+
+GitHub Copilotが何をゴールにすべきか伝えることで、意図にそった結果が生まれやすくなります。
+
+- コメントで意図を記載する。
+- クラス名、メソッド名等で意図を伝える。
 
 ## 明瞭さ
 
+GitHub Copilotは指示が明瞭であればあるほど、意図した結果が生まれやすくなります。<br/>
+曖昧さを避け、明瞭な指示を行いましょう。
+
 ## 具体性
+
+プロンプトが具体的であるとGitHub Copilotの予測精度が良くなります。
+
+- 具体的な出力例をプロンプトに含める
+- 出力・入力の型を記載する
+
+引用元：<br/>
+[AI-Powered Development with GitHub Copilot 20240202 - Speaker Deck](https://speakerdeck.com/yuhattor/ai-powered-development-with-github-copilot-20240202)

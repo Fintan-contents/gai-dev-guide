@@ -4,14 +4,31 @@ sidebar_position: 3
 
 # インラインチャット
 
-:::note
-- [インライン補完とチャットの使い分け](https://gen-ai-docs.jp/%e3%82%b3%e3%83%b3%e3%83%86%e3%83%b3%e3%83%84/%e3%83%8a%e3%83%ac%e3%83%83%e3%82%b8/%e3%82%a4%e3%83%b3%e3%83%a9%e3%82%a4%e3%83%b3%e8%a3%9c%e5%ae%8c%e3%81%a8%e3%83%81%e3%83%a3%e3%83%83%e3%83%88%e3%81%ae%e4%bd%bf%e3%81%84%e5%88%86%e3%81%91)
+:::info
+GitHub Copilotのアップデートで状況が変わる可能性もありますのでご注意ください。
 :::
 
 ## インライン補完とチャットの違い
+
+インライン補完機能とチャット機能の違いとして以下のようなものが挙げられています。<br/>
+類似体験の違いからも分かるように、利用シーンが異なるものとなっています。
+
+import {SpeakerDeck} from '@site/src/components/Embedded';
+
+<!-- https://speakerdeck.com/yuhattor/ai-powered-development-with-github-copilot-20240202 -->
+<SpeakerDeck slideId="c183f4601ad7409da0d473f98f93a892"  page={17} />
 
 ## インライン補完とチャットの使い分け
 
 ### インライン補完機能
 
+- GitHub Copilotがナビゲーター役となり、ペアプログラミングをするような使い方
+
 ### チャット機能
+
+- GitHub Copilotに相談・質問をする
+- GitHub Copilotにコードレビューをしてもらう
+- 細かい指示を行い、コードやドキュメントを生成してもらう
+
+参考： <br/>
+[AI-Powered Development with GitHub Copilot 20240202 - Speaker Deck](https://speakerdeck.com/yuhattor/ai-powered-development-with-github-copilot-20240202)

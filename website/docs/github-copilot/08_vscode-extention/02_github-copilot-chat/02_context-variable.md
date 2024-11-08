@@ -4,10 +4,24 @@ sidebar_position: 2
 
 # コンテキスト変数について
 
-:::note
-- [コンテキスト変数について](https://gen-ai-docs.jp/%e5%88%a9%e7%94%a8%e8%80%85%e5%90%91%e3%81%91/%e3%82%b3%e3%83%b3%e3%83%86%e3%82%ad%e3%82%b9%e3%83%88%e5%a4%89%e6%95%b0%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6)
-:::
+GitHub Copilot Chatにはコンテキスト変数という便利な機能があります。<br/>
+ここではその機能について紹介します。
 
-- 変数一覧
-- コマンドとの併用
-- スライド引用
+| コンテキスト変数 | 説明 |
+| :--- | :--- |
+| `#editor` | コマンドに `#editor` とすることでエディタで選択中のファイル情報をプロンプトに含めることができます。 |
+| `#file` | `#file:package.json` のように指定することで特定のファイルの情報をプロンプトに含めることができます。 |
+| `#selection` | 範囲選択したコードやテキスト情報をプロンプトに含めることができます。 |
+| `#terminalLastCommand` | 最後に選択したターミナルの最後のコマンドの情報をプロンプトに含めることができます。 |
+| `#terminalSelection` | ターミナル上での選択エリアの情報をプロンプトに含めることができます。 |
+
+エージェントコマンド、スラッシュコマンドと併用することも可能です。<br/>
+[**操作方法・ショートカット**](../01_github-copilot/02_shortcuts.md)
+
+import {SpeakerDeck} from '@site/src/components/Embedded';
+
+<!-- https://speakerdeck.com/yuhattor/ai-powered-development-with-github-copilot-20240202 -->
+<SpeakerDeck slideId="c183f4601ad7409da0d473f98f93a892"  page={23} />
+
+参考：<br/>
+[AI-Powered Development with GitHub Copilot 20240202 - Speaker Deck](https://speakerdeck.com/yuhattor/ai-powered-development-with-github-copilot-20240202)
