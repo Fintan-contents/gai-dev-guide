@@ -24,3 +24,5 @@ rules:
     patterns: /(?<!右)クリック/
   - expected: GitHub
     patterns: /(?<!@)github/i
+  - expected: インターフェース
+    patterns: インタフェース

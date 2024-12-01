@@ -20,7 +20,8 @@ rules:
     ja-no-redundant-expression: false
     no-mix-dearu-desumasu: false
   period-in-list-item: true
-  preset-jtf-style: true
+  preset-jtf-style:
+    4.2.7.コロン(：): false
   textlint-rule-preset-ja-spacing: true
   prh:
     rulePaths:
