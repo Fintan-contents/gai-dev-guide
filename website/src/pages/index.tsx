@@ -65,6 +65,13 @@ function Home() {
               詳細は<Link to="/customize-and-distribution">ガイドのカスタマイズ・配布</Link>をお読みください
             </p>
           </Admonition>
+          <Admonition type="note">
+            <p>
+              本ガイドは<a href="https://gen-ai-doc.notion.site/4ce5f767ad2c4ab9a299617795e4f8f3?v=c858b5fa4deb499d841629c904170dce">生成AI活用ガイド（notion版）</a>と一部内容の重複があります。<br/>
+              生成AI活用ガイド（notion版）における、GitHub Copilotスタートガイドにつきましては、内容の重複があるため2025年1月以降に本ガイドへ完全移行となります。<br/>
+              利用シーン別ガイドにつきましては、開発プロセスに組み込む必要なしと判断し、本ガイドには反映いたしません。
+            </p>
+          </Admonition>
         </div>
       </main>
     </Layout>
