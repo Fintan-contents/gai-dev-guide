@@ -107,7 +107,7 @@ VS Codeの設定の前に、GitHubアカウントの設定が必要です。以�
     参考：[VSCode更新情報 2023年10月](https://code.visualstudio.com/updates/v1_84#_chat-using-configured-display-language)
 - **▼利用できるか確認**
 - GitHub Copilot Chatが利用できることを確認します
-  - ①のCopilot Chatマークを押下しGitHub Copilot Chatパネルを開きます
+  - ①のチャットマークを押下しGitHub Copilot Chatパネルを開きます
   - ②の入力欄に`@workspace ワークスペース内のファイルについて教えてください`と入力・送信します
     - ※`@workspace`の使い方は[GitHub Copilot Chat ＞ コマンド](../08_vscode-extention/02_github-copilot-chat/03_command.md#エージェントコマンド)を参照ください
   - ③のエリアに日本語で回答が表示されれば確認完了です
