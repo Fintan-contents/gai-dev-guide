@@ -1,0 +1,59 @@
+---
+title: はじめに
+slug: /github-copilot-guide
+sidebar_position: 0
+---
+
+# GitHub Copilot活用ガイド
+
+## はじめに
+
+本ガイドは、プロジェクトでGitHub Copilotを活用して生産性を向上することを目指したガイドです。
+
+GitHub Copilotは開発者のコーディングを助けてくれる、AIコーディングアシスタントです。  
+またGitHub Copilot Chatでは、チャットで質問などをすることで開発者とコミュニケーションができます。  
+会話するだけにとどまらず、ソースコードの作成や修正を依頼することもできます。
+
+特にGitHub Copilot Chatは開発者に代わりコーディングなどを依頼できるため、生産性を大きく向上できる可能性を秘めています。  
+このため本ガイドでは特に**GitHub Copilot Chatに重点を置いた**コンテンツとなっています。
+
+:::note 注意
+本ガイドでは、文脈に応じてGitHub Copilotおよび使用する大規模言語モデル（LLM）などの関連技術を指して、総称的に「AI」と記述することがあります。これはAIとのコミュニケーションや必要な概念を説明する際に、GitHub Copilotに閉じず本質的に生成AIと向き合うために必要な内容だからです。
+:::
+
+しかし闇雲にGitHub Copilotを導入したのでは期待したような回答をしてくれない、コードを生成してくれないといったガッカリする結果になることも多いでしょう。  
+これには以下の理由があります。
+
+- GitHub Copilot（正確にはその背後にあるLLM）は導入先のプロジェクトがどのような背景、目的のもと進められているのか知りません
+- GitHub Copilotはプロジェクトの開発ルールを知りません
+- GitHub Copilotが知っているのは一般的な知識です
+
+このためGitHub Copilotを最大限に活用するためには、プロジェクトでGitHub Copilotを迎え入れる準備をする必要があります。  
+また、GitHub Copilotに対して明確に指示することも重要です。
+
+本ガイドではこういった準備やGitHub Copilotとのコミュニケーション方法を個々人の知識で解決するのではなく、すでに実践済みのノウハウをまとめてガイディングします。  
+またプロジェクトで参考になるインストラクションファイルやプロンプトの雛形も提供します。  
+これにより、プロジェクトで一定以上の成果をあげることを目指しています。
+
+## 対象読者
+
+本ガイドは、GitHub Copilotを導入しようとしているプロジェクトを技術的にリードするアーキテクトの方、GitHub Copilotを活用して開発を行う開発者の方を対象読者として想定しています。
+
+- アーキテクトの方向け
+  - [対象工程と開発プロセス](./github-copilot-guide/target-process)や[AIのオンボーディング](./new-ghc-guide/ai-on-boarding)、[プログラミングやテストに入る前に](./new-ghc-guide/before-coding-test)から読み進め、GitHub Copilotを活用した開発のイメージを掴むようにしてください
+  - その後、各ドキュメントを読み進めてください
+- 開発者の方向け
+  - まずは[AIと対話を始める](./github-copilot-guide/begin-conversation-with-ai)を読んでみましょう
+  - 実際の開発では[プログラミング](./github-copilot-guide/programming)、[テスト](./new-ghc-guide/test)を活用いただくことになります
+
+## AIとともに開発することに慣れる
+
+本ガイドではGitHub Copilotを対象としていますが、GitHub Copilotを入口としてAIを活用した開発に慣れていくことも副次効果として狙っています。  
+このあたりは[前提](./github-copilot-guide/preamble)や[対象工程と開発プロセス](./new-ghc-guide/target-process)をご確認ください。
+
+## その他
+
+### カスタマイズ
+
+本ガイドはプロジェクト個別にカスタマイズして、オフラインでも参照可能なHTMLとして配布できます。
+詳しくは[ガイドのカスタマイズ・配布](./customize-and-distribution)を参照してください。

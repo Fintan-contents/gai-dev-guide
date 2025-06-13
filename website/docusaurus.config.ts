@@ -117,21 +117,9 @@ ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的�
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'githubCopilotSidebar',
+          sidebarId: 'githubCopilotGuideSidebar',
           position: 'left',
-          label: 'GitHub Copilot ガイド',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'developmentProcessSidebar',
-          position: 'left',
-          label: '開発プロセス',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'promptsSidebar',
-          position: 'left',
-          label: 'プロンプト',
+          label: 'GitHub Copilot活用ガイド',
         },
         {
           href: repositoryUrl,
@@ -149,16 +137,8 @@ ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的�
           title: 'Docs',
           items: [
             {
-              label: 'GitHub Copilotガイド',
-              to: 'github-copilot',
-            },
-            {
-              label: '開発プロセス',
-              to: 'development-process',
-            },
-            {
-              label: 'プロンプト',
-              to: 'prompts',
+              label: 'GitHub Copilot活用ガイド',
+              to: 'github-copilot-guide',
             }
           ],
         },
