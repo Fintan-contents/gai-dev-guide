@@ -52,7 +52,7 @@ Agent Modeを使います。
 GitHub Copilotに実装してもらいたい機能の設計書とテスト仕様書をMarkdown形式で用意しておき、機能の実装を指示します。  
 テストコードは開発の進め方から判断してGitHub Copilotが自動で作成し、テストの実行まで行います。
 
-以下のような[プロンプトファイル](../../ai-on-boarding/shared-instructions-prompts)を用意しておき、Chatウィンドウで呼び出します。
+以下のような[プロンプトファイル](../ai-on-boarding/shared-instructions-prompts)を用意しておき、Chatウィンドウで呼び出します。
 
 ```markdown
 ---
@@ -101,7 +101,7 @@ description: "Serviceクラスを作成してください"
 /generate-service doc=#file:ユーザー登録機能.md spec=#file:ユーザー登録機能テスト仕様書.md  className=UserService methodName=register
 ```
 
-この指示で、GitHub Copilotは[事前に整備したインストラクションファイル](../../ai-on-boarding/files-to-be-maintained)の内容を読み込んだうえで以下の作業を行います。
+この指示で、GitHub Copilotは[事前に整備したインストラクションファイル](../ai-on-boarding/files-to-be-maintained)の内容を読み込んだうえで以下の作業を行います。
 
 - `UserService`クラスの作成
 - テストクラスの作成とテストメソッドの実装
@@ -160,7 +160,7 @@ Ask Modeを使います。
 まず、プロジェクトで定められたコーディング規約や、一般的な品質（パフォーマンス、セキュリティなど）の観点でレビューを行います。
 これらの定型的なチェックはAIに任せることで、人はより本質的な機能のレビューに集中できます。
 
-[観点別にレビューを実施する](../../before-coding-test/review-perspective)で紹介したように、レビューしたいソースコードを開き、レビュー観点別に用意したプロンプトを[Promptis](https://marketplace.visualstudio.com/items?itemName=tis.promptis)で一括実行します。
+[観点別にレビューを実施する](../before-coding-test/review-perspective)で紹介したように、レビューしたいソースコードを開き、レビュー観点別に用意したプロンプトを[Promptis](https://marketplace.visualstudio.com/items?itemName=tis.promptis)で一括実行します。
 たとえば、「セキュリティ」、「パフォーマンス」、「可読性」といった観点ごとにプロンプトを用意し、一括でレビューを実行することで、網羅的かつ効率的なレビューが可能になります。
 
 #### 機能的な観点でのソースコードレビュー
@@ -176,7 +176,7 @@ Ask Modeを使います。
 次に、ソースコードが設計書の仕様を正しく満たしているかを確認します。
 AIにレビューさせることで、人による確認だけでは見落としがちな観点に気づける可能性があります。
 
-以下のような[プロンプトファイル](../../ai-on-boarding/shared-instructions-prompts)を用意しておき、Chatウィンドウで呼び出します。
+以下のような[プロンプトファイル](../ai-on-boarding/shared-instructions-prompts)を用意しておき、Chatウィンドウで呼び出します。
 
 ```markdown
 ---
@@ -248,7 +248,7 @@ Ask Modeを使います。
 
 テストコードが、テスト仕様書で定義されたテストケースを網羅しているか、内容が妥当かを確認します。
 
-以下のような[プロンプトファイル](../../../04_ai-on-boarding/02_shared-instructions-prompts/index.md)を用意しておき、Chatウィンドウで呼び出します。
+以下のような[プロンプトファイル](../ai-on-boarding/shared-instructions-prompts)を用意しておき、Chatウィンドウで呼び出します。
 
 ```markdown
 ---

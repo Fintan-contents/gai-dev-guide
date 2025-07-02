@@ -8,7 +8,7 @@ sidebar_position: 1
 本ページの内容はGitHub Copilot ChatのAgent Mode向けですが、Agent Mode以外のModeやコード補完も含めて活用方法を補足しています。
 :::
 
-[プログラミング〜テスト](../../programming-agent)では、GitHub Copilot ChatのAgent Modeを使い、ソースコードの作成からテスト実施まで一連の流れを自律的に実施してもらう方法を記載しました。
+[プログラミング〜テスト](../../programming-test)では、GitHub Copilot ChatのAgent Modeを使い、ソースコードの作成からテスト実施まで一連の流れを自律的に実施してもらう方法を記載しました。
 
 ここでは、ソースコードの修正や質問、コード補完など少し小さな粒度でGitHub Copilot Chatを扱う方法を紹介します。
 
@@ -39,7 +39,7 @@ Agent Modeを使います。
 重複しているコードを共通化して、可読性を向上させてください。
 ```
 
-Agent Modeであればインストラクションファイルに[開発の進め方](../ai-on-boarding/files-to-be-maintained/how-to-proceed-with-development)を記載することにより、このような修正であってもテストコードへの反映やテストの実行といったステップを自動的に実施します。
+Agent Modeであればインストラクションファイルに[開発の進め方](../../ai-on-boarding/files-to-be-maintained/how-to-proceed-with-development)を記載することにより、このような修正であってもテストコードへの反映やテストの実行といったステップを自動的に実施します。
 
 テストが合格した後にGitHub Copilotが変更内容の承認を求めてくるので、確認して問題がなければ承認します。期待通りでなければ、追加の指示を与えて修正を依頼するか、手動で修正します。
 

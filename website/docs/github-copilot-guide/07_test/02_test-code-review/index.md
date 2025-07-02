@@ -24,7 +24,7 @@ AIが生成したテストコードのレビューはもちろん、人が作成
 Ask Modeを使います。
 :::
 
-基本的な進め方は、[ソースコードの定型的なレビューを行う](../../../programming/code-review)場合と同じです。
+基本的な進め方は、[ソースコードの定型的なレビューを行う](../../programming/code-review)場合と同じです。
 
 レビューしたいテストコードを開き、レビュー観点別に用意したプロンプトを[Promptis](https://marketplace.visualstudio.com/items?itemName=tis.promptis)で一括実行します。
 たとえば、「テストの命名規則」、「アサーションの適切さ」、「テストデータの妥当性」といった観点ごとにプロンプトを用意し、一括でレビューを実行することで、網羅的かつ効率的なレビューが可能になります。
@@ -43,7 +43,7 @@ Ask Modeを使います。
 
 人がレビューすることも重要ですが、AIにレビューさせることで人によるレビューでの見落とし防止や多角的な視点での確認が期待できます。
 
-以下のような[プロンプトファイル](../../../04_ai-on-boarding/02_shared-instructions-prompts/index.md)を用意しておき、Chatウィンドウで呼び出します。
+以下のような[プロンプトファイル](../../ai-on-boarding/shared-instructions-prompts)を用意しておき、Chatウィンドウで呼び出します。
 
 ```markdown
 ---
