@@ -85,7 +85,7 @@ description: "ソースコードが設計書に定義された仕様を満たし
 
 この時、Chatウィンドウでは以下のように指示します。
 
-```
+```shell
 /review-service doc=#file:ユーザー登録機能.md
 ```
 

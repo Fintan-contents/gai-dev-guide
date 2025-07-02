@@ -97,7 +97,7 @@ description: "Serviceクラスを作成してください"
 
 この時、Chatウィンドウでは以下のように指示します。
 
-```
+```shell
 /generate-service doc=#file:ユーザー登録機能.md spec=#file:ユーザー登録機能テスト仕様書.md  className=UserService methodName=register
 ```
 
@@ -147,7 +147,7 @@ GitHub Copilotにソースコードやテストコードのレビューをサポ
 
 作成されたソースコードをレビューします。
 
-#### 定型的な観点でのレビュー
+#### 定型的な観点でのソースコードレビュー
 
 <!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
 <!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
@@ -163,7 +163,7 @@ Ask Modeを使います。
 [観点別にレビューを実施する](../../before-coding-test/review-perspective)で紹介したように、レビューしたいソースコードを開き、レビュー観点別に用意したプロンプトを[Promptis](https://marketplace.visualstudio.com/items?itemName=tis.promptis)で一括実行します。
 たとえば、「セキュリティ」、「パフォーマンス」、「可読性」といった観点ごとにプロンプトを用意し、一括でレビューを実行することで、網羅的かつ効率的なレビューが可能になります。
 
-#### 機能的な観点でのレビュー
+#### 機能的な観点でのソースコードレビュー
 
 <!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
 <!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
@@ -210,7 +210,7 @@ description: "ソースコードが設計書に定義された仕様を満たし
 
 この時、Chatウィンドウでは以下のように指示します。
 
-```
+```shell
 /review-service doc=#file:ユーザー登録機能.md
 ```
 
@@ -222,7 +222,7 @@ AIからのフィードバックを参考に、ソースコードを修正・改
 
 ソースコードと同様に、テストコードもレビューします。
 
-#### 定型的な観点でのレビュー
+#### 定型的な観点でのテストコードレビュー
 
 <!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
 <!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
@@ -236,7 +236,7 @@ Ask Modeを使います。
 ソースコードの定型レビューと同様に、[Promptis](https://marketplace.visualstudio.com/items?itemName=tis.promptis)などを活用して効率的にレビューを行いましょう。
 「テストの命名規則」や「アサーションの適切さ」といった観点でプロンプトを用意しておくと便利です。
 
-#### 機能的な観点でのレビュー
+#### 機能的な観点でのテストコードレビュー
 
 <!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
 <!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
@@ -277,7 +277,7 @@ description: "テストコードがテスト仕様書に定義された仕様を
 
 この時、Chatウィンドウでは以下のように指示します。
 
-```
+```shell
 /review-test spec=#file:ユーザー登録機能テスト仕様書.md doc=#file:ユーザー登録機能.md
 ```
 

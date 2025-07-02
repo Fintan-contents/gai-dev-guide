@@ -166,7 +166,7 @@ ${input:doc} の内容を確認し、概要を説明してください。
 
 Serviceクラスの作成指示をするプロンプトファイル例のパスが`.github/prompts/generate-service.prompt.md`の場合、チャットでの呼び出し例は以下となります。
 
-```
+```shell
 /generate-service doc=#file:ユーザー登録機能.md className=UserService methodName=register
 ```
 

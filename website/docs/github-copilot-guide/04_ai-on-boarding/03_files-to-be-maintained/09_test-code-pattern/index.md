@@ -151,4 +151,3 @@ class UserServiceTest {
 ````
 
 このようなインストラクションファイルを、`.github/instructions/test-code-pattern.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotはサンプルに従った一貫性のあるテストコードを生成しやすくなるでしょう。
-
