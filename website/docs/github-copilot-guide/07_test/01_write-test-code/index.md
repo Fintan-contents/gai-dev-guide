@@ -10,13 +10,17 @@ sidebar_position: 1
 
 ここでは、GitHub Copilotにテストコードの作成をサポートしてもらい、単体テスト工程を効率よく進めていく方法を記載します。
 
-前提として、GitHub Copilotにテストコードを作成してもらうためには事前にテスト対象のソースコードが必要なことはもちろんですが、AIが理解しやすい形式で書かれたテスト仕様書および設計書が必要です。
+前提として、GitHub Copilotにテストコードを作成してもらうためには、テスト対象のソースコードに加えてAIが理解しやすい形式で書かれたテスト仕様書および設計書が必要です。
 
 ## テスト仕様書もとにテストコードを作成してもらう
 
 テスト仕様書をもとに、テストコードを生成する際の基本的な進め方です。
 
-:::info使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Edit Modeを使います。
 :::
 
@@ -53,13 +57,17 @@ description: "テストクラスを作成してください"
 
 ここで、プロンプトファイルおよびプロンプトに指定すべき変数の値を以下と仮定します。
 
-- プロンプトファイル: `.github/prompts/generate-test.prompt.md`
-- テスト仕様書（`${input:spec}`）: `#file:ユーザー登録機能テスト仕様書.md`
-- テストクラス名（`${input:testClassName}`）: `UserServiceTest`
-- 設計書（`${input:doc}`）: `#file:ユーザー登録機能.md`
-- テスト対象クラス（`${input:targetClass}`）: `UserService.java`
+- プロンプトファイル：`.github/prompts/generate-test.prompt.md`
+- テスト仕様書（`${input:spec}`）： `#file:ユーザー登録機能テスト仕様書.md`
+- テストクラス名（`${input:testClassName}`）： `UserServiceTest`
+- 設計書（`${input:doc}`）： `#file:ユーザー登録機能.md`
+- テスト対象クラス（`${input:targetClass}`）： `UserService.java`
 
-:::info ポイント
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[ポイント]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 `#file`は[Visual Studio Codeでファイルをコンテキストに追加する変数](https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features)です。
 :::
 
@@ -80,7 +88,7 @@ AIにソースコードを生成させた場合と同様、テストコードも
 ただしテストコードは大量に生成することになるため、レビューでもAIの助けを借りるようにしましょう。  
 詳しくは[テストコードをレビューする](../test-code-review)を参考にしてください。
 
-もちろん思うような精度のテストコードが生成されない場合は、情報が不足していたり指示が曖昧であるといったことが考えられます。
+もちろん期待する精度のテストコードが生成されない場合は、情報が不足していたり指示が曖昧であるといったことが考えられます。
 必要に応じてインストラクションファイルやプロンプトファイルなどを見直すことも検討しましょう。
 
 また、完璧なテストコードが生成されることを目指して永遠にプロンプトなどの改善とトライ＆エラーを繰り返すようなことをしないのも、[コーディングをサポートしてもらう](../../programming/coding)と同じです。
@@ -89,7 +97,11 @@ AIにソースコードを生成させた場合と同様、テストコードも
 
 既存のテストコードに対して、テストケースの追加やリファクタリングなど、特定の変更を加えたい場合に有効な方法です。
 
-:::info使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Edit Modeを使います。
 :::
 
@@ -114,13 +126,17 @@ GitHub Copilotが提案した変更内容を確認し、問題がなければ承
 タスクに必要だと思われる場合は、コンテキストにファイルを追加することを検討してください。
 
 このような指示は、アドホックなプロンプトで十分なことが多いでしょう。
-頻繁に使ったり、指示内容が大きくなることが多いようなタスクの場合は、プロンプトファイルとしてプロジェクト内で共有することを検討しましょう。
+頻繁に使ったり、指示内容が大きくなるこりがちなタスクの場合は、プロンプトファイルとしてプロジェクト内で共有することを検討しましょう。
 
 ## 実装方法や既存のテストコードの説明を依頼する
 
 テストの実装中に不明点が出てきた場合や、既存のテストコードの理解を深めたい場合に、GitHub Copilotを相談相手として活用する方法です。
 
-:::info使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -145,7 +161,11 @@ Mockitoを使って、○○クラスが依存する△△をモックにする�
 
 ## 失敗するテストの修正をサポートしてもらう
 
-:::info使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 

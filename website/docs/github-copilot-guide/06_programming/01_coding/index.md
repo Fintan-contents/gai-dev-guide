@@ -16,7 +16,11 @@ sidebar_position: 1
 
 設計書などのドキュメントをもとに、新しいコードを生成する際の基本的な進め方です。
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Edit Modeを使います。
 :::
 
@@ -45,12 +49,16 @@ description: "Serviceクラスを作成してください"
 
 ここで、プロンプトファイルおよびプロンプトに指定すべき変数の値を以下と仮定します。
 
-- プロンプトファイル: `.github/prompts/generate-service.prompt.md`
-- 設計書（`${input:doc}`）: `#file:ユーザー登録機能.md`
-- 実装対象のクラス名（`${input:className}`）: `UserService`
-- 実装対象のメソッド名（`${input:methodName}`）: `register`
+- プロンプトファイル： `.github/prompts/generate-service.prompt.md`
+- 設計書（`${input:doc}`）： `#file:ユーザー登録機能.md`
+- 実装対象のクラス名（`${input:className}`）： `UserService`
+- 実装対象のメソッド名（`${input:methodName}`）： `register`
 
-:::info ポイント
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[ポイント]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 `#file`は[Visual Studio Codeでファイルをコンテキストに追加する変数](https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features)です。
 :::
 
@@ -68,18 +76,29 @@ description: "Serviceクラスを作成してください"
 
 AIが生成するコードは、人が確認しなければいけません。1度に大量のソースコードを作成させるのではなく、人が確認できる量のソースコードを生成させ、対話を繰り返しながら進めていくようにしましょう。
 
-思うような精度のコードが生成されない場合は、プロンプトファイルの指示内容が曖昧、設計書の記述が曖昧、コンテキストに与えるべき情報が不足している、インストラクションファイルで指示すべき内容が足りていない、といったことが考えられます。  
+期待する精度のコードが生成されない場合は、以下のようなことが考えられます。
+
+- プロンプトファイルの指示内容が曖昧
+- 設計書の記述が曖昧
+- コンテキストに与えるべき情報が不足している
+- インストラクションファイルで指示すべき内容が足りていない
+
 実装してもらいたい内容が変わっても似たような指示を繰り返していたり、いつも同じ情報を追加で与えているような場合はインストラクションファイルやプロンプトファイルなどを見直すことも検討しましょう。  
 
 また、完璧なコードが生成されることを目指して永遠にプロンプトなどの改善とトライ＆エラーを繰り返すのではなく、ある程度のところで割り切って残りは人が修正するといった割り切りも必要でしょう。
 
-AIに最初からソースコードを出力させてもうまくいかない場合は、Modeの切り替えが手間にはなりますが1度Ask Modeで実装予定の内容を出力させ、確認や調整を行ってからEdit Modeで出力させるという方法もあります。
+AIにソースコードを出力させてもうまくいかない場合は、1度Ask Modeで実装予定の内容を出力させ、確認や調整を行ってからEdit Modeで出力させるという方法もあります。  
+Modeの切り替えが手間にはなりますが、試してみてください。
 
 ## 実装を修正・改善してもらう
 
 既存のコードに対して、コメントの追加やリファクタリングなど、特定の変更を加えたい場合に有効な方法です。
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Edit Modeを使います。
 :::
 
@@ -104,13 +123,17 @@ GitHub Copilotが提案した変更内容を確認し、問題がなければ承
 タスクに必要だと思われる場合は、コンテキストにファイルを追加することを検討してください。
 
 このような指示は、アドホックなプロンプトで十分なことが多いでしょう。  
-頻繁に使ったり、指示内容が大きくなることが多いようなタスクの場合は、プロンプトファイルとしてプロジェクト内で共有することを検討しましょう。
+頻繁に使ったり、指示内容が大きくなりがちなタスクの場合は、プロンプトファイルとしてプロジェクト内で共有することを検討しましょう。
 
 ## 実装方法や既存コードの質問をする
 
 実装中に不明点が出てきた場合や、既存コードの理解を深めたい場合に、GitHub Copilotを相談相手として活用する方法です。
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -135,7 +158,7 @@ Javaでファイルを読み込むにはどうすればいいですか？
 
 ## エラーの解決をサポートしてもらう
 
-:::info 使用するGitHub Copilot ChatのMode
+:::info[使用するGitHub Copilot ChatのMode]
 Ask Modeを使います。
 :::
 
@@ -169,8 +192,8 @@ GitHub Copilotのコード補完は、コーディング中にリアルタイム
 
 ### 補完のヒント
 
-- コメントで意図を伝える: これから書こうとしている処理の内容をコメントとして記述すると、GitHub Copilotがその意図を汲み取り、より精度の高いコードを提案してくれます。
-- 複数の候補から選択する: `Alt + ]` (macOSでは `Option + ]`) や `Alt + [` (macOSでは `Option + [`) を使うと、他の補完候補に切り替えることができます。
+- コメントで意図を伝える： これから書こうとしている処理の内容をコメントとして記述すると、GitHub Copilotがその意図を汲み取り、より精度の高いコードを提案してくれます
+- 複数の候補から選択する： `Alt + ]` (macOSでは `Option + ]`) や `Alt + [` (macOSでは `Option + [`) を使うと、他の補完候補に切り替えることができます
 
 コメントを使うとコード補完の精度を上げることができますが、これを目的にコメントを大量に書くような使い方には注意しましょう。  
 GitHub Copilotのためだけに本来は不要なコメントが作成されるようでは本末転倒です。そのような場合はGitHub Copilot ChatのEdit Modeを使い、より具体的な指示でコード生成を依頼する方が効率的でしょう。

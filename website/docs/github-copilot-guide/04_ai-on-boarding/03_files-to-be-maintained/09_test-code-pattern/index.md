@@ -4,7 +4,7 @@ sidebar_position: 9
 
 # テストコードパターン
 
-[実装パターン](../coding_pattern)と同様に、AIにプロジェクトのルールに沿ったテストコードを生成させるには、[テストコード標準](../test-code-standards)を示すだけでなく、模倣してもらうサンプルコード（テストコードパターン）が必要があります。
+[実装パターン](../coding_pattern)と同様に、AIにプロジェクトのルールに沿ったテストコードを生成させるには、[テストコード標準](../test-code-standards)を示すだけでなく、模倣してもらうサンプルコード（テストコードパターン）が必要です。
 
 テストコードは実装するテストの種類に応じてパターン化されやすく、よく似た構造になるため、実装方法をサンプルとして提供しておくことが非常に有効です。  
 
@@ -150,5 +150,5 @@ class UserServiceTest {
 
 ````
 
-このようなインストラクションファイルを`.github/instructions/test-code-pattern.instructions.md`のようなファイル名で用意することで、GitHub Copilotはサンプルに従った一貫性のあるテストコードを生成しやすくなるでしょう。
+このようなインストラクションファイルを、`.github/instructions/test-code-pattern.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotはサンプルに従った一貫性のあるテストコードを生成しやすくなるでしょう。
 

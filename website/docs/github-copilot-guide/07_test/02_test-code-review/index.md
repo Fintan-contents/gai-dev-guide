@@ -16,7 +16,11 @@ AIが生成したテストコードのレビューはもちろん、人が作成
 テストコードにも、プロジェクトで定められたテストコード標準やテストフレームワークの作法など、遵守すべきルールが存在します。
 このような観点でのレビューはAIに任せることで、人はより本質的なレビューに集中できます。
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -29,7 +33,11 @@ Ask Modeを使います。
 
 定型的なレビューの後は、テストコードが実施したいテスト仕様を網羅しているか、テストケースの内容が妥当かを確認する必要があります。
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -58,11 +66,15 @@ description: "テストコードがテスト仕様書に定義された仕様を
 
 ここで、プロンプトファイルおよびプロンプトに指定すべき変数の値を以下と仮定します。
 
-- プロンプトファイル: `.github/prompts/review-test.prompt.md`
-- テスト仕様書（`${input:spec}`）: `#file:ユーザー登録機能テスト仕様書.md`
-- 設計書（`${input:doc}`）: `#file:ユーザー登録機能.md`
+- プロンプトファイル： `.github/prompts/review-test.prompt.md`
+- テスト仕様書（`${input:spec}`）： `#file:ユーザー登録機能テスト仕様書.md`
+- 設計書（`${input:doc}`）： `#fil：：e:ユーザー登録機能.md`
 
-:::info ポイント
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[ポイント]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 `#file`は[Visual Studio Codeでファイルをコンテキストに追加する変数](https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features)です。
 :::
 

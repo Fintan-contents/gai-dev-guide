@@ -63,4 +63,4 @@ applyTo: "**"
   - Serviceのテストに含めるものとします
 ```
 
-このようなインストラクションファイルを`.github/instructions/test-code-standards.instructions.md`のようなファイル名で用意することで、GitHub Copilotはプロジェクトのテスト規約を理解し、品質の高いテストコードの生成をサポートしてくれるようになります。
+このようなインストラクションファイルを、`.github/instructions/test-code-standards.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotはプロジェクトのテスト規約を理解し、品質の高いテストコードの生成をサポートしてくれるようになります。

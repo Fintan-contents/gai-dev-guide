@@ -27,15 +27,19 @@ GitHub Copilot Chatを活用した開発プロセス導入後は、AIのサポ�
 
 ## Agent Mode安定版導入後（予定）
 
-:::note 注意
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::note[注意]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 本セクションの記載内容は、Agent Modeのプレビュー版時点での想定内容です。
 :::
 
 GitHub Copilot ChatのAsk ModeおよびEdit Modeでは作業主体はあくまで人のままであり、AIはサポートの位置づけです。
 
-GitHub Copilot ChatのAgent Modeが安定版として利用可能になった後は、以下のようにGitHub Copilotに必要な情報を与えて指示した後はある程度自律的に動作することを期待して作業を任せられます。
+Agent Modeを利用すると、以下のようにGitHub Copilotに必要な情報を与えて指示した後はある程度自律的に動作することを期待して作業を任せられます。
 
-たとえばAgent ModeのGitHub Copilot Chatに機能開発を依頼すると、ソースコードからテストコードの作成、テスト実行といった定めたプロセスにしたがって作業を実施させることができます。  
+たとえばAgent ModeのGitHub Copilot Chatに機能開発を依頼すると、ソースコードからテストコードの作成、テスト実行といった定めたプロセスで作業を実施させることができます。  
 また開発ルールや静的解析などで修正内容に問題があることを検出できる仕組みを構築しておくと、GitHub Copilot自身に問題を認識させ、自己修復させることも可能です。
 
 ![GitHub Copilot導入後の開発プロセス2](images/development-process-tobe2.png)

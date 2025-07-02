@@ -16,12 +16,16 @@ sidebar_position: 1
 
 このような観点でのレビューを行う方法を記載します。
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
 通常、一般的なコード品質やパフォーマンス、セキュリティなどの観点は静的解析に近い位置づけで実施されるべきものです。  
-これらは静的解析ツールでは確認することが難しく、人が実施することが多くなりますがその精度は実施する人の能力や感性に依存していると言わざるをえません。
+これらは静的解析ツールでは確認することが難しく、人による確認となりがちです。そして、その精度は実施する人の能力や感性に依存していると言わざるをえません。
 
 しかし、本質的にレビューしたいのは機能的な観点です。
 
@@ -30,13 +34,17 @@ Ask Modeを使います。
 ここでは[観点別にレビューを実施する](../../before-coding-test/review-perspective)で紹介したように、レビューしたいソースコードを開き、レビュー観点別に用意したプロンプトを[Promptis](https://marketplace.visualstudio.com/items?itemName=tis.promptis)で一括実行します。
 たとえば、「セキュリティ」、「パフォーマンス」、「可読性」といった観点ごとにプロンプトを用意し、一括でレビューを実行することで、網羅的かつ効率的なレビューが可能になります。
 
-これによりソースコードの品質を高めつつ、人は本質的なレビューに集中できるようになるでしょう。
+これによりソースコードの品質を高めつつ、人は本質的なレビューに集中できるでしょう。
 
 ## 機能観点でレビューを行う
 
 定型的なレビューを行った後は、実装しなければならない機能的な内容を網羅しているか、誤っていないかを確認する必要があります。
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -64,10 +72,14 @@ description: "ソースコードが設計書に定義された仕様を満たし
 
 ここで、プロンプトファイルおよびプロンプトに指定すべき変数の値を以下と仮定します。
 
-- プロンプトファイル: `.github/prompts/review-service.prompt.md`
-- 設計書（`${input:doc}`）: `#file:ユーザー登録機能.md`
+- プロンプトファイル： `.github/prompts/review-service.prompt.md`
+- 設計書（`${input:doc}`）： `#file:ユーザー登録機能.md`
 
-:::info ポイント
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[ポイント]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 `#file`は[Visual Studio Codeでファイルをコンテキストに追加する変数](https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features)です。
 :::
 

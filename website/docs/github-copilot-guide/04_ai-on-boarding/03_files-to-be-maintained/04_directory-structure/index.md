@@ -29,6 +29,6 @@ applyTo: "**"
 
 ```
 
-このようなインストラクションファイルを`.github/instructions/directory-structure.instructions.md`のようなファイル名で用意することで、GitHub Copilotはプロジェクトのディレクトリ構成を理解し、より適切な開発支援ができるようになります。
+このようなインストラクションファイルを、`.github/instructions/directory-structure.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotはプロジェクトのディレクトリ構成を理解し、より適切な開発支援ができるようになります。
 
 ここではプロジェクト全体のディレクトリ構成について説明しました。一方、`src/main/java`配下などのソースコードのパッケージ構成については、別途インストラクションファイルで定義することが効果的です。詳しくは「[クラスのステレオタイプとパッケージ構成](../stereo-type)」を参照してください。

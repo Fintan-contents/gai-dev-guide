@@ -13,7 +13,7 @@ GitHub CopilotとVisual Studio Codeには、このような課題を解決する
 
 AIは新しい会話を始めると、以前のやり取りを記憶していません。そのため、プロジェクトの目的やコーディング規約といった共通知識は、会話のたびに伝える必要があります。
 
-これらの情報を毎回プロンプトに含めるのは非効率です。そこで役立つのが、Visual Studio Codeに備わるGitHub Copilotに常に参照させる情報をあらかじめ定義しておく「カスタムインストラクション」の仕組みです。  
+これらの情報を毎回プロンプトに含めるのは非効率です。そこで役立つのが、Visual Studio Codeに備わるGitHub Copilotへ常に参照させる情報をあらかじめ定義しておく「カスタムインストラクション」の仕組みです。  
 
 Visual Studio Codeでは[以下の方法でカスタムインストラクションを定義できます](https://code.visualstudio.com/docs/copilot/copilot-customization#_custom-instructions)。
 
@@ -27,12 +27,12 @@ Visual Studio Codeでは[以下の方法でカスタムインストラクショ�
 `.instructions.md`ファイルにプロジェクトの共通知識を格納し、AIに参照させる利用方法を想定しています。つまりインストラクション（指示）という名称ではありますが、実際にはAIに対するガイドラインとして使用します。
 
 どのようなインストラクションファイルを用意するかについては、詳しくは[整備しておくファイル](./files-to-be-maintained)を参照してください。  
-またインストラクションファイルは1度作成したら終わりではなく、プロジェクトの状況やAIのコード出力精度を見ながら改善、調整していきましょう。
+またインストラクションファイルは、1度作成して終わりではありません。プロジェクトの状況やAIのコード出力精度を見ながら改善、調整していきましょう。
 
 :::note
-Visual Studio Codeに依存しない、GitHub Copilot自体が備えるカスタムインストラクションは`.github/copilot-instructions.md`のみです。
+GitHub Copilot固有のカスタムインストラクションは`.github/copilot-instructions.md`のみです。
 
-Visual Studio Code以外でGitHub Copilotを使う場合は、カスタムインストラクションは分割せずひとつの`.github/copilot-instructions.md`ファイルにまとめることになります。
+Visual Studio Code以外の環境ではカスタムインストラクションは分割せず、ひとつの`.github/copilot-instructions.md`ファイルにまとめます。
 :::
 
 ### `.instructions.md`ファイルを使う
@@ -68,7 +68,11 @@ applyTo: "**/*.java"
 （省略）
 ```
 
-:::note 具体的なパターン指定をする時の注意
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::note[具体的なパターン指定をする時の注意]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 `applyTo`に`**`以外のパターンを指定した場合（対象とするパターンを絞り込んだ場合）、明示的にコンテキストに追加したファイルパスと一致した場合にのみ効果があります。  
 コンテキストに指定しなくても無条件に適用される`**`とは動作が大きく異なるので注意してください。
 
@@ -104,7 +108,7 @@ applyTo: "**/*.java"
 Visual Studio Codeは、[プロンプトファイル](https://code.visualstudio.com/docs/copilot/copilot-customization#_prompt-files-experimental)を作成することでプロンプトを再利用できます。  
 プロンプトファイルは`.github/prompts`ディレクトリ内に、`[任意の名称].prompt.md`ファイル（`.prompt.md`ファイル）として作成します。
 
-[プログラミングやテストに入る前に](../../before-coding-test)プロンプトファイル整備し、プログラミングやレビューに活用します。  
+[プログラミングやテストへ入る前に](../../before-coding-test)プロンプトファイル整備し、プログラミングやレビューに活用します。  
 またインストラクションファイルと同様、プロンプトファイルの内容もAIの生成するコードの精度などに関係するため、実際の動作を見ながら改善していきましょう。
 
 ### `.prompt.md`ファイルを使う
@@ -160,7 +164,7 @@ ${input:doc} の内容を確認し、概要を説明してください。
 
 プロンプトファイルは、チャットから`/[プロンプトファイル名]`で呼び出します。ファイル名から`.prompt.md`を除いた部分がコマンド名になります。
 
-例示したEdit ModeでServiceクラスの作成を指示するプロンプトファイルのファイルパスが`.github/prompts/generate-service.prompt.md`だった場合、チャットでの呼び出し例は以下となります。
+Serviceクラスの作成指示をするプロンプトファイル例のパスが`.github/prompts/generate-service.prompt.md`の場合、チャットでの呼び出し例は以下となります。
 
 ```
 /generate-service doc=#file:ユーザー登録機能.md className=UserService methodName=register

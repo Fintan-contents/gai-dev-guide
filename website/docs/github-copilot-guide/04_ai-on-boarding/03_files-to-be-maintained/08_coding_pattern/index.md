@@ -95,4 +95,4 @@ public class UserController {
 
 ````
 
-このようなインストラクションファイルを`.github/instructions/coding-pattern.instructions.md`のようなファイル名で用意することで、GitHub Copilotはサンプルに従った一貫性のあるコードを生成しやすくなるでしょう。
+このようなインストラクションファイルを、`.github/instructions/coding-pattern.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotはサンプルに従った一貫性のあるコードを生成しやすくなるでしょう。

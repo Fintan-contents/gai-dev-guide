@@ -12,7 +12,7 @@ sidebar_position: 8
 
 :::note
 Agent Modeを活用することで、コーディングやテストの実施をある程度AIに自律的に任せることができますが、AIが生成した成果物の品質や妥当性を最終的に担保するのは人です。  
-AIの生成結果を鵜呑みにせず、必ず人が確認する必要があることを忘れないでください。
+AIの生成結果を鵜呑みにせず、必ず人が確認するようにしてください。
 :::
 
 ## 開発の流れ
@@ -24,24 +24,28 @@ AIの生成結果を鵜呑みにせず、必ず人が確認する必要がある
 Agent Modeを使う場合、[開発の進め方](../ai-on-boarding/files-to-be-maintained/how-to-proceed-with-development)で定めた手順に沿って開発を進めてもらいます。
 
 この時、AIに作成してもらった成果物の妥当性をAI自身に検証してもらうため、ソースコードの作成だけではなくテストコードも合わせて作成してもらうことになるでしょう。  
-そして作成されたソースコードやテストコードは、内容や網羅性に問題がないかどうかを人が確認する必要があります。
+そして作成されたソースコードやテストコードは、内容や網羅性に問題がないかどうかを人が確認します。
 
 [AIと対話を始める](../begin-conversation-with-ai)や[指示のポイント](../ai-on-boarding/points-of-instructions)で記述したように、AIには実施して欲しい内容を具体的に指示し、タスクの遂行に必要な情報を与えることが重要です。
 
-つまり、このようにGitHub Copilotに自律的に作業してもらい、かつ精度を求めるには事前にAIが理解しやすい形式で以下のドキュメントを用意し、GitHub Copilotにコンテキストとして与える必要があります。
+つまりGitHub Copilotに自律的に作業を実施させ、かつ精度を出すにはAIが理解しやすい形式で以下のドキュメントを用意してコンテキストとして与える必要があります。
 
 - 設計書
 - テスト仕様書
 
 また、実際にソースコードを作成してみるとテストすべき内容の過不足に気づくことも多いでしょう。  
-このような場合は、テスト仕様書へのテスト追加などを行いテストコードに反映することになります。
+このような場合は、テスト仕様書へのテスト追加などを行いテストコードに反映します。
 
 つまり、最初に作成してから確認、そして実装内容からのフィードバックを取り込んでいくような、イテレーションを行う開発プロセスになるでしょう。  
 これを図示したものがこのセクションの最初の図になります。
 
 ## ソースコード作成からテスト実施までを行う
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Agent Modeを使います。
 :::
 
@@ -75,13 +79,17 @@ description: "Serviceクラスを作成してください"
 
 ここで、プロンプトファイルおよびプロンプトに指定すべき変数の値を以下と仮定します。
 
-- プロンプトファイル: `.github/prompts/generate-service.prompt.md`
-- 設計書（`${input:doc}`）: `#file:ユーザー登録機能.md`
-- テスト仕様書（`${input:spec}`）: `#file:ユーザー登録機能テスト仕様書.md`
-- 実装対象のクラス名（`${input:className}`）: `UserService`
-- 実装対象のメソッド名（`${input:methodName}`）: `register`
+- プロンプトファイル： `.github/prompts/generate-service.prompt.md`
+- 設計書（`${input:doc}`）： `#file:ユーザー登録機能.md`
+- テスト仕様書（`${input:spec}`）： `#file:ユーザー登録機能テスト仕様書.md`
+- 実装対象のクラス名（`${input:className}`）： `UserService`
+- 実装対象のメソッド名（`${input:methodName}`）： `register`
 
-:::info ポイント
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[ポイント]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 プロンプトファイルの`tools`には、Agent Modeに利用させてもよいツールを指定します。
 
 また`#file`は[Visual Studio Codeでファイルをコンテキストに追加する変数](https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features)です。
@@ -99,13 +107,17 @@ description: "Serviceクラスを作成してください"
 - テストクラスの作成とテストメソッドの実装
 - テストの実施
 
-:::info ポイント
-テスト実施などのためにGitHub Copilotが外部コマンドを実行する際には、都度ユーザーに実行許可を求めます。  
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[ポイント]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
+テスト実施などのためにGitHub Copilotが外部コマンドを実行する際には、都度ユーザに実行許可を求めます。  
 これは意図しないコマンドの実行を防ぐための安全機能ですが、許可を与えない限りAIのタスクはそこで停止することに注意してください。
 :::
 
-ユーザーに変更内容の承認を求めるのは、開発の進め方で定めた内容が完了した時になります。  
-それまでは、外部コマンドの実行でユーザーに実行許可を求める場合を除き、実装内容に問題があった場合は自己修復を試みます。
+ユーザに変更内容の承認を求めるのは、開発の進め方で定めた内容が完了した時になります。  
+それまでは、外部コマンドの実行でユーザに実行許可を求める場合を除き、実装内容に問題があった場合は自己修復を試みます。
 
 最終的に生成されたコードに問題がなければ承認し、そうでなければ拒否してGitHub Copilotに修正を依頼する、もしくは自分で修正してください。
 
@@ -114,16 +126,18 @@ description: "Serviceクラスを作成してください"
 Agent Modeを利用すると定めた開発の進め方に則りテストコードの作成まで行うため、1度に生成されるソースコードのボリュームが大きくなりがちです。
 また単にソースコードを生成するのではなく、テスト実行など複数のステップを挟むため実行時間も伸びやすくなります。
 
-一方で、AIが生成するコードは人が確認する必要があります。  
-生成されるソースコード量も実行時間も大きくなるため、インストラクションファイルが整備しきれていなかったり、曖昧な指示をしてしまったりすると、AIに大幅な修正依頼をすることが多くなり、かえって生産性が低下する要因となりかねません。
+一方で、AIが生成するコードは人がしなければいけません。  
+生成されるソースコード量や実行時間も大きくなるため、インストラクションファイルが整備しきれていなかったり、曖昧な指示をしてしまったりすると、AIに大幅な修正依頼をすることが多くなるでしょう。  
+結果として、かえって生産性が低下する要因となりかねません。
 
 特に開発の初期段階では、扱いきれないほどの大量のソースコードを生成させるのではなく、人が確認できる量のソースコードを生成させて精度を見てみるとよいでしょう。
 
-思うような精度のコードが生成されない場合は、インストラクションファイルやプロンプトファイルの指示内容、設計書の記述内容、コンテキストに与えるべき情報が不足しているといったことを確認し、必要に応じて修正します。
+期待する精度のコードが生成されない場合は、インストラクションファイルやプロンプトファイルの指示内容、設計書の記述内容、コンテキストに与えるべき情報の不足といった点を確認し、必要に応じて修正します。
 
 また、完璧なコードが生成されることを目指して永遠にプロンプトなどの改善とトライ＆エラーを繰り返すのではなく、ある程度のところで割り切って残りは人が修正するといった割り切りも必要でしょう。
 
-AIに最初からソースコードを出力させてもうまくいかない場合は、Modeの切り替えが手間にはなりますが1度Ask Modeで実装予定の内容を出力させ、確認や調整を行ってからAgent Modeで出力させるという方法もあります。
+AIにソースコードを出力させてもうまくいかない場合は、1度Ask Modeで実装予定の内容を出力させ、確認や調整を行ってからAgent Modeで出力させるという方法もあります。  
+Modeの切り替えが手間にはなりますが、試してみてください。
 
 ## レビューを行う
 
@@ -135,7 +149,11 @@ GitHub Copilotにソースコードやテストコードのレビューをサポ
 
 #### 定型的な観点でのレビュー
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -147,7 +165,11 @@ Ask Modeを使います。
 
 #### 機能的な観点でのレビュー
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -175,10 +197,14 @@ description: "ソースコードが設計書に定義された仕様を満たし
 
 ここで、プロンプトファイルおよびプロンプトに指定すべき変数の値を以下と仮定します。
 
-- プロンプトファイル: `.github/prompts/review-service.prompt.md`
-- 設計書（`${input:doc}`）: `#file:ユーザー登録機能.md`
+- プロンプトファイル： `.github/prompts/review-service.prompt.md`
+- 設計書（`${input:doc}`）： `#file:ユーザー登録機能.md`
 
-:::info ポイント
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[ポイント]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 `#file`は[Visual Studio Codeでファイルをコンテキストに追加する変数](https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features)です。
 :::
 
@@ -198,7 +224,11 @@ AIからのフィードバックを参考に、ソースコードを修正・改
 
 #### 定型的な観点でのレビュー
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -208,7 +238,11 @@ Ask Modeを使います。
 
 #### 機能的な観点でのレビュー
 
-:::info 使用するGitHub Copilot ChatのMode
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[使用するGitHub Copilot ChatのMode]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
 Ask Modeを使います。
 :::
 
@@ -237,9 +271,9 @@ description: "テストコードがテスト仕様書に定義された仕様を
 
 ここで、プロンプトファイルおよびプロンプトに指定すべき変数の値を以下と仮定します。
 
-- プロンプトファイル: `.github/prompts/review-test.prompt.md`
-- テスト仕様書（`${input:spec}`）: `#file:ユーザー登録機能テスト仕様書.md`
-- 設計書（`${input:doc}`）: `#file:ユーザー登録機能.md`
+- プロンプトファイル： `.github/prompts/review-test.prompt.md`
+- テスト仕様書（`${input:spec}`）： `#file:ユーザー登録機能テスト仕様書.md`
+- 設計書（`${input:doc}`）： `#file:ユーザー登録機能.md`
 
 この時、Chatウィンドウでは以下のように指示します。
 

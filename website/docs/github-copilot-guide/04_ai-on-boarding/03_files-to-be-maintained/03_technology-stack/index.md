@@ -46,4 +46,4 @@ applyTo: "**"
   - Docker
 ```
 
-このようなインストラクションファイルを`.github/instructions/technology-stack.instructions.md`のようなファイル名で配置することで、GitHub Copilotはプロジェクトの技術的な制約を理解した上で、開発をサポートしてくれるようになります。
+このようなインストラクションファイルを、`.github/instructions/technology-stack.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotはプロジェクトの技術的な制約を理解した上で、開発をサポートしてくれるようになります。

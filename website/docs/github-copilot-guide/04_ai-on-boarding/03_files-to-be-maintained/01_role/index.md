@@ -19,4 +19,4 @@ applyTo: "**"
 プロジェクトの構成やコーディング標準を理解し、ユーザーから指示された仕様に基づいて高品質なコードを生成してください。
 ```
 
-このようなインストラクションファイルを`.github/instructions/role.instructions.md`のようなファイル名で配置することで、GitHub Copilotにこの役割に沿った振る舞いを促すことができます。
+このようなインストラクションファイルを、`.github/instructions/role.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotへこの役割に沿った振る舞いを促すことができます。
