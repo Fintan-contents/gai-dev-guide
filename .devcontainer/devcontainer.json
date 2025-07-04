@@ -19,7 +19,7 @@
             ]
         }
     },
-    "postCreateCommand": "cd website && npm install",
+    "postCreateCommand": "npm install",
     "forwardPorts": [
         3000
     ],
