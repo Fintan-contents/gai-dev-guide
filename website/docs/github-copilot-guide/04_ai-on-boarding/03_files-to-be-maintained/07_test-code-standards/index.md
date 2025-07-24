@@ -46,7 +46,7 @@ applyTo: "**"
 
 - `@SpringBootTest`アノテーションと、MockMvcを使用してテストを実装します
 - リクエストのバリデーションが正しく機能することを確認します。
-- Serviceのモック化し、Controllerが正しくServiceを呼び出すことを確認します。
+- Serviceをモック化し、Controllerが正しくServiceを呼び出すことを確認します。
 - レスポンスのHTTPステータスコードやボディが期待通りであることを検証します
 
 ### Service
