@@ -26,7 +26,7 @@ Visual Studio Codeでは[以下の方法でカスタムインストラクショ�
 本ガイドでは記述したい内容ごとにファイルを分けられる、`.instructions.md`ファイルの利用を想定しています。  
 `.instructions.md`ファイルにプロジェクトの共通知識を格納し、AIに参照させる利用方法を想定しています。つまりインストラクション（指示）という名称ではありますが、実際にはAIに対するガイドラインとして使用します。
 
-どのようなインストラクションファイルを用意するかについては、詳しくは[整備しておくファイル](../files-to-be-maintained)を参照してください。  
+どのようなカスタムインストラクションをファイルとして用意するかについては、詳しくは[整備しておくファイル](../files-to-be-maintained)を参照してください。  
 またインストラクションファイルは、1度作成して終わりではありません。プロジェクトの状況やAIのコード出力精度を見ながら改善、調整していきましょう。
 
 :::note
@@ -79,11 +79,11 @@ applyTo: "**/*.java"
 なお`applyTo`自体は必須で、省略するとインストラクションファイルとしては無視されます。
 :::
 
-このカスタムインストラクションはAgent Modeだけでなく、Edit Modeでも利用できます。
+カスタムインストラクションは、Agent ModeおよびEdit Modeで利用できます。
 
 [Use instructions to get AI edits that follow your coding style](https://code.visualstudio.com/docs/copilot/chat/copilot-edits#_use-instructions-to-get-ai-edits-that-follow-your-coding-style)
 
-カスタムインストラクションファイルを活用することで、GitHub Copilotに常に参照させたい情報を効率的に指定できます。
+カスタムインストラクションを活用することで、GitHub Copilotに常に参照させたい情報を効率的に指定できます。
 
 以下のように内容ごとにインストラクションファイルを作成し、メンテナンスしていくとよいでしょう。
 
@@ -118,11 +118,12 @@ Visual Studio Codeは、[プロンプトファイル](https://code.visualstudio.
 - Front Matter構文で書かれたメタデータを含むヘッダー
 - プロンプトの本文
 
-以下はEdit Modeでのプロンプトファイルの例です。設計書とクラス名、メソッド名を入力変数で指定して、Serviceクラスの作成を指示しています。
+以下はAgent Modeでのプロンプトファイルの例です。設計書とクラス名、メソッド名を入力変数で指定して、Serviceクラスの作成を指示しています。
 
 ```markdown
 ---
-mode: "edit"
+mode: "agent"
+tools: ["Agentが使用できるツール"]
 description: "Serviceクラスを作成してください"
 ---
 

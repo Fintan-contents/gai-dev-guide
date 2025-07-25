@@ -4,11 +4,7 @@ sidebar_position: 9
 
 # 開発の進め方
 
-:::note
-本ページは、GitHub Copilot ChatのAgent Mode向けのページです。
-:::
-
-GitHub Copilot ChatのAgent Modeを使用する場合、AIにある程度自律的な動作をさせることが可能になります。
+GitHub Copilot ChatのAgent Modeを使用すると、AIにある程度自律的な動作をさせることが可能になります。
 
 以下のような「開発の進め方」を定義しておくことで、GitHub Copilotに対して「機能開発の完了条件」を理解させ、自律的なタスク実行を促すことができます。
 

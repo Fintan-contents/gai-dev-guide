@@ -12,11 +12,8 @@ sidebar_position: 1
 
 - 本ガイドで解説している各種操作は、**Visual Studio CodeでGitHub Copilotを利用することを前提としています**
   - これはGitHub Copilotに関するリリースおよび機能拡張が、Visual Studio Codeに対してもっとも早くかつ豊富に提供されるためです
-- GitHub Copilot Chatでは、**Ask ModeまたはEdit Modeを利用することを前提とします**
-  - 本ガイド執筆時点（2025年6月）ではAgent Modeはプレビュー版だからです
-    - Agent Modeの利用を禁止するものではありません
-  - Agent Modeが一般公開版としてリリースされた際には、本ガイドもAgent Modeを前提とした内容に更新する予定です
-  - 一方で本ガイドの構成は、将来的に一般公開版となるであろうAgent Modeの採用を見据えたものとなっています
+- GitHub Copilot Chatでは、**Agent ModeおよびAsk Mode**を中心に使用します
+  - Edit Modeの利用を止めるものではありません
 - 本ガイドではGitHub Copilot Chatで使用するモデル（LLM）は指定しません
   - これはモデルの更新がとても頻繁に行われるため、推奨モデルを指定したところですぐに陳腐化するからです
   - 実際の開発へ入る前にその時点で選択可能なモデルを試し、感覚を得るようにしてみてください
