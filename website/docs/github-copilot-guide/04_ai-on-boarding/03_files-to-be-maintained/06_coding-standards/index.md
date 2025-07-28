@@ -100,3 +100,14 @@ applyTo: "**"
 ```
 
 このようなインストラクションファイルを、`.github/instructions/coding-standards.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotはプロジェクトの規約を理解し、より適切に開発をサポートしてくれるようになります。
+
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[実装例はインストラクションファイルに含めない]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
+本ページを読むと、各ステレオタイプの実装例までインストラクションファイルに含めた方がよいのではないか、と考えるでしょう。  
+実装例自体はAIが生成するコードの精度向上には必要ですが、内容が長大になりやすくコンテキストウィンドウを圧迫します。  
+1回の指示で生成するコードに関わる実装例を、プロンプトに含めるのがよいでしょう。  
+つまり、実装例は指示内容に応じたプロンプトファイルへ含めることをお勧めします。
+:::

@@ -62,3 +62,7 @@ GitHub Copilotにソースコードやテストコードを実装してもらう
 
 もちろんすでにドキュメントをMarkdown形式で作成しているなど、AIが直接利用できる形式であればこの変換作業は不要です。
 :::
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />

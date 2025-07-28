@@ -66,3 +66,14 @@ applyTo: "**"
 ```
 
 このようなインストラクションファイルを、`.github/instructions/test-code-standards.instructions.md`のようなファイル名で作成します。これにより、GitHub Copilotはプロジェクトのテスト規約を理解し、品質の高いテストコードの生成をサポートしてくれるようになります。
+
+<!-- textlint-disable ja-technical-writing/ja-no-mixed-period -->
+<!-- textlint-disable jtf-style/4.3.2.大かっこ［］ -->
+:::info[テストコード例はインストラクションファイルに含めない]
+<!-- textlint-enable jtf-style/4.3.2.大かっこ［］ -->
+<!-- textlint-enable ja-technical-writing/ja-no-mixed-period -->
+本ページを読むと、各ステレオタイプのテストコード例までインストラクションファイルに含めた方がよいのではないか、と考えるでしょう。  
+テストコード例自体はAIが生成するコードの精度向上には必要ですが、内容が長大になりやすくコンテキストウィンドウを圧迫します。  
+1回の指示で生成するテストに関わるテストコード例を、プロンプトに含めるのがよいでしょう。  
+つまり、テストコード例は指示内容に応じたプロンプトファイルへ含めることをお勧めします。
+:::
