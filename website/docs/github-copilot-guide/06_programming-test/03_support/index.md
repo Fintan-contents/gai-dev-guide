@@ -2,15 +2,11 @@
 sidebar_position: 1
 ---
 
-# 補足
-
-:::note
-本ページの内容はGitHub Copilot ChatのAgent Mode向けですが、Agent Mode以外のModeやコード補完も含めて活用方法を補足しています。
-:::
+# 開発のサポートをしてもらう
 
 [プログラミング〜テスト](../../programming-test)では、GitHub Copilot ChatのAgent Modeを使い、ソースコードの作成からテスト実施まで一連の流れを自律的に実施してもらう方法を記載しました。
 
-ここでは、ソースコードの修正や質問、コード補完など少し小さな粒度でGitHub Copilot Chatを扱う方法を紹介します。
+ここでは、ソースコードの修正や質問、コード補完など少し小さな粒度でGitHub Copilot Chatに開発をサポートしてもらう方法を紹介します。
 
 ## 実装を修正・改善してもらう
 
