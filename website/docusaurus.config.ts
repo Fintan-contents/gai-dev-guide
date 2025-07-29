@@ -19,7 +19,6 @@ const copyright = `
     ドキュメントは、<a rel="license" href="https://fintan.jp/?page_id=201" target="_blank">Fintan コンテンツ 使用許諾条項</a>の下に提供されています。
   </div>
   <div class="supplementary">
-    <a href="/${project}/trademark/" class="footer__link-item">商標について</a>
     <a href="/${project}/customize-and-distribution/" class="footer__link-item">ガイドのカスタマイズ・配布について</a>
   </div>
 </div>`;
