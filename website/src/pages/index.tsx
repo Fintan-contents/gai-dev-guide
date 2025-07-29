@@ -13,7 +13,7 @@ const genericOverview = [
     title: 'GitHub Copilot活用ガイド',
     to: 'github-copilot-guide',
     imageUrl: 'img/undraw_Bibliophile_re_xarc.svg',
-    summary: <>GitHub Copilot活用ガイド</>,
+    summary: <>GitHub Copilotを活用して生産性を向上するためのガイド</>,
   }
 ];
 
