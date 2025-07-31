@@ -33,6 +33,8 @@ Visual Studio Codeでは[以下の方法でカスタムインストラクショ�
 GitHub Copilot固有のカスタムインストラクションは`.github/copilot-instructions.md`のみです。
 
 Visual Studio Code以外の環境ではカスタムインストラクションは分割せず、ひとつの`.github/copilot-instructions.md`ファイルにまとめます。
+
+詳しくは [GitHub Copilot のリポジトリ カスタム命令を追加する](https://docs.github.com/ja/copilot/how-tos/configure-custom-instructions/add-repository-instructions) を参照してください。
 :::
 
 ### `.instructions.md`ファイルを使う

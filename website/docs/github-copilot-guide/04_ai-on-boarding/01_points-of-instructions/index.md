@@ -11,6 +11,12 @@ GitHub Copilotから質の高いコードを引き出すためには、的確な
 また、ここで紹介するポイントは1度の指示で完結させることだけを目指すものではありません。AIとの対話を通じて段階的に適用していくことで、より良い成果物が得られます。  
 AIを優秀なパートナーと捉え、対話を重ねながら共同で成果物を育てていく意識が重要です。
 
+GitHub CopilotおよびVisual Studio Codeの以下のドキュメントも参考にするとよいでしょう。
+
+- [GitHub Copilot の使用についてのベスト プラクティス](https://docs.github.com/ja/copilot/get-started/best-practices)
+- [Copilot Chat のプロンプト エンジニアリング](https://docs.github.com/ja/copilot/concepts/prompt-engineering)
+- [VS Code の Copilot のヒントとコツ](https://code.visualstudio.com/docs/copilot/copilot-tips-and-tricks)
+
 ## 実装要件を明確に伝える
 
 AIにコード生成を依頼する上でもっとも重要なのは、「何を作って欲しいのか」を具体的かつ明確に伝えることです。曖昧な指示は、意図しない結果を招く最大の原因となります。  

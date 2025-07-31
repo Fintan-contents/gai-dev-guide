@@ -10,6 +10,12 @@ GitHub CopilotのようなAIとの対話は、新しくプロジェクトへ着�
 
 本ページでは、AIとの対話における具体的なコツをいくつかの例を通して紹介します。
 
+また、GitHub CopilotおよびVisual Studio Codeの以下のドキュメントも参考にするとよいでしょう。
+
+- [GitHub Copilot の使用についてのベスト プラクティス](https://docs.github.com/ja/copilot/get-started/best-practices)
+- [Copilot Chat のプロンプト エンジニアリング](https://docs.github.com/ja/copilot/concepts/prompt-engineering)
+- [VS Code の Copilot のヒントとコツ](https://code.visualstudio.com/docs/copilot/copilot-tips-and-tricks)
+
 ## 指示のコツ:具体的な実装を依頼する
 
 何かを実装してほしい時のプロンプト（指示）の例です。
