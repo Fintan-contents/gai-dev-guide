@@ -29,14 +29,6 @@ Visual Studio Codeでは[以下の方法でカスタムインストラクショ�
 どのようなカスタムインストラクションをファイルとして用意するかについては、詳しくは[整備しておくファイル](../files-to-be-maintained)を参照してください。  
 またインストラクションファイルは、1度作成して終わりではありません。プロジェクトの状況やAIのコード出力精度を見ながら改善、調整していきましょう。
 
-:::note
-GitHub Copilot固有のカスタムインストラクションは`.github/copilot-instructions.md`のみです。
-
-Visual Studio Code以外の環境ではカスタムインストラクションは分割せず、ひとつの`.github/copilot-instructions.md`ファイルにまとめます。
-
-詳しくは [GitHub Copilot のリポジトリ カスタム命令を追加する](https://docs.github.com/ja/copilot/how-tos/configure-custom-instructions/add-repository-instructions) を参照してください。
-:::
-
 ### `.instructions.md`ファイルを使う
 
 `.instructions.md`ファイルは次の2つのセクションで構成されます。
