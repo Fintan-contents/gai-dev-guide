@@ -125,7 +125,7 @@ Visual Studio Codeは、[プロンプトファイル](https://code.visualstudio.
 ```markdown
 ---
 mode: "agent"
-tools: ["Agentが使用できるツール"]
+tools: ["codebase"]
 description: "Serviceクラスを作成してください"
 ---
 
@@ -159,7 +159,7 @@ ${input:doc} の内容を確認し、概要を説明してください。
 
 - `mode`: GitHub Copilot Chatのモードを指定（`ask`、`edit`、`agent`）
   - デフォルトは`agent`
-- `tools`: Agent Modeで使用できるツールを指定
+- `tools`: Agent Modeで使用できる[ツール](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode#_agent-mode-tools)を指定
 - `description`: プロンプトの簡単な説明を記述
 
 プロンプトの本文には`${variableName}`の構文で変数を含めることができます。ワークスペース変数、選択変数、ファイルコンテキスト変数、そしてチャットから入力する変数が利用できます。  
