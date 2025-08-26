@@ -1,0 +1,49 @@
+---
+title: プロンプト
+slug: /prompts
+sidebar_position: 0
+---
+
+# プロンプト
+
+本ページでは、過去にプロジェクトの開発プロセスの中で利用され、有用と評価されたプロンプトを配置しています。
+ぜひ、ご自由にご利用ください。
+また、そのほかの有用なプロンプトについては[生成AI活用ガイド](https://gen-ai-docs.jp/)の「利用シーン別ガイド」をご参照ください。
+
+:::info
+プロジェクトの文脈に応じて、観点の追加や削除等、カスタマイズしてください。  
+プロンプトを作成する際には様々なテクニックが存在します。例えば以下のようなサイトをご参照ください。
+
+- [Prompt Engineering Guide | Prompt Engineering Guide](https://www.promptingguide.ai/jp)
+- [Prompt engineering overview - Anthropic](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
+- [Prompt engineering - OpenAI API](https://platform.openai.com/docs/guides/prompt-engineering)
+  :::
+
+また、プロジェクトで作成されたプロンプトはぜひご提供いただきたいです。[Forms](https://forms.office.com/r/TZCDzPHEZQ)よりご相談ください。
+
+## コードレビュー用
+
+現在ご用意している、コードレビュー用のプロンプトです。  
+プロジェクト全体で一貫した観点のプロンプトを用いてコードレビューを行うことで、レビュアーの負荷を最小限にしつつも、プロジェクト全体の品質も向上させることができます。
+
+- [コーディング基準](/prompts/code_standards/)
+  - [Java](/prompts/code_standards/java)
+- [非機能観点](/prompts/non_functional)
+  - [Java](/prompts/non_functional/java)
+
+:::warning
+生成 AI によってレビューを行う場合、静的解析ツールでは記述できないような観点を自然言語で記述できる点が大きなメリットですが、そこには曖昧さが残るため、見落とし等が発生することは避けられません。
+
+このため、生成 AI によるレビューはあくまで最低限の品質担保に利用いただき、最終的なレビューは必ず人の目で行ってください。それでも、生成 AI を利用したレビューにより、レビュー自体の生産性は向上しています。
+:::
+
+:::info
+多くの観点でレビューをしようと思うと、多くのプロンプトが必要になり、プロンプトを入力する負荷が上がってしまいます。
+これを効率化するために[VS Code の拡張である Promptis](https://github.com/Fintan-contents/promptis)を準備しました。
+ディレクトリ配下にプロンプトファイルを準備しておけば、レビュー対象とするソースコードにそれらプロンプトで自動的にレビューをしてくれるという拡張です。ぜひご利用ください。
+:::
+
+:::info
+レビュー用のプロンプトを1つに統合せず分割しているのは、観点を分けた方が管理がしやすいのはもちろんですが、  
+プロンプトが長くなるほど生成AIが個々の内容を重視しなくなり、回答精度が落ちるためです。
+:::

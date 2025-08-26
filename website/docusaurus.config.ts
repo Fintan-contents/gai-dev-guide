@@ -121,6 +121,12 @@ ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的�
           label: 'GitHub Copilot活用ガイド',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'promptsSidebar',
+          position: 'left',
+          label: 'プロンプト',
+        },
+        {
           href: repositoryUrl,
           position: 'right',
           className: 'header-github-link',
@@ -138,6 +144,10 @@ ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的�
             {
               label: 'GitHub Copilot活用ガイド',
               to: 'github-copilot-guide',
+            },
+            {
+              label: 'プロンプト',
+              to: 'prompts',
             }
           ],
         },

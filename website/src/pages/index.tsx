@@ -14,6 +14,12 @@ const genericOverview = [
     to: 'github-copilot-guide',
     imageUrl: 'img/undraw_Bibliophile_re_xarc.svg',
     summary: <>GitHub Copilotを活用して生産性を向上するためのガイド</>,
+  },
+  {
+    title: 'プロンプト',
+    to: 'prompts',
+    imageUrl: 'img/undraw_Bookshelves_re_lxoy.svg',
+    summary: <>AI活用のためのプロンプト集</>,
   }
 ];
 
