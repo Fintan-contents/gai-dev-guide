@@ -19,7 +19,6 @@ const copyright = `
     ドキュメントは、<a rel="license" href="https://fintan.jp/?page_id=201" target="_blank">Fintan コンテンツ 使用許諾条項</a>の下に提供されています。
   </div>
   <div class="supplementary">
-    <a href="/${project}/trademark/" class="footer__link-item">商標について</a>
     <a href="/${project}/customize-and-distribution/" class="footer__link-item">ガイドのカスタマイズ・配布について</a>
   </div>
 </div>`;
@@ -117,15 +116,9 @@ ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的�
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'githubCopilotSidebar',
+          sidebarId: 'githubCopilotGuideSidebar',
           position: 'left',
-          label: 'GitHub Copilot ガイド',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'developmentProcessSidebar',
-          position: 'left',
-          label: '開発プロセス',
+          label: 'GitHub Copilot活用ガイド',
         },
         {
           type: 'docSidebar',
@@ -149,12 +142,8 @@ ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的�
           title: 'Docs',
           items: [
             {
-              label: 'GitHub Copilotガイド',
-              to: 'github-copilot',
-            },
-            {
-              label: '開発プロセス',
-              to: 'development-process',
+              label: 'GitHub Copilot活用ガイド',
+              to: 'github-copilot-guide',
             },
             {
               label: 'プロンプト',

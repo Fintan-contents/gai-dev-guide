@@ -10,16 +10,10 @@ import Link from '@docusaurus/Link';
 
 const genericOverview = [
   {
-    title: 'GitHub Copilotガイド',
-    to: 'github-copilot',
+    title: 'GitHub Copilot活用ガイド',
+    to: 'github-copilot-guide',
     imageUrl: 'img/undraw_Bibliophile_re_xarc.svg',
-    summary: <>開発でGitHub Copilotをすぐ活用するためのガイド</>,
-  },
-  {
-    title: '開発プロセス',
-    to: 'development-process',
-    imageUrl: 'img/undraw_Outer_space_re_u9vd.svg',
-    summary: <>AI活用を前提とした開発プロセスのガイド</>,
+    summary: <>GitHub Copilotを活用して生産性を向上するためのガイド</>,
   },
   {
     title: 'プロンプト',
@@ -63,13 +57,6 @@ function Home() {
               そこで本ガイドでは、プロジェクトの様々な特性に合わせて、ガイドを個別にカスタマイズできるようにしています。<br/>
               さらに、オフライン環境で開発する方向けであっても参照できるように、参照時にWEBサーバを必要としないHTMLファイルとして配布可能です。<br/>
               詳細は<Link to="/customize-and-distribution">ガイドのカスタマイズ・配布</Link>をお読みください
-            </p>
-          </Admonition>
-          <Admonition type="note">
-            <p>
-              本ガイドは<a href="https://gen-ai-doc.notion.site/4ce5f767ad2c4ab9a299617795e4f8f3?v=c858b5fa4deb499d841629c904170dce">生成AI活用ガイド</a>と一部内容の重複があります。<br/>
-              生成AI活用ガイドにおける、GitHub Copilotスタートガイドにつきましては、内容の重複があるため2025年1月以降に本ガイドへ完全移行となります。<br/>
-              利用シーン別ガイドにつきましては、開発プロセスに組み込む必要なしと判断し、本ガイドには反映いたしません。
             </p>
           </Admonition>
         </div>
