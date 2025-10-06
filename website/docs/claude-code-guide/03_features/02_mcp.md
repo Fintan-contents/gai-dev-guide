@@ -22,7 +22,7 @@ Claude Code では、このプロトコルを使用して様々な開発ツー�
 
 ### MCP アーキテクチャと外部システム
 
-```
+```txt
 ┌───────────────┐
 │    MCPホスト   │
 │┌─────────────┐│
@@ -67,7 +67,7 @@ MCP サーバーが接続されると、Claude Code に以下のようなこと�
 
 ### ローカル MCP サーバーの設定追加
 
-```
+```bash
 # 基本構文
 claude mcp add <name> <command> [args...]
 
@@ -78,9 +78,9 @@ claude mcp add airtable --env AIRTABLE_API_KEY=YOUR_KEY \
 
 ### リモート MCP サーバーへの接続設定
 
-**SSE（Server-Sent Events）サーバーの場合**
+#### SSE（Server-Sent Events）サーバーの場合
 
-```
+```bash
 # 基本構文
 claude mcp add --transport sse <name> <url>
 
@@ -92,9 +92,9 @@ claude mcp add --transport sse private-api https://api.company.com/mcp \
   --header "X-API-Key: your-key-here"
 ```
 
-**Streamable HTTP サーバーの場合**
+#### Streamable HTTP サーバーの場合
 
-```
+```bash
 # 基本構文
 claude mcp add --transport http <name> <url>
 
@@ -106,10 +106,11 @@ claude mcp add --transport http secure-api https://api.example.com/mcp \
   --header "Authorization: Bearer your-token"
 ```
 
-**その他サーバーの管理**
+#### その他サーバーの管理
+
 設定後、これらのコマンドで MCP サーバーを管理できます
 
-```
+```bash
 # 設定されたすべてのサーバーをリスト表示
 claude mcp list
 
@@ -127,13 +128,13 @@ claude mcp remove github
 
 MCP サーバーの設定は 3 つのスコープで設定ができ、プロジェクト内でユーザーのローカル固有に設定、プロジェクト内で一意に設定、ユーザー内でのみグローバルな設定で保存することができます。
 
-**ローカルスコープ**
+### ローカルスコープ
 
 - ローカルスコープのサーバーは プロジェクト固有 かつ ユーザー固有の設定に保存されます。
 - claude mcp add 操作のデフォルトはローカルスコープです。
 - 用途：個人的な開発サーバー、実験的な設定、または共有すべきでない機密の認証情報を含むサーバーなど
 
-```
+```bash
 # ローカルスコープのサーバーを追加（デフォルト）
 claude mcp add my-private-server /path/to/server
 
@@ -141,22 +142,22 @@ claude mcp add my-private-server /path/to/server
 claude mcp add my-private-server --scope local /path/to/server
 ```
 
-**プロジェクトスコープ**
+### プロジェクトスコープ
 
 - プロジェクトスコープのサーバーは、プロジェクトのルートディレクトリにある`.mcp.json`ファイルに設定を保存することで、リポジトリで共有することで、チームメンバーが同じ MCP ツールとサービスにアクセスすることを可能にします。
 - 用途：チーム共有サーバー、プロジェクト固有のツール、またはコラボレーションに必要なサービス
 
-```
+```bash
 # プロジェクトスコープのサーバーを追加
 claude mcp add shared-server --scope project /path/to/server
 ```
 
-**ユーザースコープ**
+### ユーザースコープ
 
 - ユーザースコープのサーバーは、プロジェクト関係なくユーザーアカウント内のすべてのプロジェクトで利用可能です。
 - 用途：個人的なユーティリティサーバー、開発ツール、または異なるプロジェクト間で頻繁に使用するサービス
 
-```
+```bash
 # ユーザーサーバーを追加
 claude mcp add my-user-server --scope user /path/to/server
 ```
@@ -179,14 +180,14 @@ claude mcp add my-user-server --scope user /path/to/server
 
 [**Playwright**](https://playwright.dev/) は、Microsoft が開発した Web テストの自動化ツールです。Web アプリに対するテスト内容と、どういう結果なら OK かをテストシナリオとして事前に定義することで、シナリオをコードとして自動で実行します。テストシナリオを事前にすべてコードで定義する必要がありますが、MCP サーバーとして利用すれば、自然言語でテスト内容を指示するだけで、テストシナリオコードを常時メンテナンスし続けなくても、オンデマンドで実行したいテストを自動実行させることができます。
 
-```
+```bash
 # Playwright MCPをプロジェクトスコープでインストールする
 claude mcp add playwright npx @playwright/mcp@latest --scope project
 ```
 
 リポジトリルートに `.mcp.json` ができ、以下の設定が追加していることが確認できます。
 
-```
+```json
 {
   "mcpServers": {
     "playwright": {
@@ -211,14 +212,14 @@ AWS ドキュメント MCP サーバーは AWS ドキュメントにアクセス
 
 以下のコマンドでユーザースコープ `~/.claude.json` に設定が追加されます。
 
-```
+```bash
 # AWSドキュメントMCPサーバーをユーザースコープでインストール
 claude mcp add-json "awslabs-aws-documentation-mcp-server" '{"command":"uvx","args":["awslabs.aws-documentation-mcp-server@latest"],"env":{"FASTMCP_LOG_LEVEL":"ERROR","AWS_DOCUMENTATION_PARTITION":"aws"},"disabled":false,"autoApprove":[]}' --scope user
 ```
 
 あるいは直接 `~/.claude.json` に以下の記述を追記しても OK です。
 
-```
+```json
   "mcpServers": {
     "awslabs-aws-documentation-mcp-server": {
       "command": "uvx",

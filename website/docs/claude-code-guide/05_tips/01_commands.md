@@ -49,6 +49,7 @@ batch-architectエージェントは設計と計画の生成に特化し、プ�
 
 ## プロンプト（日本語）
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### execute_design_phase
 
 ```markdown
@@ -165,6 +166,7 @@ personas: [batch-architect, code-reviewer, db-expert]
 - ソースコードファイルの変更
 ```
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### execute_build_phase
 
 ```markdown
@@ -310,6 +312,7 @@ personas: [code-reviewer, test-engineer, db-expert, troubleshooter]
 
 ## プロンプト（原文）
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### execute_design_phase
 
 ```markdown
@@ -426,6 +429,7 @@ Act as an autonomous **Design Lead**. Your mission is to take a specification fi
 - Modify any source code files
 ```
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### execute_build_phase
 
 ```markdown

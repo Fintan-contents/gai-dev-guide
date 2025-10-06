@@ -8,30 +8,32 @@
 ローカル環境と、Dev Container環境でClaude Codeをセットアップします。ローカル環境だけで利用する場合にはDev Container環境の設定は不要ですが、Claude Codeによる破壊的な変更が発生してもローカル環境を安全に保全できるDev Container環境についてもひととおり理解しておくことを強く推奨します。
 :::
 
-
 ## 1. Claude Codeのセットアップ
 
 ### Claude Codeをインストールする
+
 **NPMインストール ※[Node.js 18以降がインストールされている](https://nodejs.org/en/download/)場合:**
+
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
 ### Claude Codeにログインする
+
 ここではAmazon Bedrockによる認証方法を記載します。この方法でClaudeモデルへのアクセスを設定してください。
 
 #### Amazon Bedrockによる認証
+
 Amazon Bedrockの提供するClaudeモデルにアクセスするようにセットアップするためには、以下の前提条件が必要になります。
 
-**Amazon BedrockでClaude Codeを設定するための前提事項**
-```
+##### Amazon BedrockでClaude Codeを設定するための前提事項
+
 - Bedrockアクセスが有効になっているAWSアカウント
 - Bedrockで希望するClaudeモデル（例：Claude Sonnet 4）へのアクセス
 - AWS CLIがインストールされ設定されている（オプション - 認証情報を取得する他の仕組みがない場合のみ必要）
 - 適切なIAM権限
-```
 
-**AWSアカウントのセットアップ**
+##### AWSアカウントのセットアップ
 
 まず、AWSアカウントで必要なClaudeモデルへのアクセスがあることを確認してください：
 1. Amazon Bedrockコンソールに移動
@@ -43,8 +45,7 @@ Amazon Bedrockの提供するClaudeモデルにアクセスするようにセッ
 日本国内での利用を想定するため、モデルアクセスは`ap-northeast-1`リージョンで有効である必要がある点に注意してください。
 :::
 
-
-**端末側のAWS認証情報の設定**
+##### 端末側のAWS認証情報の設定
 
 Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用します。以下のいずれかの方法で認証情報を設定してください：
 
@@ -53,39 +54,43 @@ Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用しま�
 :::
 
 オプションA: AWS CLI設定
-```
+
+```bash
 aws configure
 ```
 
 オプションB: 環境変数（アクセスキー）
-```
+
+```bash
 export AWS_ACCESS_KEY_ID=your-access-key-id
 export AWS_SECRET_ACCESS_KEY=your-secret-access-key
 export AWS_SESSION_TOKEN=your-session-token
 ```
 
 オプションC: 環境変数（SSOプロファイル）
-```
+
+```bash
 aws sso login --profile=<your-profile-name>
 
 export AWS_PROFILE=your-profile-name
 ```
 
 オプションD: Bedrock APIキー
-```
+
+```bash
 export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
 ```
-Bedrock APIキーは、完全なAWS認証情報を必要とせずに、よりシンプルな認証方法を提供します。[Bedrock APIキーについて詳しく学ぶ。](https://aws.amazon.com/blogs/machine-learning/accelerate-ai-development-with-amazon-bedrock-api-keys/)
 
+Bedrock APIキーは、完全なAWS認証情報を必要とせずに、よりシンプルな認証方法を提供します。[Bedrock APIキーについて詳しく学ぶ。](https://aws.amazon.com/blogs/machine-learning/accelerate-ai-development-with-amazon-bedrock-api-keys/)
 
 :::note INFO
 APIキーは最大12時間有効な「Short-term API keys」と、それ以上（最大365日あるいは無期限）設定できる「Long-term API keys」の2種類から選択が可能です。
 :::
 
-
 **Claude Codeを設定する**
 Bedrockを有効にするために以下の環境変数を設定してください：
-```
+
+```bash
 # Bedrock統合を有効にする
 export CLAUDE_CODE_USE_BEDROCK=1
 export AWS_REGION=ap-northeast-1
@@ -93,7 +98,7 @@ export AWS_REGION=ap-northeast-1
 
 さらに、デフォルトでモデルがUSリージョンのモデルが設定されているため、東京リージョンを含むAPACのクロスリージョン推論モデルを利用する場合、推論プロファイルIDかアプリケーション推論プロファイルを指定してください。
 
-```
+```bash
 # 推論プロファイルIDを使用
 export ANTHROPIC_MODEL='apac.anthropic.claude-sonnet-4-20250514-v1:0'
 export ANTHROPIC_SMALL_FAST_MODEL='apac.anthropic.claude-3-haiku-20240307-v1:0'
@@ -106,19 +111,23 @@ export DISABLE_PROMPT_CACHING=1
 ```
 
 これでClaude CodeへのアクセスをBedrock経由に設定することができました。`claude`コマンドを実行し、Bedrock経由でClaudeモデルにアクセスすることができることを確認してください。
-```
+
+```bash
 /status
 ```
 
 :::note INFO
 また、東京リージョンではClaude 4 Opusが提供されていないことにより、エラーになる可能性があります。モデルの指定コマンドを実行して、適切なアプリケーション推論プロファイル(Claude 4 Sonnet)を選択し直すことで実行可能になります。
-```
+
+```bash
 /model
 ```
+
 :::
 
 最終確認です。オプションDのBedrock APIキーで設定した場合、最終的に環境変数は以下のように設定されているはずです。
-```
+
+```bash
 # Bedrock統合を有効にする
 export CLAUDE_CODE_USE_BEDROCK=1
 export AWS_REGION=ap-northeast-1
@@ -140,9 +149,11 @@ Bedrockを使用する場合、認証はAWS認証情報を通じて処理され�
 :::
 
 ## 2. 基本ソフトウェアのインストール
+
 ここまでのセットアップで、ターミナル上でClaude Codeを使う準備はできています。ここからはIDEに統合してClaude Codeを使うことで、いくつかさらに利便性を上げる設定を追加できます。本ガイドではこれ以降Claude CodeをIDEに統合して利用する方法を基本的な使い方として解説します。
 
 ### Visual Studio Code
+
 Claude CodeをIDE統合して利用するために、まずはVS Codeのインストールします。
 
 **インストール方法:**
@@ -151,12 +162,14 @@ Claude CodeをIDE統合して利用するために、まずはVS Codeのイン�
 3. ダウンロードしたインストーラーを実行してインストールする
 
 **動作確認:**
+
 ```bash
 # インストール確認
 code --version
 ```
 
 ### Dockerのインストール
+
 Devcontainerに接続して安全に利用するために、ローカルのDocker環境を準備します。
 
 **Windows:**
@@ -169,6 +182,7 @@ Devcontainerに接続して安全に利用するために、ローカルのDocke
 2. インストーラーを実行する
 
 **Linux:**
+
 ```bash
 # Ubuntu/Debianの場合
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -187,31 +201,23 @@ docker-compose --version
 VS Codeを起動し、以下の拡張機能をインストールしてください：
 
 1. **Claude Code** (anthropic.claude-code)
-   ```
-   (Windows) Ctrl+Shift+X → "Claude Code" で検索 → インストール
-   (macOS) ⌘+Shift+X → "Claude Code" で検索 → インストール
-   ```
-
+    - (Windows) Ctrl+Shift+X → "Claude Code" で検索 → インストール
+    - (macOS) ⌘+Shift+X → "Claude Code" で検索 → インストール
 2. **Docker** (ms-azuretools.vscode-docker)
-   ```
-   (Windows) Ctrl+Shift+X → "Docker" で検索 → インストール
-   (macOS) ⌘+Shift+X → "Docker" で検索 → インストール
-   ```
-
+    - (Windows) Ctrl+Shift+X → "Docker" で検索 → インストール
+    - (macOS) ⌘+Shift+X → "Docker" で検索 → インストール
 3. **Dev Containers** (ms-vscode-remote.remote-containers)
-   ```
-   (Windows) Ctrl+Shift+X → "Dev Containers" で検索 → インストール
-   (macOS) ⌘+Shift+X → "Dev Containers" で検索 → インストール
-   ```
+    - (Windows) Ctrl+Shift+X → "Dev Containers" で検索 → インストール
+    - (macOS) ⌘+Shift+X → "Dev Containers" で検索 → インストール
 
 これらの拡張機能を有効化することで、Claude CodeのIDE統合や、Devcontainer環境内で安全にClaude Codeを実行できるようになります。
 
-
 ## 4. 最初のプロジェクトのセットアップ
+
 GitHubやGitLabのリモートリポジトリを作成し、ローカルにクローンして最初のリポジトリを作成しましょう。
 
-
 ## 5. (オプション) Dev Containerの設定
+
 最後に、ローカルでClaude Codeを使うよりも安全なDev Container環境をセットアップしましょう。
 
 :::note INFO
@@ -219,13 +225,14 @@ GitHubやGitLabのリモートリポジトリを作成し、ローカルにク�
 :::
 
 ### DevContainer設定
+
 プロジェクトルートに以下の`.devcontainer/`構成を配置するか、[Claude Code公式リポジトリ](https://github.com/anthropics/claude-code)の`.devcontainer`フォルダをリポジトリ内にコピーしてください。
 
 :::note INFO
 `.devcontainer`は個々人で管理する前提となるため `.gitignore`対象にしてください。
 :::
 
-```
+```text
 .devcontainer/
 ├── devcontainer.json
 ├── Dockerfile
@@ -233,6 +240,7 @@ GitHubやGitLabのリモートリポジトリを作成し、ローカルにク�
 ```
 
 **Dockerfile例:**
+
 ```dockerfile
 FROM node:20
 
@@ -328,6 +336,7 @@ USER node
 ```
 
 **devcontainer.json例:**
+
 ```json
 {
   "name": "Claude Code Sandbox",
@@ -389,6 +398,7 @@ USER node
 ```
 
 **init-firewall.sh例:**
+
 ```bash
 #!/bin/bash
 set -euo pipefail  # Exit on error, undefined vars, and pipeline failures
@@ -539,10 +549,9 @@ fi
 
 DevContainer環境が起動したら、以下を確認してください：
 
-**Claude Codeの動作確認**
-```
-(Windows) Ctrl+Shift+P → "Run Claude Code"
-(macOS) ⌘+Shift+P → "Run Claude Code"
-```
-`1. Claude Codeのセットアップ`でセットアップしたとおり、Dev Container内で利用するClaude Codeをセットアップしてください。
+#### Claude Codeの動作確認
 
+- (Windows) Ctrl+Shift+P → "Run Claude Code"
+- (macOS) ⌘+Shift+P → "Run Claude Code"
+
+`1. Claude Codeのセットアップ`でセットアップしたとおり、Dev Container内で利用するClaude Codeをセットアップしてください。

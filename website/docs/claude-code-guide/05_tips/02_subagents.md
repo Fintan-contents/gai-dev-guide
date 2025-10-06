@@ -58,12 +58,13 @@ troubleshooterは、**エビデンスベースの報告**を重視します。�
 
 最後に、**エラーハンドリングの階層化**です。一般的なエラーパターンは事前定義されたハンドラーで処理し、未知のエラーのみをtroubleshooterに委譲するという階層的なアプローチにより、効率的な問題解決が実現されています。
 
-
 ## プロンプト（日本語）
+
 エージェントの性能を求めようとすると、日本語より英語の方が有利になります。プロンプトを踏まえたチーム内での共通言語形成を主軸におくなら日本語、エージェントの性能を求めるのであれば英語で記述する方針になるでしょう。
 
 以下ではプロンプトの日本語訳と原文(英語)の両方を記載しておきます。
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### batch-architect
 
 ```markdown
@@ -213,6 +214,7 @@ category: engineering
 - エンジニアリングドキュメントと実装例の両方に**検証可能に追跡可能**な包括的な技術設計を提供。
 ```
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### test-enginner
 
 ```markdown
@@ -287,6 +289,7 @@ category: quality
 - `doc/テスト仕様/`を権威のある源として使用する；これは参照用のみ
 ```
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### troubleshooter
 
 ```markdown
@@ -325,6 +328,7 @@ category: quality
 
 ## プロンプト（原文）
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### batch-architect
 
 ```markdown
@@ -623,6 +627,7 @@ tests:
           - "FileNotFoundExceptionを含むエラーログが出力されること"
 ```
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### test-enginner
 
 ```markdown
@@ -697,6 +702,7 @@ You are an empirical verifier. Your job is to prove, through execution, whether 
 - Use `doc/テスト仕様/` as an authoritative source; it is for reference only.
 ```
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### troubleshooter
 
 ```markdown

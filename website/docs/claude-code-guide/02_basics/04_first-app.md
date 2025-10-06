@@ -27,7 +27,7 @@ Spring Bootを使用したRESTful APIの開発を通じて、Claude Codeの基�
 2. `Ctrl+Shift+P` → "Run Claude Code"
 3. Shift+TabでPlan Modeにしてから以下のプロンプトを入力：
 
-```
+```txt
 Spring Bootを使用したタスク管理APIを作成したいです。
 対象のAPIはREST APIで、基本的なCRUD操作を行います。
 以下の要件でプロジェクトを初期化してください：
@@ -57,7 +57,7 @@ Spring Bootを使用したタスク管理APIを作成したいです。
 Webへのアクセス許可などが求められる場合があるので、内容を確認して許可してください。  
 何度かやり取りすると、Claude Codeが以下のような構造を提案します：
 
-```
+```txt
 first-app/
 ├── pom.xml
 ├── src/
@@ -91,7 +91,7 @@ first-app/
 作業が終わったら現時点でビルドが通るかも確認しておきましょう。  
 Claude CodeをShift+Tabで通常モードにしてから、以下のプロンプトを送信します：
 
-```
+```txt
 ビルドが通るか確認してください。
 ```
 
@@ -105,7 +105,7 @@ Mavenの実行許可を求められるので、許可してください。
 プロジェクトの構成が整ったので、次にMyBatis用のモデルを作ってみましょう。  
 Plan Modeにしてから以下のプロンプトを送信します：
 
-```
+```txt
 Taskモデルを作成したいです。
 
 以下のフィールドを含む：
@@ -123,6 +123,7 @@ Taskモデルを作成したいです。
 Claude Codeが提示してきた内容で良ければ、進めてください。  
 以下のようなモデルと対応するマイグレーションファイルが生成されるはずです。
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### 生成されるコード例
 
 ```java
@@ -169,14 +170,14 @@ public class Task {
 ここまで進めた状態で再度以下のようなプロンプトでビルドの確認をしてみましょう。  
 Shift+Tabで通常モードにしてから入力してください：
 
-```
+```txt
 ビルドが通るか確認してください。
 ```
 
 Mavenによるビルドの確認と、場合によってはマイグレーションの動作チェックもしてくれます。
 もしマイグレーションの動作チェックが行われなかった場合は、以下のプロンプトで動作チェックしてみても良いでしょう：
 
-```
+```txt
 マイグレーションが動作するか確認してください。
 ```
 
@@ -187,7 +188,7 @@ Mavenによるビルドの確認と、場合によってはマイグレーショ
 次にMyBatisのUserMapperを作成してみましょう。  
 Plan Modeにしてから以下のプロンプトを入力してください：
 
-```
+```txt
 MyBatisのUserMapperを作成してください。
 SQLは全てxml側に記述してください。
 
@@ -199,6 +200,7 @@ SQLは全てxml側に記述してください。
 
 Claude Codeの提示してきた内容を確認し、必要に応じてチャットで調整してから先に進んでください。  
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### 生成されるコード例
 
 ```java
@@ -241,7 +243,7 @@ public interface TaskMapper {
 次にTaskMapperを利用するサービス層のコードを生成してみましょう。  
 Plan Modeにしてから以下のプロンプトを入力してください：
 
-```
+```txt
 TaskServiceクラスを作成してください。
 既に作成されているTaskMapperを利用してください。
 
@@ -258,6 +260,7 @@ TaskServiceクラスを作成してください。
 
 Claude Codeの提示してきた内容を確認し、必要に応じてチャットで調整してから先に進んでください。  
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### 生成されるコード例
 
 ```java
@@ -378,7 +381,7 @@ public class TaskService {
 コードが生成されたら、念のためビルドが通る状態か確認しておきましょう。  
 Shift+Tabで通常モードにしてから、以下のプロンプトを入力してください：
 
-```
+```txt
 ビルドが通るか確認してください。
 ```
 
@@ -389,7 +392,7 @@ Shift+Tabで通常モードにしてから、以下のプロンプトを入力�
 TaskモデルとTaskMapper、TaskServiceができたので次はREST API用のコントローラを作成しましょう。  
 Planモードにしてから以下のプロンプトを入力してください：
 
-```
+```txt
 TaskControllerクラスを作成してください。
 データアクセスにはTaskServiceを利用してください。
 
@@ -404,6 +407,7 @@ RESTful APIとして以下のエンドポイントを実装：
 適切なHTTPステータスコードとエラーハンドリングを含めてください。
 ```
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### 生成されるコード例
 
 ```java
@@ -473,7 +477,7 @@ public class TaskController {
 REST API用のコントローラまで作成できたので、次は単体テストを作成して動作確認をしていきましょう。  
 Planモードに変更してから、以下のプロンプトを入力してください：
 
-```
+```txt
 TaskMapperクラスのテストを作成してください。
 正常系だけではなく、異常系（バリデーションエラーなど）のテストも行ってください。
 テストデータ作成時には対象のモデルクラスの実装を読んだ上で、バリデーション要件にそったデータを作成するようにしてください。
@@ -490,6 +494,7 @@ Claude Codeが提案してきた内容に問題が無ければ進めてくださ
 これまでに生成してきたコードに問題があった場合や生成されたテストコードに問題があった場合、Claude Codeが修正内容について聞いてくる場合があります。  
 そういった場合はClaude Codeと対話しながら修正内容を確認しながら進めることができます。
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### 生成されるテストコード例
 
 ```java
@@ -597,7 +602,7 @@ class TaskMapperTest {
 次はTaskServiceのテストを作成してみましょう。  
 Planモードに変更してから、以下のプロンプトを入力してください：
 
-```
+```txt
 TaskServiceクラスのテストを作成してください。
 正常系だけではなく、異常系（バリデーションエラーなど）のテストも行ってください。
 テストデータ作成時には対象のモデルクラスの実装を読んだ上で、バリデーション要件にそったデータを作成するようにしてください。
@@ -615,6 +620,7 @@ TaskServiceで作成するテスト：
 Claude Codeが提案してきた内容に問題が無ければ進めてください。  
 TaskMapperのテスト作成の時と同じく、上手く動かない場合はClaude Codeが修正方針などを提案してくると思うので適時対話しながら進めてみてください。
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### 生成されるテストコード例
 
 ```java
@@ -716,7 +722,6 @@ class TaskServiceTest {
 テストコードも生成できたので、最後に実際にアプリケーションを起動して動作確認を行いましょう。
 まずは以下のコマンドでSpring Bootを起動しておきます：
 
-
 ```bash
 mvn spring-boot:run
 ```
@@ -726,7 +731,7 @@ mvn spring-boot:run
 次に、Claude Codeに動作チェック用のコマンドを生成してもらいましょう。  
 Planモードにして以下のプロンプトを送信してください：
 
-```
+```txt
 作成したAPIをテストするためのcurlコマンドを生成してください。
 全てのエンドポイントをテストできるようにmarkdownファイルにに簡潔にとめてください。
 ```
@@ -747,12 +752,14 @@ curl -X GET http://localhost:8080/api/tasks \
 ```
 
 ## 2. 特定タスクの取得
+
 ```bash
 curl -X GET http://localhost:8080/api/tasks/1 \
   -H "Content-Type: application/json"
 ```
 
 ## 3. 新規タスクの作成
+
 ```bash
 curl -X POST http://localhost:8080/api/tasks \
   -H "Content-Type: application/json" \
@@ -764,6 +771,7 @@ curl -X POST http://localhost:8080/api/tasks \
 ```
 
 ## 4. タスクの更新
+
 ```bash
 curl -X PUT http://localhost:8080/api/tasks/1 \
   -H "Content-Type: application/json" \
@@ -775,12 +783,14 @@ curl -X PUT http://localhost:8080/api/tasks/1 \
 ```
 
 ## 5. タスクの削除
+
 ```bash
 curl -X DELETE http://localhost:8080/api/tasks/1 \
   -H "Content-Type: application/json"
 ```
 
 ## 6. タスク完了状態の切り替え
+
 ```bash
 curl -X PATCH http://localhost:8080/api/tasks/1/toggle \
   -H "Content-Type: application/json"
@@ -792,7 +802,7 @@ curl -X PATCH http://localhost:8080/api/tasks/1/toggle \
 
 Claude Codeに問題が発生した場合の対話例：
 
-```
+```txt
 アプリケーション起動時に以下のエラーが発生しました：
 [エラーメッセージをコピー&ペースト]
 
@@ -813,7 +823,7 @@ Claude Codeが以下のような分析と解決策を提供します：
 
 Claude Codeに以下のプロンプトを送信：
 
-```
+```txt
 このタスク管理アプリに以下の機能を追加したいです：
 - ユーザー認証機能
 - タスクのカテゴリ分類
