@@ -35,7 +35,8 @@ Amazon Bedrockの提供するClaudeモデルにアクセスするようにセッ
 
 ##### AWSアカウントのセットアップ
 
-まず、AWSアカウントで必要なClaudeモデルへのアクセスがあることを確認してください：
+まず、AWSアカウントで必要なClaudeモデルへのアクセスがあることを確認してください。
+
 1. Amazon Bedrockコンソールに移動
 1. 左側のナビゲーションでModel accessに移動
 1. 希望するClaudeモデル（例：Claude Sonnet 4）へのアクセスをリクエスト
@@ -47,39 +48,39 @@ Amazon Bedrockの提供するClaudeモデルにアクセスするようにセッ
 
 ##### 端末側のAWS認証情報の設定
 
-Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用します。以下のいずれかの方法で認証情報を設定してください：
+Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用します。以下のいずれかの方法で認証情報を設定してください。
 
 :::note INFO
 いずれのオプションも選択可能な場合は、より単一目的に利用可能な`オプションD：Bedrock APIキー`の利用を推奨します。
 :::
 
-オプションA: AWS CLI設定
+* オプションA: AWS CLI設定
 
-```bash
-aws configure
-```
+    ```bash
+    aws configure
+    ```
 
-オプションB: 環境変数（アクセスキー）
+* オプションB: 環境変数（アクセスキー）
 
-```bash
-export AWS_ACCESS_KEY_ID=your-access-key-id
-export AWS_SECRET_ACCESS_KEY=your-secret-access-key
-export AWS_SESSION_TOKEN=your-session-token
-```
+    ```bash
+    export AWS_ACCESS_KEY_ID=your-access-key-id
+    export AWS_SECRET_ACCESS_KEY=your-secret-access-key
+    export AWS_SESSION_TOKEN=your-session-token
+    ```
 
-オプションC: 環境変数（SSOプロファイル）
+* オプションC: 環境変数（SSOプロファイル）
 
-```bash
-aws sso login --profile=<your-profile-name>
+    ```bash
+    aws sso login --profile=<your-profile-name>
 
-export AWS_PROFILE=your-profile-name
-```
+    export AWS_PROFILE=your-profile-name
+    ```
 
-オプションD: Bedrock APIキー
+* オプションD: Bedrock APIキー
 
-```bash
-export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
-```
+    ```bash
+    export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
+    ```
 
 Bedrock APIキーは、完全なAWS認証情報を必要とせずに、よりシンプルな認証方法を提供します。[Bedrock APIキーについて詳しく学ぶ。](https://aws.amazon.com/blogs/machine-learning/accelerate-ai-development-with-amazon-bedrock-api-keys/)
 
@@ -88,7 +89,7 @@ APIキーは最大12時間有効な「Short-term API keys」と、それ以上�
 :::
 
 **Claude Codeを設定する**
-Bedrockを有効にするために以下の環境変数を設定してください：
+Bedrockを有効にするため、以下の環境変数を設定してください。
 
 ```bash
 # Bedrock統合を有効にする
@@ -117,7 +118,7 @@ export DISABLE_PROMPT_CACHING=1
 ```
 
 :::note INFO
-また、東京リージョンではClaude 4 Opusが提供されていないことにより、エラーになる可能性があります。モデルの指定コマンドを実行して、適切なアプリケーション推論プロファイル(Claude 4 Sonnet)を選択し直すことで実行可能になります。
+また、東京リージョンではClaude 4 Opusが提供されていないことにより、エラーになる可能性があります。モデルの指定コマンドを実行して、適切なアプリケーション推論プロファイル（Claude 4 Sonnet）を選択し直すことで実行可能になります。
 
 ```bash
 /model
@@ -198,17 +199,17 @@ docker-compose --version
 
 ### 拡張機能のインストール
 
-VS Codeを起動し、以下の拡張機能をインストールしてください：
+VS Codeを起動し、以下の拡張機能をインストールしてください。
 
 1. **Claude Code** (anthropic.claude-code)
-    - (Windows) Ctrl+Shift+X → "Claude Code" で検索 → インストール
-    - (macOS) ⌘+Shift+X → "Claude Code" で検索 → インストール
-2. **Docker** (ms-azuretools.vscode-docker)
-    - (Windows) Ctrl+Shift+X → "Docker" で検索 → インストール
-    - (macOS) ⌘+Shift+X → "Docker" で検索 → インストール
+    - Windows: Ctrl+Shift+X → "Claude Code" で検索 → インストール
+    - macOS: ⌘+Shift+X → "Claude Code" で検索 → インストール
+2. **Docker** (ms-azuretools.vscode-Docker)
+    - Windows: Ctrl+Shift+X → "Docker" で検索 → インストール
+    - macOS: ⌘+Shift+X → "Docker" で検索 → インストール
 3. **Dev Containers** (ms-vscode-remote.remote-containers)
-    - (Windows) Ctrl+Shift+X → "Dev Containers" で検索 → インストール
-    - (macOS) ⌘+Shift+X → "Dev Containers" で検索 → インストール
+    - Windows: Ctrl+Shift+X → "Dev Containers" で検索 → インストール
+    - macOS: ⌘+Shift+X → "Dev Containers" で検索 → インストール
 
 これらの拡張機能を有効化することで、Claude CodeのIDE統合や、Devcontainer環境内で安全にClaude Codeを実行できるようになります。
 
@@ -547,11 +548,11 @@ fi
 
 ### 動作確認
 
-DevContainer環境が起動したら、以下を確認してください：
+DevContainer環境が起動したら、以下を確認してください。
 
 #### Claude Codeの動作確認
 
-- (Windows) Ctrl+Shift+P → "Run Claude Code"
-- (macOS) ⌘+Shift+P → "Run Claude Code"
+- Windows: Ctrl+Shift+P → "Run Claude Code"
+- macOS: ⌘+Shift+P → "Run Claude Code"
 
 `1. Claude Codeのセットアップ`でセットアップしたとおり、Dev Container内で利用するClaude Codeをセットアップしてください。
