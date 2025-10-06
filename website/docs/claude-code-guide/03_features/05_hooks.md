@@ -223,7 +223,7 @@ TypeScriptプロジェクトにおいて、コード品質を一定に保つこ�
 
 **[cchooks](https://github.com/GowayLee/cchooks)（Python SDK）**　は、Pythonでフックスクリプトを書く際に便利に活用できるSDKです。例えば、`Hook().block("テストが存在しません")`のような直感的なコードで、ツールの実行をブロックし、エラーメッセージを返すことができます。JSONの手動操作が不要になり、Pythonの型ヒントによるコード補完も利用できるため、複雑なフック処理を素早く実装できます。
 
-**[claude-code-hooks-sdk](https://github.com/beyondcode/claude-code-hooks-sdk)（PHP SDK）** は、Laravelから着想を得たfluent APIを採用しています。`HookResponse::create()->block()->withMessage('権限が不足しています')`のようなメソッドチェーンで、読みやすく保守しやすいコードを書けます。Composerでインストール可能で、既存のPHPプロジェクトにフックを統合する際に特に有用です。
+**[claude-hooks-sdk](https://github.com/beyondcode/claude-hooks-sdk)（PHP SDK）** は、Laravelから着想を得たfluent APIを採用しています。`HookResponse::create()->block()->withMessage('権限が不足しています')`のようなメソッドチェーンで、読みやすく保守しやすいコードを書けます。Composerでインストール可能で、既存のPHPプロジェクトにフックを統合する際に特に有用です。
 
 **[claude-hooks](https://github.com/johnlindquist/claude-hooks)（TypeScript）** は、型安全なフック設定システムを提供します。複数のフックを一括管理し、フック間での状態共有や条件分岐ロジックを実装できます。例えば、特定のディレクトリへの書き込みを監視し、プロジェクトの設定に基づいて動的に制御するような高度な処理が可能です。
 
