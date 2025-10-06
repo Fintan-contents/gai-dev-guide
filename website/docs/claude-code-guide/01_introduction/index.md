@@ -23,9 +23,7 @@ Java/Spring Boot経験があると理解しやすい内容です。
 - **時間短縮**: 設計やコーディング作業の時間を短縮し、生産性を向上する
 - **品質向上**: 一貫したコードスタイルとレビュー支援を通じた品質向上
 
-<!-- textlint-disable ja-technical-writing/sentence-length -->
 コーディングエージェントの効果は、単なるコーディング作業の時間短縮にとどまらず、インタラクティブな設計相談を通じた設計時間の短縮や設計品質の向上、テストコードの生成や実行の徹底による品質向上など多岐に渡ります。
-<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 ## 学習の進め方
 

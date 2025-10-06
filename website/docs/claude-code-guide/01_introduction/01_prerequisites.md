@@ -14,9 +14,7 @@ Claude Codeは米国Anthropic社が提供するエージェンティックコー
 
 ### Claude Codeの主な利用用途
 
-<!-- textlint-disable ja-technical-writing/sentence-length -->
 Claude Codeをはじめとしたコーディングエージェントは、単純にコーディング用途以外にも活用が可能であり、ソフトウェア開発のライフサイクル全体にわたって広くAIを活用することが生産性向上の鍵です。
-<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 - **機能開発**：作りたいソフトウェアや機能を説明して、コードを生成する
 - **デバッグや問題の修正**：バグの説明やエラーメッセージを渡すことで、問題の特定や修正を実行する
@@ -24,23 +22,17 @@ Claude Codeをはじめとしたコーディングエージェントは、単純
 
 ### Claude Codeの利用方式
 
-<!-- textlint-disable ja-technical-writing/sentence-length -->
 Claude Codeの利用方式はおもに「claude.aiによるOAuth認証」「Anthropic Console経由のAnthropic API」「Amazon BedrockやGoogle Vertex AI経由のAPI」の3種類があります。このガイドではAmazon Bedrock経由のAPIを認証して利用することとします。
-<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 詳細なアクセス設定の方法は「[セットアップ](../02_basics/02_setup.md)」を参照してください。
 
 ### IDE統合において便利な点
 
-<!-- textlint-disable ja-technical-writing/sentence-length -->
 本書においてはClaude CodeをVS Codeに統合して利用します。IDE統合は単純にClaude Codeとのやりとりをリポジトリ構造や編集対象ファイルを見通しながら開発できるだけでなく、エディタで閲覧しているファイルをClaude Codeのコンテキストに連携したり、ターミナルでコマンドを実行しながら作業を継続することが可能です。
-<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 ## Claude Code利用上の原則
 
-<!-- textlint-disable ja-technical-writing/sentence-length -->
 エージェンティックコーディングツールは便利ですが、コードや回答を生成するために利用する大規模言語モデル（LLM）の特性として、出力は非決定的である点が、決定的なプログラムによって得られる出力との大きな差です。上手に活用するために、始める前に以下を原則として心得たうえで利用してください。
-<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 ### こまかく実装し、こまかくレビューをする
 
@@ -63,9 +55,7 @@ Claude Codeはユーザの指示を理解し、計画し、コーディングや
 
 ### 機密情報をプロンプトに含めない
 
-<!-- textlint-disable ja-technical-writing/sentence-length -->
 Claude CodeはAnthropicやAWS、GoogleのAPI経由でClaudeモデルを利用しているため、作業を手元のVS Code内でおこなっていても、外部に入力したコンテキストをデータ送信しています。機微なデータを入力する場合は、あらかじめ規程されているルールと照らして逸脱していないかどうかを確認のうえ実行してください。
-<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 ## 動作環境
 
