@@ -54,13 +54,13 @@ Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用しま�
 いずれのオプションも選択可能な場合は、より単一目的に利用可能な`オプションD：Bedrock APIキー`の利用を推奨します。
 :::
 
-* オプションA: AWS CLI設定
+- オプションA: AWS CLI設定
 
     ```bash
     aws configure
     ```
 
-* オプションB: 環境変数（アクセスキー）
+- オプションB: 環境変数（アクセスキー）
 
     ```bash
     export AWS_ACCESS_KEY_ID=your-access-key-id
@@ -68,7 +68,7 @@ Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用しま�
     export AWS_SESSION_TOKEN=your-session-token
     ```
 
-* オプションC: 環境変数（SSOプロファイル）
+- オプションC: 環境変数（SSOプロファイル）
 
     ```bash
     aws sso login --profile=<your-profile-name>
@@ -76,7 +76,7 @@ Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用しま�
     export AWS_PROFILE=your-profile-name
     ```
 
-* オプションD: Bedrock APIキー
+- オプションD: Bedrock APIキー
 
     ```bash
     export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
