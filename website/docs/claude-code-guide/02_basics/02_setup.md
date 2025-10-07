@@ -227,174 +227,92 @@ GitHubやGitLabのリモートリポジトリを作成し、ローカルにク�
 
 ### DevContainer設定
 
-プロジェクトルートに以下の`.devcontainer/`構成を配置するか、[Claude Code公式リポジトリ](https://github.com/anthropics/claude-code)の`.devcontainer`フォルダをリポジトリ内にコピーしてください。
-
-:::note INFO
-`.devcontainer`は個々人で管理する前提となるため `.gitignore`対象にしてください。
-:::
+プロジェクトルートに以下の`.devcontainer/`構成を配置してください。
 
 ```text
 .devcontainer/
 ├── devcontainer.json
 ├── Dockerfile
+├── init-directories-owner.sh
 └── init-firewall.sh
 ```
 
 **Dockerfile例:**
 
 ```dockerfile
-FROM node:20
+FROM mcr.microsoft.com/devcontainers/python:3.12-bullseye
 
-ARG TZ
-ENV TZ="$TZ"
-
-ARG CLAUDE_CODE_VERSION=latest
-
-# Install basic development tools and iptables/ipset
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  less \
-  git \
-  procps \
-  sudo \
-  fzf \
-  zsh \
-  man-db \
-  unzip \
-  gnupg2 \
-  gh \
   iptables \
   ipset \
-  iproute2 \
   dnsutils \
-  aggregate \
   jq \
-  nano \
-  vim \
+  aggregate \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Ensure default node user has access to /usr/local/share
-RUN mkdir -p /usr/local/share/npm-global && \
-  chown -R node:node /usr/local/share
-
-ARG USERNAME=node
-
-# Persist bash history.
-RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \
-  && mkdir /commandhistory \
-  && touch /commandhistory/.bash_history \
-  && chown -R $USERNAME /commandhistory
-
-# Set `DEVCONTAINER` environment variable to help with orientation
-ENV DEVCONTAINER=true
-
-# Create workspace and config directories and set permissions
-RUN mkdir -p /workspace /home/node/.claude && \
-  chown -R node:node /workspace /home/node/.claude
 
 WORKDIR /workspace
 
-ARG GIT_DELTA_VERSION=0.18.2
-RUN ARCH=$(dpkg --print-architecture) && \
-  wget "https://github.com/dandavison/delta/releases/download/${GIT_DELTA_VERSION}/git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
-  sudo dpkg -i "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" && \
-  rm "git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb"
-
-# Set up non-root user
-USER node
-
-# Install global packages
-ENV NPM_CONFIG_PREFIX=/usr/local/share/npm-global
-ENV PATH=$PATH:/usr/local/share/npm-global/bin
-
-# Set the default shell to zsh rather than sh
-ENV SHELL=/bin/zsh
-
-# Set the default editor and visual
-ENV EDITOR=nano
-ENV VISUAL=nano
-
-# Default powerline10k theme
-ARG ZSH_IN_DOCKER_VERSION=1.2.0
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v${ZSH_IN_DOCKER_VERSION}/zsh-in-docker.sh)" -- \
-  -p git \
-  -p fzf \
-  -a "source /usr/share/doc/fzf/examples/key-bindings.zsh" \
-  -a "source /usr/share/doc/fzf/examples/completion.zsh" \
-  -a "export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \
-  -x
-
-# Install Claude
-RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
-
-
-# Copy and set up firewall script
-COPY init-firewall.sh /usr/local/bin/
 USER root
-RUN chmod +x /usr/local/bin/init-firewall.sh && \
-  echo "node ALL=(root) NOPASSWD: /usr/local/bin/init-firewall.sh" > /etc/sudoers.d/node-firewall && \
-  chmod 0440 /etc/sudoers.d/node-firewall
-USER node
+
+# Copy and set up sudo scripts
+# 既知の課題
+#   ghcr.io/anthropics/devcontainer-features/claude-code:1 が init-firewall.sh を /usr/local/bin/ へコピーするため
+#   こちらがコピーした /usr/local/bin/init-firewall.sh が上書きされてしまう。
+#   回避策としてコピー先のファイル名を init-firewall-aicd.sh とすることで上書きされないようにしている。
+#   以下のコミットで init-firewall.sh は取り除かれたので、今後のリリースでこの課題は解消される見込み。
+#   https://github.com/anthropics/devcontainer-features/commit/ac93182947006bc79e1bf3809eb152d481686401
+COPY init-firewall.sh /usr/local/bin/init-firewall-aicd.sh
+COPY init-directories-owner.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/init-firewall-aicd.sh && \
+  echo "vscode ALL=(root) NOPASSWD: /usr/local/bin/init-firewall-aicd.sh" > /etc/sudoers.d/aicd-firewall && \
+  chmod 0440 /etc/sudoers.d/aicd-firewall && \
+  chmod +x /usr/local/bin/init-directories-owner.sh && \
+  echo "vscode ALL=(root) NOPASSWD: /usr/local/bin/init-directories-owner.sh" > /etc/sudoers.d/directories-owner && \
+  chmod 0440 /etc/sudoers.d/directories-owner && \
+  rm /etc/sudoers.d/vscode
+
+USER vscode
 ```
 
 **devcontainer.json例:**
 
 ```json
 {
-  "name": "Claude Code Sandbox",
+  "name": "AICD Project Template Environment",
   "build": {
-    "dockerfile": "Dockerfile",
-    "args": {
-      "TZ": "${localEnv:TZ:America/Los_Angeles}",
-      "CLAUDE_CODE_VERSION": "latest",
-      "GIT_DELTA_VERSION": "0.18.2",
-      "ZSH_IN_DOCKER_VERSION": "1.2.0"
-    }
+    "dockerfile": "Dockerfile"
   },
   "runArgs": [
     "--cap-add=NET_ADMIN",
     "--cap-add=NET_RAW"
   ],
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "anthropic.claude-code",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "eamodio.gitlens"
-      ],
-      "settings": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": "explicit"
-        },
-        "terminal.integrated.defaultProfile.linux": "zsh",
-        "terminal.integrated.profiles.linux": {
-          "bash": {
-            "path": "bash",
-            "icon": "terminal-bash"
-          },
-          "zsh": {
-            "path": "zsh"
-          }
-        }
-      }
-    }
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "lts"
+    },
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
   },
-  "remoteUser": "node",
+  "remoteUser": "vscode",
   "mounts": [
-    "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
-    "source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume"
+    "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume"
   ],
   "containerEnv": {
-    "NODE_OPTIONS": "--max-old-space-size=4096",
-    "CLAUDE_CONFIG_DIR": "/home/node/.claude",
-    "POWERLEVEL9K_DISABLE_GITSTATUS": "true"
+    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
+    "POWERLEVEL9K_DISABLE_GITSTATUS": "true",
   },
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
   "workspaceFolder": "/workspace",
-  "postStartCommand": "sudo /usr/local/bin/init-firewall.sh",
-  "waitFor": "postStartCommand"
+  "postCreateCommand": "sudo /usr/local/bin/init-directories-owner.sh && sudo /usr/local/bin/init-firewall-aicd.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "bierner.markdown-mermaid",
+        "mhutchie.git-graph"
+      ]
+    }
+  }
 }
 ```
 
@@ -469,12 +387,11 @@ done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 # Resolve and add other allowed domains
 for domain in \
     "registry.npmjs.org" \
-    "api.anthropic.com" \
     "sentry.io" \
-    "statsig.anthropic.com" \
-    "statsig.com" \
     "marketplace.visualstudio.com" \
     "vscode.blob.core.windows.net" \
+    "bedrock.ap-northeast-1.amazonaws.com" \
+    "bedrock-runtime.ap-northeast-1.amazonaws.com" \
     "update.code.visualstudio.com"; do
     echo "Resolving $domain..."
     ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
@@ -488,8 +405,13 @@ for domain in \
             echo "ERROR: Invalid IP from DNS for $domain: $ip"
             exit 1
         fi
-        echo "Adding $ip for $domain"
-        ipset add allowed-domains "$ip"
+        # 重複チェックを追加
+        if ipset test allowed-domains "$ip" 2>/dev/null; then
+            echo "IP $ip for $domain already exists in set, skipping"
+        else
+            echo "Adding $ip for $domain"
+            ipset add allowed-domains "$ip"
+        fi
     done < <(echo "$ips")
 done
 
@@ -540,10 +462,18 @@ else
 fi
 ```
 
+**init-directories-owner.sh例:**
+
+```bash
+#!/bin/bash
+
+chown -R vscode:vscode /workspace /home/vscode/.claude
+```
+
 ### DevContainer環境の起動
 
 1. VS Codeでプロジェクトフォルダを開く
-2. `Ctrl+Shift+P` → "Dev Containers: Reopen in Container"
+2. `Ctrl+Shift+P` → "Dev Containers: Rebuild Container(開発コンテナー: コンテナーのリビルド)"
 3. 初回起動時はイメージのビルドに時間がかかります
 
 ### 動作確認
@@ -552,7 +482,4 @@ DevContainer環境が起動したら、以下を確認してください。
 
 #### Claude Codeの動作確認
 
-- Windows: Ctrl+Shift+P → "Run Claude Code"
-- macOS: ⌘+Shift+P → "Run Claude Code"
-
-`1. Claude Codeのセットアップ`でセットアップしたとおり、Dev Container内で利用するClaude Codeをセットアップしてください。
+[1. Claude Codeのセットアップ ＞ Claude Codeにログインする](#Claude Codeにログインする)を実施してください。実施後、ターミナル上で`claude`を実行するとClaude Codeが起動します。
