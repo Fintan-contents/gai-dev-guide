@@ -41,7 +41,8 @@ AIエージェントの場合は、システムプロンプト（`CLAUDE.md`や�
 肥大化が発生することによって起こる問題は、**入力トークン量が多くなることによるコストの増大**と、**コンテキストロット（Context Rot）と呼ばれる現象による品質の低下**です。下図のように、インプットトークン（図では横軸のInput Length）が大きくなればなるほど、多くのモデルで性能（図では縦軸のAccuracy）が低下します。
 
 ![Context Rot](images/needle_question_sim_arxiv.png)
-図。 Needle-Question Similarity (thinking/non-thinking modes of the same model are treated separately) - arXiv haystack/arXiv needles。
+Needle-Question Similarity (thinking/non-thinking modes of the same model are treated separately) - arXiv haystack/arXiv needles。
+（出典：[Context Rot / Chroma Technical Report 2025.7.14](https://research.trychroma.com/context-rot)）
 
 Claude Codeを利用する上でクリティカルに影響するのは、性能の低下でしょう。このような現象を避けるために、Claude Codeではコンテキストを自動圧縮するようにされていますが、自動圧縮によって、いくらか情報は失われてしまいます。情報が失われることによるタスク遂行率の低下と、Context RotによるLLMの性能低下のトレードオフという、難しい問題があります。
 
@@ -56,7 +57,7 @@ Claude Codeを利用する上でクリティカルに影響するのは、性能
 下図は汎用エージェントManusで取られている **「ファイルシステムそのものを究極のコンテキストとして活用する」戦略** を表した図です。
 
 ![コンテキストエンジニアリング](images/Manus%20Context%20Engineering.004.png)
-図。 Manus社のブログ記事より抜粋。
+（出典：[manus AIエージェントのためのコンテキストエンジニアリング：Manus構築から得た教訓](https://manus.im/ja/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)）
 
 具体的には、大量のテキスト（Webページ全文やPDF内容など）をコンテキストではなくファイルシステムに保存し、コンテキスト上にはファイルシステムへの参照のみを持つ、といった戦略です。この方法の利点は、コンテキストウィンドウから情報を外に出して、無限大のメモリを実現できる点にあります。例えばウェブページの内容はURLさえ覚えておけばコンテキストから削除可能ですし、ドキュメントもパスだけ残して詳細はファイル参照に委ねれば良い、ということになります。こうしておけば、エージェントはコンテキスト長を一時的に縮めても情報を永久に失うことはなく、必要になればいつでも外部から詳細を復元可能です。
 
@@ -92,6 +93,7 @@ Claude Codeを利用する上でクリティカルに影響するのは、性能
 長期記憶については、ユーザやシステム全体に関するナレッジベースを構築します。例えばCognition社のAIエージェントDevinでは、ナレッジと呼ばれるコンポーネントに開発ルールやプロジェクト固有の知識を保存しておき、新たなセッションが始まる際には、それをコンテキストとして投入できるようにしています。
 
 ![devin knowledge](images/devin_knowledge.png)
+（出典：[Generative Agents イベント登壇レポート『Devinで実践する！AIエージェントと協働する開発組織の作り方』〜スケールアップ、スケールアウト、アンビエントでエージェントの役割分担を行う〜](https://blog.generative-agents.co.jp/entry/2025/05/30/162351)）
 
 ブランチ命名規則やリリース手順など、開発者の間で共有すべき事項をあらかじめナレッジに記載しておけば、AIエージェントは最初からその知識を持ってタスクに当たることができるわけです。
 
