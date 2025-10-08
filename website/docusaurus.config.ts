@@ -20,6 +20,7 @@ const copyright = `
   </div>
   <div class="supplementary">
     <a href="/${project}/customize-and-distribution/" class="footer__link-item">ガイドのカスタマイズ・配布について</a>
+    <a href="https://fintan.jp/page/1622/" class="footer__link-item">商標について</a>
   </div>
 </div>`;
 
