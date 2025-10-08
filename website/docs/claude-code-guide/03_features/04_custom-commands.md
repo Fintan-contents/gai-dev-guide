@@ -443,18 +443,18 @@ $1
 
 ### 3. API仕様書生成
 
-**API仕槕書生成コマンド:**
+**API仕様書生成コマンド:**
 
 ```markdown
 # .claude/commands/generate-api-spec.md
 ---
 argument-hint: <コントローラーファイル> <API名> [APIバージョン] [API説明]
-description: OpenAPI仕槕書を生成
+description: OpenAPI仕様書を生成
 model: claude-4-sonnet
 allowed-tools: Read, Write, Bash
 ---
 
-OpenAPI 3.0仕槕書を生成します。
+OpenAPI 3.0仕様書を生成します。
 
 ## 基本情報
 - API名: $2
@@ -476,9 +476,9 @@ OpenAPI 3.0仕槕書を生成します。
 !echo "関連モデルの探索:"
 !find . -name "*Request.java" -o -name "*Response.java" -o -name "*Dto.java" | grep -E "(Request|Response|Dto)\.java$" | head -10
 
-## OpenAPI仕槕書の生成
+## OpenAPI仕様書の生成
 
-以下の内容を含むYAML形式の仕槕書を作成します：
+以下の内容を含むYAML形式の仕様書を作成します：
 
 ### 1. 基本情報
 
@@ -522,11 +522,11 @@ servers:
 - エラーレスポンスのサンプル
 
 ## 出力ファイル
-- openapi.yaml（メイン仕槕書）
+- openapi.yaml（メイン仕様書）
 - README.md（使用方法とAPI概要）
 
 ## 検証
-生成した仕槕書をSwagger EditorやOpenAPI Generatorで検証できるようにします。
+生成した仕様書をSwagger EditorやOpenAPI Generatorで検証できるようにします。
 ```
 
 **使用例:**

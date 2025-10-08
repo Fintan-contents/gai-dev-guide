@@ -6,21 +6,21 @@ Claude Codeの外部ツール連携機能は、Model Context Protocol (MCP) を�
 
 ![MCP](../02_basics/images/claude_code_06.png)
 
-## Model Context Protocol (MCP) について
+## Model Context Protocol（MCP）について
 
-MCP (Model Context Protocol) とは、AIアプリケーションを外部システムに接続するためのプロトコルの一種です。
+MCP（Model Context Protocol）とは、AIアプリケーションを外部システムに接続するためのプロトコルの一種です。
 MCPを使用するとAIアプリケーションは、データソース（ローカル ファイル、データベースなど）／ツール（検索エンジン、計算機など）／ワークフロー（専用のプロンプトなど）に接続して、重要な情報にアクセスし、タスクを実行できるようになります。
 
 Claude Codeでは、このプロトコルを使用して様々な開発ツールと接続してタスクが実行できます。
 
-### MCP の利点
+### MCPの利点
 
 - **標準プロトコル**: 統一されたインターフェースで複数のツールと連携
 - **セキュリティ**: 安全な認証と権限管理
 - **拡張性**: 新しいツールを簡単に追加可能
 - **効率性**: 最適化された通信プロトコル
 
-### MCP アーキテクチャと外部システム
+### MCPアーキテクチャと外部システム
 
 ```txt
 ┌───────────────┐
@@ -39,17 +39,17 @@ Claude Codeでは、このプロトコルを使用して様々な開発ツール
 └───────────────┘
 ```
 
-- **MCP ホスト**: 1つまたは複数のMCPクライアントを調整および管理するAIアプリケーション
+- **MCPホスト**: 1つまたは複数のMCPクライアントを調整および管理するAIアプリケーション
   - ここではClaude CodeがMCPホスト
-- **MCP クライアント**: MCPサーバへの接続を維持し、MCPホストが使用するためにMCPサーバからコンテキストを取得するコンポーネント
+- **MCPクライアント**: MCPサーバへの接続を維持し、MCPホストが使用するためにMCPサーバからコンテキストを取得するコンポーネント
   - ここではClaude CodeのMCP接続機能
-- **MCP サーバ**: 各種外部ツールへのアダプターとして機能し、JSON-RPCプロトコルで通信
+- **MCPサーバ**: 各種外部ツールへのアダプターとして機能し、JSON-RPCプロトコルで通信
   - ローカルMCPサーバの場合、ここもClaude Codeが担当
   - リモートMCPサーバの場合は外部のクラウドサービスが提供
 - **外部システム**: Git、データベース、各種APIなどの実際のツール・サービス
 - **通信プロトコル**: ホストとサーバ間はJSON-RPC、サーバと外部システム間は各ツール固有のプロトコル
 
-### MCP でできること
+### MCPでできること
 
 MCPサーバが接続されると、Claude Codeに以下のようなことを依頼できます。
 
@@ -59,13 +59,13 @@ MCPサーバが接続されると、Claude Codeに以下のようなことを依
 - **デザインを統合する**: “Slackへ投稿された新しいFigmaデザインに基づいて、標準のメールテンプレートを更新してください”
 - **ワークフローを自動化する**: “新機能についてのフィードバックセッションにこれらの10人のユーザを招待するGmailの下書きを作成してください。“
 
-## MCP サーバの設定
+## MCPサーバの設定
 
 ファイルシステム操作などのMCPサーバはClaude CodeがMCPサーバを起動する「ローカルMCPサーバ」として、クラウドサービスが接続を提供しているMCPサーバは「リモートMCPへの接続」としてMCPサーバを設定します。
 
 その際、ローカル間はstdioのトランスポート方式で、リモートMCPサーバとの間はSSE方式かStreamable HTTP方式での接続になります。将来的にはStreamable HTTP形式がより普及してくるものと想定しています。
 
-### ローカル MCP サーバの設定追加
+### ローカルMCPサーバの設定追加
 
 ```bash
 # 基本構文
@@ -76,7 +76,7 @@ claude mcp add airtable --env AIRTABLE_API_KEY=YOUR_KEY \
   -- npx -y airtable-mcp-server
 ```
 
-### リモート MCP サーバへの接続設定
+### リモートMCPサーバへの接続設定
 
 #### SSE（Server-Sent Events）サーバの場合
 
@@ -92,7 +92,7 @@ claude mcp add --transport sse private-api https://api.company.com/mcp \
   --header "X-API-Key: your-key-here"
 ```
 
-#### Streamable HTTP サーバの場合
+#### Streamable HTTPサーバの場合
 
 ```bash
 # 基本構文
@@ -124,7 +124,7 @@ claude mcp remove github
 > /mcp
 ```
 
-## MCP インストールスコープ
+## MCPインストールスコープ
 
 MCPサーバの設定は3つのスコープで設定ができ、プロジェクト内でユーザのローカル固有に設定、プロジェクト内で一意に設定、ユーザ内でのみグローバルな設定で保存することができます。
 
@@ -172,11 +172,11 @@ claude mcp add my-user-server --scope user /path/to/server
 1. プロジェクトスコープ
 1. ユーザスコープ
 
-## 実際に MCP サーバを設定してみる
+## 実際にMCPサーバを設定してみる
 
 それでは最後に、いくつか便利なMCPを実際にさまざまなスコープで設定してみて、その利便性を確認してみましょう。
 
-### Playwright MCP サーバ
+### Playwright MCPサーバ
 
 <!-- textlint-disable ja-technical-writing/max-ten -->
 [**Playwright**](https://playwright.dev/) は、Microsoftが開発したWebテストの自動化ツールです。Webアプリに対するテスト内容と、どういう結果ならOKかをテストシナリオとして事前に定義することで、シナリオをコードとして自動で実行します。テストシナリオを事前にすべてコードで定義する必要がありますが、MCPサーバとして利用すれば、自然言語でテスト内容を指示するだけで、テストシナリオコードを常時メンテナンスし続けなくても、オンデマンドで実行したいテストを自動実行させることができます。
@@ -187,7 +187,7 @@ claude mcp add my-user-server --scope user /path/to/server
 claude mcp add playwright npx @playwright/mcp@latest --scope project
 ```
 
-リポジトリルートに `.mcp.json` ができ、以下の設定が追加していることが確認できます。
+リポジトリルートに `.mcp.json` ができ、以下の設定を追加していることが確認できます。
 
 ```json
 {
@@ -206,7 +206,7 @@ claude mcp add playwright npx @playwright/mcp@latest --scope project
 
 「今作成した機能をWebテストして」などと指示をして自動テストを実施してみましょう。
 
-### AWS ドキュメント MCP サーバ
+### AWSドキュメントMCPサーバ
 
 AWSドキュメントMCPサーバはAWSドキュメントにアクセスし、コンテンツを検索し、推奨事項を取得するためのツールです。AWSドキュメントを読んだり、検索したり、利用可能なサービスのリストを取得したりできます。
 

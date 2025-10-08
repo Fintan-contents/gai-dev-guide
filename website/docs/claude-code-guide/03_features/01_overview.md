@@ -3,7 +3,7 @@
 ここまでClaude Codeを動かして基本的な操作に慣れてきました。この章ではよりよくClaude Codeを活用するために、こまかい機能をひとつひとつ理解して、便利な機能を活用できるようになりましょう。
 公式マニュアルのうち、必ず知っておくべき内容をわかりやすく抜粋してありますが、さらに詳細を知りたい場合は[公式ドキュメント](https://docs.anthropic.com/ja/docs/claude-code/overview)を参照してください。
 
-## Claude Code　設定
+## Claude Code設定
 
 ### 設定ファイル (`settings.json`)
 
@@ -141,7 +141,7 @@ CLAUDE.mdファイル内で `@path/to/import` 構文を使用して追加ファ�
 
 #### CLAUDE.mdの再帰的読み込み
 
-Claude Codeはメモリを再帰的に読み取ります：cwdから開始して、Claude Codeはルートディレクトリ / まで（含まない）再帰し、見つけたCLAUDE.mdまたはCLAUDE.local.mdファイルを読み取ります。これは、foo/bar/ でClaude Codeを実行し、foo/CLAUDE.mdとfoo/bar/CLAUDE.mdの両方にメモリがある大きなリポジトリで作業する際に特に便利です。
+Claude Codeはメモリを再帰的に読み取ります。cwdから開始して、Claude Codeはプロジェクトのルートディレクトリまで再帰し、見つけたCLAUDE.mdまたはCLAUDE.local.mdファイルを読み取ります。これは、foo/bar/ でClaude Codeを実行し、foo/CLAUDE.mdとfoo/bar/CLAUDE.mdの両方にメモリがある大きなリポジトリで作業する際に特に便利です。
 
 Claudeは現在の作業ディレクトリ下のサブツリーにネストされたCLAUDE.mdも発見します。起動時の読み込みは行わず、Claudeがそれらのサブツリー内のファイルを読み取る際にのみ読み込まれます。
 

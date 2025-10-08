@@ -20,202 +20,202 @@
 
 それでは、さっそくサブエージェントをひとつ作ってみましょう。
 
-### サブエージェントインターフェースを開く
+1. サブエージェントインターフェースを開く
 
-インタラクティブモードで`/agents`コマンドを実行してサブエージェントを作成しましょう。
+    インタラクティブモードで`/agents`コマンドを実行してサブエージェントを作成しましょう。
 
-```bash
-> /agents
-```
+    ```bash
+    > /agents
+    ```
 
-### `Create new agent`を選択します
+1. `Create new agent`を選択します
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ Agents                                                 │
-│ No agents found                                        │
-│                                                        │
-│ ❯ Create new agent                                     │
-│                                                        │
-│ No agents found. Create specialized subagents that     │
-│ Claude can delegate to.                                │
-│ Each subagent has its own context window, custom       │
-│ system prompt, and specific tools.                     │
-│ Try creating: Code Reviewer, Code Simplifier, Security │
-│  Reviewer, Tech Lead, or UX Reviewer.                  │
-│                                                        │
-│                                                        │
-│   Built-in (always available):                         │
-│   general-purpose · sonnet                             │
-│   statusline-setup · sonnet                            │
-│   output-style-setup · sonnet                          │
-│                                                        │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ Agents                                                 │
+    │ No agents found                                        │
+    │                                                        │
+    │ ❯ Create new agent                                     │
+    │                                                        │
+    │ No agents found. Create specialized subagents that     │
+    │ Claude can delegate to.                                │
+    │ Each subagent has its own context window, custom       │
+    │ system prompt, and specific tools.                     │
+    │ Try creating: Code Reviewer, Code Simplifier, Security │
+    │  Reviewer, Tech Lead, or UX Reviewer.                  │
+    │                                                        │
+    │                                                        │
+    │   Built-in (always available):                         │
+    │   general-purpose · sonnet                             │
+    │   statusline-setup · sonnet                            │
+    │   output-style-setup · sonnet                          │
+    │                                                        │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### `Project`を選択します
+1. `Project`を選択します
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ Create new agent                                       │
-│ Step 1: Choose location                                │
-│                                                        │
-│ ❯ 1. Project (.claude/agents/)                         │
-│   2. Personal (~/.claude/agents/)                      │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ Create new agent                                       │
+    │ Step 1: Choose location                                │
+    │                                                        │
+    │ ❯ 1. Project (.claude/agents/)                         │
+    │   2. Personal (~/.claude/agents/)                      │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### Claudeで作成(推奨)を選択します
+1. Claudeで作成（推奨）を選択します
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ Create new agent                                       │
-│ Step 2: Creation method                                │
-│                                                        │
-│ ❯ 1. Generate with Claude (recommended)                │
-│   2. Manual configuration                              │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ Create new agent                                       │
+    │ Step 2: Creation method                                │
+    │                                                        │
+    │ ❯ 1. Generate with Claude (recommended)                │
+    │   2. Manual configuration                              │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### 「コードのレビューをしてくれるエキスパートなシニアエンジニア」と入力します
+1. 「コードのレビューをしてくれるエキスパートなシニアエンジニア」と入力します
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ Create new agent                                       │
-│ Step 3: Describe what this agent should do and when it │
-│  should be used (be comprehensive for best results)    │
-│                                                        │
-│ コードのレビューをしてくれるエキスパートなシニアエン…  │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ Create new agent                                       │
+    │ Step 3: Describe what this agent should do and when it │
+    │  should be used (be comprehensive for best results)    │
+    │                                                        │
+    │ コードのレビューをしてくれるエキスパートなシニアエン…  │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### アクセスを許可したいツールを選択します（空白のままであればすべてのツールを継承になります）
+1. アクセスを許可したいツールを選択します（空白のままであればすべてのツールを継承になります）
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ Create new agent                                       │
-│ Step 4: Select tools                                   │
-│                                                        │
-│ ❯ [ Continue ]                                         │
-│ ────────────────────────────────────────               │
-│   ☒ All tools                                          │
-│   ☒ Read-only tools                                    │
-│   ☒ Edit tools                                         │
-│   ☒ Execution tools                                    │
-│   ☒ MCP tools                                          │
-│ ────────────────────────────────────────               │
-│   [ Show advanced options ]                            │
-│                                                        │
-│ All tools selected                                     │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ Create new agent                                       │
+    │ Step 4: Select tools                                   │
+    │                                                        │
+    │ ❯ [ Continue ]                                         │
+    │ ────────────────────────────────────────               │
+    │   ☒ All tools                                          │
+    │   ☒ Read-only tools                                    │
+    │   ☒ Edit tools                                         │
+    │   ☒ Execution tools                                    │
+    │   ☒ MCP tools                                          │
+    │ ────────────────────────────────────────               │
+    │   [ Show advanced options ]                            │
+    │                                                        │
+    │ All tools selected                                     │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### モデルを選択します
+1. モデルを選択します
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ Create new agent                                       │
-│ Step 5: Select model                                   │
-│ Model determines the agent's reasoning capabilities    │
-│ and speed.                                             │
-│                                                        │
-│ ❯1. Sonnet               Balanced performance - best✔  │
-│  for most agents                                       │
-│   2. Opus                 Most capable for complex     │
-│   reasoning tasks                                      │
-│  3. Haiku                Fast and efficient for simple │
-│   tasks                                                │
-│  4. Inherit from parent  Use the same model as the     │
-│  main conversation                                     │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ Create new agent                                       │
+    │ Step 5: Select model                                   │
+    │ Model determines the agent's reasoning capabilities    │
+    │ and speed.                                             │
+    │                                                        │
+    │ ❯1. Sonnet               Balanced performance - best✔  │
+    │  for most agents                                       │
+    │   2. Opus                 Most capable for complex     │
+    │   reasoning tasks                                      │
+    │  3. Haiku                Fast and efficient for simple │
+    │   tasks                                                │
+    │  4. Inherit from parent  Use the same model as the     │
+    │  main conversation                                     │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### 背景色を選択します
+1. 背景色を選択します
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ Create new agent                                       │
-│ Step 6: Choose background color                        │
-│                                                        │
-│ Choose background color                                │
-│                                                        │
-│   Automatic color                                      │
-│ ❯   Red                                                │
-│     Blue                                               │
-│     Green                                              │
-│     Yellow                                             │
-│     Purple                                             │
-│     Orange                                             │
-│     Pink                                               │
-│     Cyan                                               │
-│                                                        │
-│                                                        │
-│ Preview:  senior-code-reviewer                         │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ Create new agent                                       │
+    │ Step 6: Choose background color                        │
+    │                                                        │
+    │ Choose background color                                │
+    │                                                        │
+    │   Automatic color                                      │
+    │ ❯   Red                                                │
+    │     Blue                                               │
+    │     Green                                              │
+    │     Yellow                                             │
+    │     Purple                                             │
+    │     Orange                                             │
+    │     Pink                                               │
+    │     Cyan                                               │
+    │                                                        │
+    │                                                        │
+    │ Preview:  senior-code-reviewer                         │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### 確認して作成します
+1. 確認して作成します
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ Create new agent                                       │
-│ Final step: Confirm and save                           │
-│                                                        │
-│ Name: senior-code-reviewer                             │
-│ Location: .claude/agents/senior-code-reviewer.md       │
-│ Tools: All tools                                       │
-│ Model: Sonnet                                          │
-│                                                        │
-│ Description (tells Claude when to use this agent):     │
-│                                                        │
-│   Use this agent when you need expert-level code       │
-│   review from a senior engineering perspective. This   │
-│   agent should be invoked after writing or modifying   │
-│   code to get comprehensive feedback on code quality,  │
-│   architecture, performance, security, an…             │
-│                                                        │
-│ System prompt:                                         │
-│                                                        │
-│   You are an expert senior software engineer with over │
-│    15 years of experience across multiple technology   │
-│   stacks and architectures. You have led numerous      │
-│   successful projects, mentored dozens of developers,  │
-│   and have deep expertise in code quali…               │
-│                                                        │
-│ Warnings:                                              │
-│  • Agent has access to all tools                       │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ Create new agent                                       │
+    │ Final step: Confirm and save                           │
+    │                                                        │
+    │ Name: senior-code-reviewer                             │
+    │ Location: .claude/agents/senior-code-reviewer.md       │
+    │ Tools: All tools                                       │
+    │ Model: Sonnet                                          │
+    │                                                        │
+    │ Description (tells Claude when to use this agent):     │
+    │                                                        │
+    │   Use this agent when you need expert-level code       │
+    │   review from a senior engineering perspective. This   │
+    │   agent should be invoked after writing or modifying   │
+    │   code to get comprehensive feedback on code quality,  │
+    │   architecture, performance, security, an…             │
+    │                                                        │
+    │ System prompt:                                         │
+    │                                                        │
+    │   You are an expert senior software engineer with over │
+    │    15 years of experience across multiple technology   │
+    │   stacks and architectures. You have led numerous      │
+    │   successful projects, mentored dozens of developers,  │
+    │   and have deep expertise in code quali…               │
+    │                                                        │
+    │ Warnings:                                              │
+    │  • Agent has access to all tools                       │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### サブエージェントが完成しました。`ESC`キーで抜けましょう
+1. サブエージェントが完成しました。`ESC`キーで抜けましょう
 
-```txt
-> /agents 
-  ⎿  Agent changes:
-     Created agent: senior-code-reviewer
-```
+    ```txt
+    > /agents 
+      ⎿  Agent changes:
+        Created agent: senior-code-reviewer
+    ```
 
-### サブエージェントを実行してみます
+1. サブエージェントを実行してみます
 
-```txt
-╭────────────────────────────────────────────────────────╮
-│ > senior-code-reviewerサブエージェントを使用して最近   │
-│   の変更をチェックしてください                         │
-╰────────────────────────────────────────────────────────╯
-```
+    ```txt
+    ╭────────────────────────────────────────────────────────╮
+    │ > senior-code-reviewerサブエージェントを使用して最近   │
+    │   の変更をチェックしてください                         │
+    ╰────────────────────────────────────────────────────────╯
+    ```
 
-### サブエージェントが稼働していることを確認します
+1. サブエージェントが稼働していることを確認します
 
-```txt
-⏺ senior-code-reviewerエージェントを使用して、作成し
-  たタスク管理アプリのコードレビューを実施します。
+    ```txt
+    ⏺ senior-code-reviewerエージェントを使用して、作成し
+      たタスク管理アプリのコードレビューを実施します。
 
-⏺ senior-code-reviewer(タスク管理アプリのコードレビュ
-                      ー)
-  ⎿  Read 95 lines (ctrl+r to expand)
-     Read 17 lines (ctrl+r to expand)
-     +5 more tool uses
-```
+    ⏺ senior-code-reviewer(タスク管理アプリのコードレビュ
+                          ー)
+      ⎿  Read 95 lines (ctrl+r to expand)
+        Read 17 lines (ctrl+r to expand)
+        +5 more tool uses
+    ```
 
 ## サブエージェントの設定
 
@@ -388,13 +388,13 @@
 ## サブエージェントの呼び出しかた
 
 - 積極的に呼び出されるようにする
-  - `description`フィールドに「積極的に使用してください」とか「必ず使用してください」というフレーズを含めると自動的に呼び出すことができます
+  - `description`フィールドに「積極的に使用してください」や「必ず使用してください」というフレーズを含めると自動的に呼び出すことができます
 - 明示的に呼び出す
   - インタラクティブモードやカスタムコマンド内で、`@agent-senior-code-reviewer`などとアットマーク付きの記述で、特定のサブエージェントを呼び出すことができます。サブエージェント名に`agent-`を接頭辞としてつけた名前で呼び出します
 
 ## サブエージェントの効果的な用途
 
-サブエージェントは親エージェントとコンテキストを共有しないため、 **親エージェントで実行するとコンテキストを消費してしまい問題になるような処理を代行** させると、便利に使うことができます。
+サブエージェントは親エージェントとコンテキストを共有しないため、 **親エージェントで実行するとコンテキストを消費してしまい問題になるような処理を代行**させると、便利に使うことができます。
 
 例えば方式設計のドキュメントを探索したり、過去の大規模なコードベースを探索させたり、といった処理です。探索させるようなユースケースでは、大量のファイルを読み込む必要があるため、必然的にコンテキストを消費することになります。
 

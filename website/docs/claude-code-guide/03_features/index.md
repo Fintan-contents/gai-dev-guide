@@ -4,7 +4,7 @@ Claude Codeの各機能について詳しく解説するセクションです。
 
 ## 📋 このセクションの内容
 
-### [Claude Code の機能](./01_overview.md)
+### [Claude Codeの機能](./01_overview.md)
 
 Claude Codeの詳細な機能と設定方法を体系的に解説します。
 
@@ -14,7 +14,7 @@ Claude Codeの詳細な機能と設定方法を体系的に解説します。
 - スラッシュコマンドの設定
 - その他の機能概要
 
-### [MCP の活用](./02_mcp.md)
+### [MCPの活用](./02_mcp.md)
 
 Model Context Protocol(MCP)を使ったClaude Codeの外部ツール連携機能について解説します。
 

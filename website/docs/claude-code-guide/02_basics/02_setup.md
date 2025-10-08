@@ -88,7 +88,8 @@ Bedrock APIキーは、完全なAWS認証情報を必要とせずに、よりシ
 APIキーは最大12時間有効な「Short-term API keys」と、それ以上（最大365日あるいは無期限）設定できる「Long-term API keys」の2種類から選択が可能です。
 :::
 
-**Claude Codeを設定する**
+#### Claude Codeを設定する
+
 Bedrockを有効にするため、以下の環境変数を設定してください。
 
 ```bash
@@ -111,6 +112,9 @@ export ANTHROPIC_MODEL='arn:aws:bedrock:ap-northeast-1:your-account-id:applicati
 export DISABLE_PROMPT_CACHING=1
 ```
 
+<!-- markdownlint-disable-next-line MD024 -->
+#### 動作確認
+
 これでClaude CodeへのアクセスをBedrock経由に設定することができました。`claude`コマンドを実行し、Bedrock経由でClaudeモデルにアクセスすることができることを確認してください。
 
 ```bash
@@ -118,7 +122,7 @@ export DISABLE_PROMPT_CACHING=1
 ```
 
 :::note INFO
-また、東京リージョンではClaude 4 Opusが提供されていないことにより、エラーになる可能性があります。モデルの指定コマンドを実行して、適切なアプリケーション推論プロファイル（Claude 4 Sonnet）を選択し直すことで実行可能になります。
+東京リージョンではClaude 4 Opusが提供されていないことにより、エラーになる可能性があります。モデルの指定コマンドを実行して、適切なアプリケーション推論プロファイル（Claude 4 Sonnet）を選択し直すことで実行可能になります。
 
 ```bash
 /model
@@ -155,7 +159,7 @@ Bedrockを使用する場合、認証はAWS認証情報を通じて処理され�
 
 ### Visual Studio Code
 
-Claude CodeをIDE統合して利用するために、まずはVS Codeのインストールします。
+Claude CodeをIDE統合して利用するために、まずはVS Codeをインストールします。
 
 **インストール方法:**
 1. [Visual Studio Code公式サイト](https://code.visualstudio.com/)にアクセスする
@@ -171,7 +175,7 @@ code --version
 
 ### Dockerのインストール
 
-Devcontainerに接続して安全に利用するために、ローカルのDocker環境を準備します。
+Dev Containerに接続して安全に利用するために、ローカルのDocker環境を準備します。
 
 **Windows:**
 1. [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)をダウンロードする
@@ -211,7 +215,7 @@ VS Codeを起動し、以下の拡張機能をインストールしてくださ�
     - Windows: Ctrl+Shift+X → "Dev Containers" で検索 → インストール
     - macOS: ⌘+Shift+X → "Dev Containers" で検索 → インストール
 
-これらの拡張機能を有効化することで、Claude CodeのIDE統合や、Devcontainer環境内で安全にClaude Codeを実行できるようになります。
+これらの拡張機能を有効化することで、Claude CodeのIDE統合や、DevContainer環境内で安全にClaude Codeを実行できるようになります。
 
 ## 4. 最初のプロジェクトのセットアップ
 
@@ -318,7 +322,7 @@ USER vscode
 
 **init-firewall.sh例:**
 
-```bash
+```shell
 #!/bin/bash
 set -euo pipefail  # Exit on error, undefined vars, and pipeline failures
 IFS=$'\n\t'       # Stricter word splitting
@@ -464,7 +468,7 @@ fi
 
 **init-directories-owner.sh例:**
 
-```bash
+```shell
 #!/bin/bash
 
 chown -R vscode:vscode /workspace /home/vscode/.claude
@@ -473,13 +477,14 @@ chown -R vscode:vscode /workspace /home/vscode/.claude
 ### DevContainer環境の起動
 
 1. VS Codeでプロジェクトフォルダを開く
-2. `Ctrl+Shift+P` → "Dev Containers: Rebuild Container(開発コンテナー: コンテナーのリビルド)"
+2. `Ctrl+Shift+P` → "Dev Containers: Rebuild Container（開発コンテナー: コンテナーのリビルド）"
 3. 初回起動時はイメージのビルドに時間がかかります
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### 動作確認
 
 DevContainer環境が起動したら、以下を確認してください。
 
 #### Claude Codeの動作確認
 
-[1. Claude Codeのセットアップ ＞ Claude Codeにログインする](#Claude Codeにログインする)を実施してください。実施後、ターミナル上で`claude`を実行するとClaude Codeが起動します。
+[1. Claude Codeのセットアップ ＞ Claude Codeにログインする](#claude-codeにログインする)を実施してください。実施後、ターミナル上で`claude`を実行するとClaude Codeが起動します。

@@ -24,33 +24,33 @@ Spring Bootを使用したRESTful APIの開発を通じて、Claude Codeの基�
 ### Claude Codeとの対話開始
 
 1. VS Codeで新しいフォルダを開く
-2. `Ctrl+Shift+P` → "Run Claude Code"
+2. `Ctrl+Shift+P` → "Claude Code: Open in Terminal"
 3. Shift+TabでPlan Modeにしてから以下のプロンプトを入力：
 
-```txt
-Spring Bootを使用したタスク管理APIを作成したいです。
-対象のAPIはREST APIで、基本的なCRUD操作を行います。
-以下の要件でプロジェクトを初期化してください：
+    ```txt
+    Spring Bootを使用したタスク管理APIを作成したいです。
+    対象のAPIはREST APIで、基本的なCRUD操作を行います。
+    以下の要件でプロジェクトを初期化してください：
 
-- 言語
-  - Java 21
-- フレームワーク
-  - Spring Boot 3.4
-- データベースアクセスライブラリ
-  - MyBatis 3
-  - Flyway
-- テスティングフレームワーク
-  - Spring Test
-  - JUnit 5
-  - AssertJ
-- ビルドツール
-  - Apache Maven 3.9
-- データベース
-  - H2データベース
+    - 言語
+    - Java 21
+    - フレームワーク
+    - Spring Boot 3.4
+    - データベースアクセスライブラリ
+    - MyBatis 3
+    - Flyway
+    - テスティングフレームワーク
+    - Spring Test
+    - JUnit 5
+    - AssertJ
+    - ビルドツール
+    - Apache Maven 3.9
+    - データベース
+    - H2データベース
 
-まずはプロジェクト構造とpom.xmlのみを作成してください。
-フレームワークやライブラリは上記で指示したもののみを利用してください。
-```
+    まずはプロジェクト構造とpom.xmlのみを作成してください。
+    フレームワークやライブラリは上記で指示したもののみを利用してください。
+    ```
 
 ### 期待される応答
 
@@ -733,12 +733,12 @@ Planモードにして以下のプロンプトを送信してください。
 
 ```txt
 作成したAPIをテストするためのcurlコマンドを生成してください。
-全てのエンドポイントをテストできるようにmarkdownファイルにに簡潔にとめてください。
+全てのエンドポイントをテストできるようにmarkdownファイルに簡潔にまとめてください。
 ```
 
 ### 生成されるテストコマンド例
 
-```bash
+````markdown
 # Task API テスト用 curl コマンド
 
 ## 前提条件
@@ -795,6 +795,7 @@ curl -X DELETE http://localhost:8080/api/tasks/1 \
 curl -X PATCH http://localhost:8080/api/tasks/1/toggle \
   -H "Content-Type: application/json"
 ```
+````
 
 ## 9. デバッグとトラブルシューティング
 
