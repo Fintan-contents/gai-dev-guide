@@ -76,7 +76,7 @@ description: "Serviceクラスを作成してください"
 
 この時、Chatウィンドウでは以下のように指示します。
 
-```shell
+```txt
 /generate-service doc=#file:ユーザー登録機能.md spec=#file:ユーザー登録機能テスト仕様書.md  className=UserService methodName=register
 ```
 

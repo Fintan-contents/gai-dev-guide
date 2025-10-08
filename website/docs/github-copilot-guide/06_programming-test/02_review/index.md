@@ -82,7 +82,7 @@ description: "ソースコードが設計書に定義された仕様を満たし
 
 この時、Chatウィンドウでは以下のように指示します。
 
-```shell
+```txt
 /review-service doc=#file:ユーザー登録機能.md
 ```
 
@@ -152,7 +152,7 @@ description: "テストコードがテスト仕様書に定義された仕様を
 
 この時、Chatウィンドウでは以下のように指示します。
 
-```shell
+```txt
 /review-test spec=#file:ユーザー登録機能テスト仕様書.md doc=#file:ユーザー登録機能.md
 ```
 

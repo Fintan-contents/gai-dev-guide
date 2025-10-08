@@ -176,7 +176,7 @@ ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的�
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java'],
+      additionalLanguages: ['java', 'bash', 'docker'],
     },
   } satisfies Preset.ThemeConfig,
   future: {
