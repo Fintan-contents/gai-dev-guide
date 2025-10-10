@@ -75,5 +75,5 @@ Claude CodeはAnthropicやAWS、GoogleのAPI経由でClaudeモデルを利用し
 
 Claude Codeの利用規約は以下の2つです。本ガイドではAmazon Bedrockを経由した利用方法を紹介していますが、その場合でも下記利用規約が適用されます。Claude Codeを使用すると規約に同意したとみなされますので、利用の前に規約内容を確認しましょう。
 
-- [利用規約](https://www.anthropic.com/legal/service-specific-terms)
 - [商用利用規約](https://www.anthropic.com/legal/commercial-terms)
+- [サービス固有規約](https://www.anthropic.com/legal/service-specific-terms)
