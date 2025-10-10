@@ -70,3 +70,10 @@ Claude CodeはAnthropicやAWS、GoogleのAPI経由でClaudeモデルを利用し
 - **Linux**: 制限なし
 
 いずれの環境でもNode.js 18以降がインストールされていることが推奨されています。
+
+## 利用規約
+
+Claude Codeの利用規約は以下の2つです。本ガイドではAmazon Bedrockを経由した利用方法を紹介していますが、その場合でも下記利用規約が適用されます。Claude Codeを使用すると規約に同意したとみなされますので、利用の前に規約内容を確認しましょう。
+
+- [利用規約](https://www.anthropic.com/legal/service-specific-terms)
+- [商用利用規約](https://www.anthropic.com/legal/commercial-terms)
