@@ -38,11 +38,7 @@ AIエージェントの場合は、システムプロンプト（`CLAUDE.md`や�
 
 また、AIエージェントではコンテキストの大部分が「過去のやりとり」で占められる点も特徴的です。ユーザ入力に応じたツール実行→観察結果→次のアクション、というループが繰り返されるため、各ステップでログ（アクションと結果）がコンテキストに追記されていきます。その結果、出力（エージェントの発話）は比較的短くとも、入力コンテキストはどんどん肥大化します。
 
-肥大化が発生することによって起こる問題は、**入力トークン量が多くなることによるコストの増大**と、**コンテキストロット（Context Rot）と呼ばれる現象による品質の低下**です。下図のように、インプットトークン（図では横軸のInput Length）が大きくなればなるほど、多くのモデルで性能（図では縦軸のAccuracy）が低下します。
-
-![Context Rot](images/needle_question_sim_arxiv.png)
-Needle-Question Similarity (thinking/non-thinking modes of the same model are treated separately) - arXiv haystack/arXiv needles。
-（出典：[Context Rot / Chroma Technical Report 2025.7.14](https://research.trychroma.com/context-rot)）
+肥大化が発生することによって起こる問題は、**入力トークン量が多くなることによるコストの増大**と、**コンテキストロット（Context Rot）と呼ばれる現象による品質の低下**です。Context Rotとは入力トークン量によってLLMの性能が変化する現象をさし、入力トークンが肥大化すると性能が低下する傾向にあります（参考：[Context Rot / Chroma Technical Report 2025.7.14](https://research.trychroma.com/context-rot)）。
 
 Claude Codeを利用する上でクリティカルに影響するのは、性能の低下でしょう。このような現象を避けるために、Claude Codeではコンテキストを自動圧縮するようにされていますが、自動圧縮によって、いくらか情報は失われてしまいます。情報が失われることによるタスク遂行率の低下と、Context RotによるLLMの性能低下のトレードオフという、難しい問題があります。
 
