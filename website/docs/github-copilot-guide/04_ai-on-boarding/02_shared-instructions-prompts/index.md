@@ -81,7 +81,7 @@ applyTo: "**/*.java"
 
 以下のように内容ごとにインストラクションファイルを作成し、メンテナンスしていくとよいでしょう。
 
-```shell
+```txt
 .github
 └── instructions
     ├── architecture.instructions.md
@@ -161,7 +161,7 @@ ${input:doc} の内容を確認し、概要を説明してください。
 
 Serviceクラスの作成指示をするプロンプトファイル例のパスが`.github/prompts/generate-service.prompt.md`の場合、チャットでの呼び出し例は以下となります。
 
-```shell
+```txt
 /generate-service doc=#file:ユーザー登録機能.md className=UserService methodName=register
 ```
 

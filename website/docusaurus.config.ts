@@ -20,6 +20,7 @@ const copyright = `
   </div>
   <div class="supplementary">
     <a href="/${project}/customize-and-distribution/" class="footer__link-item">ガイドのカスタマイズ・配布について</a>
+    <a href="https://fintan.jp/page/1622/" class="footer__link-item">商標について</a>
   </div>
 </div>`;
 
@@ -176,7 +177,7 @@ ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的�
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java'],
+      additionalLanguages: ['java', 'bash', 'docker'],
     },
   } satisfies Preset.ThemeConfig,
   future: {

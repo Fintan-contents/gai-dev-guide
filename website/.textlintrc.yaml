@@ -7,7 +7,7 @@ filters:
 rules:
   preset-ja-technical-writing:
     sentence-length:
-      max: 100
+      max: 150
       skipPatterns:
         - /\(.*\)/
     ja-no-mixed-period:

@@ -14,12 +14,13 @@ Claude Codeのカスタムコマンドは、Markdownファイル（`.md`）と�
 
 Claude Codeでは、以下の特殊な変数を使って引数を受け取ることができます。
 
-- **`$ARGUMENTS`**: すべての引数を一つの文字列として受け取ります
-  - 例: `/create-entity User users` → `$ARGUMENTS` = "User users"
+- **`$ARGUMENTS`**: すべての引数を1つの文字列として受け取ります
+  - 例： `/create-entity User users` → `$ARGUMENTS` = "User users"
 - **`$1`, `$2`, `$3`...**: 位置引数として個別に受け取ります
-  - 例: `/create-entity User users` → `$1` = "User", `$2` = "users"
+  - 例： `/create-entity User users` → `$1` = "User", `$2` = "users"
 
 **シンプルなコマンド例:**
+
 ```markdown
 # .claude/commands/create-entity.md
 ---
@@ -55,7 +56,8 @@ allowed-tools: Edit, Write, Read
 - `allowed-tools`: このコマンドで使用可能なツールを制限（セキュリティ向上）
 
 **使用例:**
-```
+
+```bash
 /create-entity User users "name:String:@NotBlank,email:String:@Email,age:Integer:@Min(0)"
 ```
 
@@ -66,6 +68,7 @@ allowed-tools: Edit, Write, Read
 複数の引数を使用する場合、必須引数とオプション引数を組み合わせることができます。引数が省略された場合の処理も記述できます。
 
 **CRUD機能一括生成コマンド:**
+
 ```markdown
 # .claude/commands/generate-crud.md
 ---
@@ -126,6 +129,7 @@ description: 完全なCRUD機能を一括生成
 `@`プレフィックスを使用すると、ファイルの内容を直接コマンドに含めることができます。これにより、既存のコードを参照して処理を行うことが可能です。
 
 **単体テスト生成コマンド:**
+
 ```markdown
 # .claude/commands/generate-unit-tests.md
 ---
@@ -165,10 +169,11 @@ allowed-tools: Read, Write, Edit, Bash
 
 - `@$1`: 第1引数で指定されたファイルパスの内容を読み込みます
 - `@src/main/java/User.java`: 固定パスのファイルを読み込みます
-- 複数ファイルを参照する場合: `@file1.java @file2.java`のように並べます
+- 複数ファイルを参照する場合： `@file1.java @file2.java`のように並べます
 
 **使用例:**
-```
+
+```bash
 /generate-unit-tests src/main/java/com/example/UserService.java
 ```
 
@@ -179,6 +184,7 @@ allowed-tools: Read, Write, Edit, Bash
 `!`プレフィックスを使用すると、Bashコマンドを実行し、その結果をプロンプトに含めることができます。これにより、システム情報やプロジェクトの状態を動的に取得できます。
 
 **コードレビューコマンド:**
+
 ```markdown
 # .claude/commands/code-review.md
 ---
@@ -260,7 +266,8 @@ model: claude-4-sonnet
 - `!git log --oneline -5`: 最近のコミット履歴を取得
 
 **使用例:**
-```
+
+```bash
 /code-review src/main/java/UserService.java security
 ```
 
@@ -269,6 +276,7 @@ model: claude-4-sonnet
 ### 1. Spring Boot プロジェクト初期化
 
 **プロジェクト初期化コマンド:**
+
 ```markdown
 # .claude/commands/init-spring-project.md
 ---
@@ -356,13 +364,15 @@ $1/
 - `allowed-tools`: 使用可能なツールを制限（コマンドの動作チューニングに有用）
 
 **使用例:**
-```
+
+```bash
 /init-spring-project my-app com.example.myapp "ECサイトのAPIサーバー"
 ```
 
 ### 2. データベースマイグレーション生成
 
 **マイグレーション生成コマンド:**
+
 ```markdown
 # .claude/commands/create-migration.md
 ---
@@ -426,23 +436,25 @@ $1
 ```
 
 **使用例:**
-```
+
+```bash
 /create-migration "ユーザープロフィールテーブルを追加" 1.4 add_user_profile_table
 ```
 
 ### 3. API仕様書生成
 
-**API仕槕書生成コマンド:**
+**API仕様書生成コマンド:**
+
 ```markdown
 # .claude/commands/generate-api-spec.md
 ---
 argument-hint: <コントローラーファイル> <API名> [APIバージョン] [API説明]
-description: OpenAPI仕槕書を生成
+description: OpenAPI仕様書を生成
 model: claude-4-sonnet
 allowed-tools: Read, Write, Bash
 ---
 
-OpenAPI 3.0仕槕書を生成します。
+OpenAPI 3.0仕様書を生成します。
 
 ## 基本情報
 - API名: $2
@@ -464,9 +476,9 @@ OpenAPI 3.0仕槕書を生成します。
 !echo "関連モデルの探索:"
 !find . -name "*Request.java" -o -name "*Response.java" -o -name "*Dto.java" | grep -E "(Request|Response|Dto)\.java$" | head -10
 
-## OpenAPI仕槕書の生成
+## OpenAPI仕様書の生成
 
-以下の内容を含むYAML形式の仕槕書を作成します：
+以下の内容を含むYAML形式の仕様書を作成します：
 
 ### 1. 基本情報
 
@@ -510,15 +522,16 @@ servers:
 - エラーレスポンスのサンプル
 
 ## 出力ファイル
-- openapi.yaml（メイン仕槕書）
+- openapi.yaml（メイン仕様書）
 - README.md（使用方法とAPI概要）
 
 ## 検証
-生成した仕槕書をSwagger EditorやOpenAPI Generatorで検証できるようにします。
+生成した仕様書をSwagger EditorやOpenAPI Generatorで検証できるようにします。
 ```
 
 **使用例:**
-```
+
+```bash
 /generate-api-spec src/main/java/UserController.java "User Management API" 2.0.0 "ユーザー管理のためのRESTful API"
 ```
 
@@ -529,7 +542,8 @@ servers:
 Claude Codeのカスタムコマンドの設定場所は、プロジェクト単位と個人単位の2種類に分かれます。
 
 **Gitリポジトリでの管理:**
-```
+
+```markdown
 # プロジェクト単位（チームで共有）
 .claude/
 └── commands/
@@ -555,9 +569,10 @@ Claude Codeのカスタムコマンドの設定場所は、プロジェクト単
 
 ### 2. ネームスペース
 
-コマンドはネームスペースに分けて管理することができます。例えばチームを横断した汎用的なコマンド群を提供する場合などに、元々チームで定義していたコマンド名と衝突しないようにする際に有用です。
+コマンドはネームスペースに分けて管理することができます。例えばチームを横断した汎用的なコマンド群を提供する場合などに、元々チームで定義していたコマンド名との衝突を防げます。
 
 **ネームスペースを使った管理:**
+
 ```markdown
 # .claude/commands/test/unit.md
 ---
@@ -568,6 +583,7 @@ description: 単体テストを生成 (test)
 ```
 
 **使用例:**
+
 ```bash
 # ネームスペース付きコマンド
 /test:unit UserService.java
@@ -580,6 +596,7 @@ description: 単体テストを生成 (test)
 プロジェクトで利用しているコマンドは、README.mdなどにドキュメント化しておくと便利です。次に示すのは、ドキュメント化の例です。
 
 **READMEでのコマンド一覧管理:**
+
 ```markdown
 # .claude/commands/README.md
 
@@ -624,9 +641,10 @@ description: 単体テストを生成 (test)
 
 ### 3. エラーハンドリング
 
-Claude Codeはコマンド内で定義されているフローに忠実に実行しますが、時には生成中に予期せぬアクシデントが発生することがあります。アクシデントが発生した場合でも、自己修正ができるように、エラーハンドリングをコマンド内に含めておくと、エージェントのレジリエンスが強化されます。
+Claude Codeはコマンド内で定義されているフローに忠実に実行しますが、時には生成中に予期せぬアクシデントが発生します。アクシデントが発生した場合でも、自己修正ができるように、エラーハンドリングをコマンド内に含めておくと、エージェントのレジリエンスが強化されます。
 
 **堅牢なコマンド設計:**
+
 ```markdown
 以下の仕様でエンティティクラスを作成してください：
 
@@ -657,7 +675,6 @@ Claude Codeはコマンド内で定義されているフローに忠実に実行
 カスタムコマンドを上手く定義するポイントは、よくある開発の手順に従って、それぞれの手順で必要とさせる作業をワークフローとして定義することです。
 
 例えばスペック駆動開発であれば、次のような順序で開発が展開します。
-
 
 1. 要求仕様の作成
 2. 要求を満たす設計ドキュメントの作成
