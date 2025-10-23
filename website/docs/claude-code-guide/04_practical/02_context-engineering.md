@@ -7,6 +7,7 @@ Claude CodeもLLMを用いたAIエージェントなので、使いこなすた�
 例えば、Claude Codeのコンテキスト長は、内部で使用しているClaudeモデルの制約に依存します。この制約に対処するコンテキストエンジニアリングの一環として、ファイルの読み書きなどを行ってきた結果、コンテキスト長が一定のしきい値を超えると、下図のように自動圧縮（auto-compaction）する機能が備わっています。
 
 ![コンテキストの自動圧縮](../02_basics/images/claude_code_08.png)
+©株式会社ジェネラティブエージェンツ / [はじめてのClaude Code](https://www.youtube.com/watch?v=D5tjsGEYUI4) ※引用画像は本サイト利用規約に基づく自由な使用、複製、翻案等の対象外です。
 
 AIエージェントの世界において、コンテキストエンジニアリングは非常に重要な技術です。ソフトウェア開発AIエージェント「Devin」を開発するCognition社のブログでは、**「コンテキストエンジニアリングこそがエージェント開発者の第一の仕事である」** とまで述べられています（[Don’t Build Multi-Agents](https://cognition.ai/blog/dont-build-multi-agents#principles-of-context-engineering)）。
 
@@ -85,8 +86,10 @@ Claude Codeを利用する上でクリティカルに影響するのは、性能
 
 長期記憶については、ユーザやシステム全体に関するナレッジベースを構築します。例えばCognition社のAIエージェントDevinでは、ナレッジと呼ばれるコンポーネントに開発ルールやプロジェクト固有の知識を保存しておき、新たなセッションが始まる際には、それをコンテキストとして投入できるようにしています。
 
+<!-- textlint-disable ja-technical-writing/sentence-length -->
 ![devin knowledge](images/devin_knowledge.png)
-（出典：[Generative Agents イベント登壇レポート『Devinで実践する！AIエージェントと協働する開発組織の作り方』〜スケールアップ、スケールアウト、アンビエントでエージェントの役割分担を行う〜](https://blog.generative-agents.co.jp/entry/2025/05/30/162351)）
+©株式会社ジェネラティブエージェンツ / [Generative Agents イベント登壇レポート『Devinで実践する！AIエージェントと協働する開発組織の作り方』〜スケールアップ、スケールアウト、アンビエントでエージェントの役割分担を行う〜](https://blog.generative-agents.co.jp/entry/2025/05/30/162351) ※引用画像は本サイト利用規約に基づく自由な使用、複製、翻案等の対象外です。
+<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 ブランチ命名規則やリリース手順など、開発者の間で共有すべき事項をあらかじめナレッジに記載しておけば、AIエージェントは最初からその知識を持ってタスクに当たることができるわけです。
 

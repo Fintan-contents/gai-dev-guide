@@ -5,6 +5,7 @@
 Claude Codeの外部ツール連携機能は、Model Context Protocol (MCP) を通じて、Git、テストツール、CI/CDパイプラインなどの外部ツールとシームレスに統合します。これにより、既存の開発ワークフローを中断することなく、AI支援開発を実現できます。
 
 ![MCP](../02_basics/images/claude_code_06.png)
+©株式会社ジェネラティブエージェンツ / [はじめてのClaude Code](https://www.youtube.com/watch?v=D5tjsGEYUI4) ※引用画像は本サイト利用規約に基づく自由な使用、複製、翻案等の対象外です。
 
 ## Model Context Protocol（MCP）について
 
