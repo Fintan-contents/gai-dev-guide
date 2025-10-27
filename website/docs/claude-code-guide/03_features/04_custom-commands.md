@@ -313,9 +313,9 @@ Spring Bootプロジェクトの初期構造を作成します。
 - pom.xml（必要な依存関係をすべて含む）
 
 ### 2. アプリケーション設定
-- src/main/resources/application.yml
-- src/main/resources/application-dev.yml
-- src/main/resources/application-prod.yml
+- src/main/resources/application.yaml
+- src/main/resources/application-dev.yaml
+- src/main/resources/application-prod.yaml
 
 ### 3. Javaソースコード
 - $2.Application.java（メインクラス）
@@ -328,7 +328,7 @@ Spring Bootプロジェクトの初期構造を作成します。
 
 ### 4. Docker設定
 - Dockerfile
-- docker-compose.yml
+- compose.yaml
 - .dockerignore
 
 ### 5. ドキュメント
@@ -354,7 +354,7 @@ $1/
 │   └── test/
 ├── pom.xml
 ├── Dockerfile
-├── docker-compose.yml
+├── compose.yaml
 └── README.md
 
 レイヤードアーキテクチャに適した構成でプロジェクトを作成します。
@@ -367,7 +367,7 @@ $1/
 **使用例:**
 
 ```bash
-/init-spring-project my-app com.example.myapp "ECサイトのAPIサーバー"
+/init-spring-project my-app com.example.myapp "ECサイトのAPIサーバ"
 ```
 
 ### 2. データベースマイグレーション生成
@@ -398,7 +398,7 @@ $1
 !find src/main/resources/db/migration -name "*.sql" | sort | tail -5
 
 ### データベース設定の確認
-@src/main/resources/application.yml
+@src/main/resources/application.yaml
 
 ## 技術要件
 - PostgreSQL対応
@@ -439,7 +439,7 @@ $1
 **使用例:**
 
 ```bash
-/create-migration "ユーザープロフィールテーブルを追加" 1.4 add_user_profile_table
+/create-migration "ユーザプロフィールテーブルを追加" 1.4 add_user_profile_table
 ```
 
 ### 3. API仕様書生成
@@ -533,7 +533,7 @@ servers:
 **使用例:**
 
 ```bash
-/generate-api-spec src/main/java/UserController.java "User Management API" 2.0.0 "ユーザー管理のためのRESTful API"
+/generate-api-spec src/main/java/UserController.java "User Management API" 2.0.0 "ユーザ管理のためのRESTful API"
 ```
 
 ## チーム共有の仕組み
@@ -640,7 +640,7 @@ description: 単体テストを生成 (test)
 5. テストしてからコミットする
 ```
 
-### 3. エラーハンドリング
+### 4. エラーハンドリング
 
 Claude Codeはコマンド内で定義されているフローに忠実に実行しますが、時には生成中に予期せぬアクシデントが発生します。アクシデントが発生した場合でも、自己修正ができるように、エラーハンドリングをコマンド内に含めておくと、エージェントのレジリエンスが強化されます。
 
