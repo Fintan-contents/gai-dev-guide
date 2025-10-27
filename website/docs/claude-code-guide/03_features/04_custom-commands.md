@@ -367,7 +367,7 @@ $1/
 **使用例:**
 
 ```bash
-/init-spring-project my-app com.example.myapp "ECサイトのAPIサーバー"
+/init-spring-project my-app com.example.myapp "ECサイトのAPIサーバ"
 ```
 
 ### 2. データベースマイグレーション生成
@@ -439,7 +439,7 @@ $1
 **使用例:**
 
 ```bash
-/create-migration "ユーザープロフィールテーブルを追加" 1.4 add_user_profile_table
+/create-migration "ユーザプロフィールテーブルを追加" 1.4 add_user_profile_table
 ```
 
 ### 3. API仕様書生成
@@ -533,7 +533,7 @@ servers:
 **使用例:**
 
 ```bash
-/generate-api-spec src/main/java/UserController.java "User Management API" 2.0.0 "ユーザー管理のためのRESTful API"
+/generate-api-spec src/main/java/UserController.java "User Management API" 2.0.0 "ユーザ管理のためのRESTful API"
 ```
 
 ## チーム共有の仕組み

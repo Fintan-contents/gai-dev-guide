@@ -32,7 +32,7 @@ Claude Codeでは、このプロトコルを使用して様々な開発ツール
 └───────────────┘
         ↓ MCP(JSON-RPC)
 ┌───────────────┐
-│  MCPサーバー   │
+│  MCPサーバ     │
 └───────────────┘
         ↓　各ツール固有の接続方法
 ┌───────────────┐
@@ -72,7 +72,7 @@ MCPサーバが接続されると、Claude Codeに以下のようなことを依
 # 基本構文
 claude mcp add <name> <command> [args...]
 
-# 実際の例: Airtableサーバーを追加
+# 実際の例: Airtableサーバを追加
 claude mcp add airtable --env AIRTABLE_API_KEY=YOUR_KEY \
   -- npx -y airtable-mcp-server
 ```
@@ -112,16 +112,16 @@ claude mcp add --transport http secure-api https://api.example.com/mcp \
 設定後、これらのコマンドでMCPサーバを管理できます。
 
 ```bash
-# 設定されたすべてのサーバーをリスト表示
+# 設定されたすべてのサーバをリスト表示
 claude mcp list
 
-# 特定のサーバーの詳細を取得
+# 特定のサーバの詳細を取得
 claude mcp get github
 
-# サーバーを削除
+# サーバを削除
 claude mcp remove github
 
-# （Claude Code内で）サーバーのステータスを確認
+# （Claude Code内で）サーバのステータスを確認
 > /mcp
 ```
 
@@ -136,7 +136,7 @@ MCPサーバの設定は3つのスコープで設定ができ、プロジェク�
 - 用途：個人的な開発サーバ、実験的な設定、または共有すべきでない機密の認証情報を含むサーバなど
 
 ```bash
-# ローカルスコープのサーバーを追加（デフォルト）
+# ローカルスコープのサーバを追加（デフォルト）
 claude mcp add my-private-server /path/to/server
 
 # 明示的にローカルスコープを指定する場合
@@ -149,7 +149,7 @@ claude mcp add my-private-server --scope local /path/to/server
 - 用途：チーム共有サーバ、プロジェクト固有のツール、またはコラボレーションに必要なサービス
 
 ```bash
-# プロジェクトスコープのサーバーを追加
+# プロジェクトスコープのサーバを追加
 claude mcp add shared-server --scope project /path/to/server
 ```
 
@@ -159,7 +159,7 @@ claude mcp add shared-server --scope project /path/to/server
 - 用途：個人的なユーティリティサーバ、開発ツール、または異なるプロジェクト間で頻繁に使用するサービス
 
 ```bash
-# ユーザーサーバーを追加
+# ユーザサーバを追加
 claude mcp add my-user-server --scope user /path/to/server
 ```
 
@@ -216,7 +216,7 @@ AWSドキュメントMCPサーバはAWSドキュメントにアクセスし、�
 以下のコマンドでユーザスコープ `~/.claude.json` に設定が追加されます。
 
 ```bash
-# AWSドキュメントMCPサーバーをユーザースコープでインストール
+# AWSドキュメントMCPサーバをユーザスコープでインストール
 claude mcp add-json "awslabs-aws-documentation-mcp-server" '{"command":"uvx","args":["awslabs.aws-documentation-mcp-server@latest"],"env":{"FASTMCP_LOG_LEVEL":"ERROR","AWS_DOCUMENTATION_PARTITION":"aws"},"disabled":false,"autoApprove":[]}' --scope user
 ```
 
