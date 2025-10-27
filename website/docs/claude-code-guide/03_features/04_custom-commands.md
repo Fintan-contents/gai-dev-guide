@@ -313,9 +313,9 @@ Spring Bootプロジェクトの初期構造を作成します。
 - pom.xml（必要な依存関係をすべて含む）
 
 ### 2. アプリケーション設定
-- src/main/resources/application.yml
-- src/main/resources/application-dev.yml
-- src/main/resources/application-prod.yml
+- src/main/resources/application.yaml
+- src/main/resources/application-dev.yaml
+- src/main/resources/application-prod.yaml
 
 ### 3. Javaソースコード
 - $2.Application.java（メインクラス）
@@ -398,7 +398,7 @@ $1
 !find src/main/resources/db/migration -name "*.sql" | sort | tail -5
 
 ### データベース設定の確認
-@src/main/resources/application.yml
+@src/main/resources/application.yaml
 
 ## 技術要件
 - PostgreSQL対応
