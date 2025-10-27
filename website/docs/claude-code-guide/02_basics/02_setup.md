@@ -209,250 +209,45 @@ GitHubやGitLabのリモートリポジトリを作成し、ローカルにク�
 この操作は任意です。
 :::
 
-### DevContainer設定
+### 基本構成
 
-プロジェクトルートに以下の`.devcontainer/`構成を配置してください。
+Anthropic社が公式に提供している[devcontainer feature](https://github.com/anthropics/devcontainer-features)を利用することで、簡単にClaude CodeをDev Container環境に導入できます。
 
-```text
-.devcontainer/
-├── devcontainer.json
-├── Dockerfile
-├── init-directories-owner.sh
-└── init-firewall.sh
-```
+プロジェクトルートに`.devcontainer/devcontainer.json`を作成し、以下の最小構成から始めることができます。
 
-**Dockerfile例:**
-
-```dockerfile
-FROM mcr.microsoft.com/devcontainers/python:3.12-bullseye
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-  iptables \
-  ipset \
-  dnsutils \
-  jq \
-  aggregate \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /workspace
-
-USER root
-
-# Copy and set up sudo scripts
-# 既知の課題
-#   ghcr.io/anthropics/devcontainer-features/claude-code:1 が init-firewall.sh を /usr/local/bin/ へコピーするため
-#   こちらがコピーした /usr/local/bin/init-firewall.sh が上書きされてしまう。
-#   回避策としてコピー先のファイル名を init-firewall-aicd.sh とすることで上書きされないようにしている。
-#   以下のコミットで init-firewall.sh は取り除かれたので、今後のリリースでこの課題は解消される見込み。
-#   https://github.com/anthropics/devcontainer-features/commit/ac93182947006bc79e1bf3809eb152d481686401
-COPY init-firewall.sh /usr/local/bin/init-firewall-aicd.sh
-COPY init-directories-owner.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/init-firewall-aicd.sh && \
-  echo "vscode ALL=(root) NOPASSWD: /usr/local/bin/init-firewall-aicd.sh" > /etc/sudoers.d/aicd-firewall && \
-  chmod 0440 /etc/sudoers.d/aicd-firewall && \
-  chmod +x /usr/local/bin/init-directories-owner.sh && \
-  echo "vscode ALL=(root) NOPASSWD: /usr/local/bin/init-directories-owner.sh" > /etc/sudoers.d/directories-owner && \
-  chmod 0440 /etc/sudoers.d/directories-owner && \
-  rm /etc/sudoers.d/vscode
-
-USER vscode
-```
-
-**devcontainer.json例:**
+**最小構成のdevcontainer.json例:**
 
 ```json
 {
-  "name": "AICD Project Template Environment",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "runArgs": [
-    "--cap-add=NET_ADMIN",
-    "--cap-add=NET_RAW"
-  ],
+  "name": "Claude Code Project",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "nodeGypDependencies": true,
-      "version": "lts"
-    },
     "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
-  },
-  "remoteUser": "vscode",
-  "mounts": [
-    "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume"
-  ],
-  "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
-    "POWERLEVEL9K_DISABLE_GITSTATUS": "true",
-  },
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
-  "workspaceFolder": "/workspace",
-  "postCreateCommand": "sudo /usr/local/bin/init-directories-owner.sh && sudo /usr/local/bin/init-firewall-aicd.sh",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "streetsidesoftware.code-spell-checker",
-        "bierner.markdown-mermaid",
-        "mhutchie.git-graph"
-      ]
-    }
   }
 }
 ```
 
-**init-firewall.sh例:**
+### セキュリティ強化
 
-```shell
-#!/bin/bash
-set -euo pipefail  # Exit on error, undefined vars, and pipeline failures
-IFS=$'\n\t'       # Stricter word splitting
+Claude Codeは強力なAIエージェントであるため、意図しない外部通信や破壊的な変更を防ぐためのセキュリティ対策が重要です。
 
-# 1. Extract Docker DNS info BEFORE any flushing
-DOCKER_DNS_RULES=$(iptables-save -t nat | grep "127\.0\.0\.11" || true)
+Anthropic社は、[公式リポジトリの.devcontainerディレクトリ](https://github.com/anthropics/claude-code/tree/main/.devcontainer)で以下のセキュリティ機能を加えた実装を公開しています:
 
-# Flush existing rules and delete existing ipsets
-iptables -F
-iptables -X
-iptables -t nat -F
-iptables -t nat -X
-iptables -t mangle -F
-iptables -t mangle -X
-ipset destroy allowed-domains 2>/dev/null || true
+- **iptablesによるファイアウォール設定**: 許可リストベースで必要なサービス（GitHub、npm、Bedrock等）のみ外部通信を許可
 
-# 2. Selectively restore ONLY internal Docker DNS resolution
-if [ -n "$DOCKER_DNS_RULES" ]; then
-    echo "Restoring Docker DNS rules..."
-    iptables -t nat -N DOCKER_OUTPUT 2>/dev/null || true
-    iptables -t nat -N DOCKER_POSTROUTING 2>/dev/null || true
-    echo "$DOCKER_DNS_RULES" | xargs -L 1 iptables -t nat
-else
-    echo "No Docker DNS rules to restore"
-fi
+:::note INFO
+企業環境や機密プロジェクトでClaude Codeを利用する場合は、上記の公式実装を参考にセキュリティ強化を検討しても良いでしょう。
+:::
 
-# First allow DNS and localhost before any restrictions
-# Allow outbound DNS
-iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
-# Allow inbound DNS responses
-iptables -A INPUT -p udp --sport 53 -j ACCEPT
-# Allow outbound SSH
-iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
-# Allow inbound SSH responses
-iptables -A INPUT -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
-# Allow localhost
-iptables -A INPUT -i lo -j ACCEPT
-iptables -A OUTPUT -o lo -j ACCEPT
+### カスタマイズのポイント
 
-# Create ipset with CIDR support
-ipset create allowed-domains hash:net
+プロジェクトの要件に応じて、以下のような調整が必要になる場合があります:
 
-# Fetch GitHub meta information and aggregate + add their IP ranges
-echo "Fetching GitHub IP ranges..."
-gh_ranges=$(curl -s https://api.github.com/meta)
-if [ -z "$gh_ranges" ]; then
-    echo "ERROR: Failed to fetch GitHub IP ranges"
-    exit 1
-fi
+- **言語やフレームワーク固有のツール**: Node.js、Python、Java等のランタイムやパッケージマネージャー
+- **追加の開発ツール**: linter、formatter、テストフレームワーク等
+- **プロジェクト固有の依存関係**: データベースクライアント、クラウドのCLI等
 
-if ! echo "$gh_ranges" | jq -e '.web and .api and .git' >/dev/null; then
-    echo "ERROR: GitHub API response missing required fields"
-    exit 1
-fi
-
-echo "Processing GitHub IPs..."
-while read -r cidr; do
-    if [[ ! "$cidr" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/[0-9]{1,2}$ ]]; then
-        echo "ERROR: Invalid CIDR range from GitHub meta: $cidr"
-        exit 1
-    fi
-    echo "Adding GitHub range $cidr"
-    ipset add allowed-domains "$cidr"
-done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
-
-# Resolve and add other allowed domains
-for domain in \
-    "registry.npmjs.org" \
-    "sentry.io" \
-    "marketplace.visualstudio.com" \
-    "vscode.blob.core.windows.net" \
-    "bedrock.ap-northeast-1.amazonaws.com" \
-    "bedrock-runtime.ap-northeast-1.amazonaws.com" \
-    "update.code.visualstudio.com"; do
-    echo "Resolving $domain..."
-    ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
-    if [ -z "$ips" ]; then
-        echo "ERROR: Failed to resolve $domain"
-        exit 1
-    fi
-    
-    while read -r ip; do
-        if [[ ! "$ip" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
-            echo "ERROR: Invalid IP from DNS for $domain: $ip"
-            exit 1
-        fi
-        # 重複チェックを追加
-        if ipset test allowed-domains "$ip" 2>/dev/null; then
-            echo "IP $ip for $domain already exists in set, skipping"
-        else
-            echo "Adding $ip for $domain"
-            ipset add allowed-domains "$ip"
-        fi
-    done < <(echo "$ips")
-done
-
-# Get host IP from default route
-HOST_IP=$(ip route | grep default | cut -d" " -f3)
-if [ -z "$HOST_IP" ]; then
-    echo "ERROR: Failed to detect host IP"
-    exit 1
-fi
-
-HOST_NETWORK=$(echo "$HOST_IP" | sed "s/\.[0-9]*$/.0\/24/")
-echo "Host network detected as: $HOST_NETWORK"
-
-# Set up remaining iptables rules
-iptables -A INPUT -s "$HOST_NETWORK" -j ACCEPT
-iptables -A OUTPUT -d "$HOST_NETWORK" -j ACCEPT
-
-# Set default policies to DROP first
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-iptables -P OUTPUT DROP
-
-# First allow established connections for already approved traffic
-iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-# Then allow only specific outbound traffic to allowed domains
-iptables -A OUTPUT -m set --match-set allowed-domains dst -j ACCEPT
-
-# Explicitly REJECT all other outbound traffic for immediate feedback
-iptables -A OUTPUT -j REJECT --reject-with icmp-admin-prohibited
-
-echo "Firewall configuration complete"
-echo "Verifying firewall rules..."
-if curl --connect-timeout 5 https://example.com >/dev/null 2>&1; then
-    echo "ERROR: Firewall verification failed - was able to reach https://example.com"
-    exit 1
-else
-    echo "Firewall verification passed - unable to reach https://example.com as expected"
-fi
-
-# Verify GitHub API access
-if ! curl --connect-timeout 5 https://api.github.com/zen >/dev/null 2>&1; then
-    echo "ERROR: Firewall verification failed - unable to reach https://api.github.com"
-    exit 1
-else
-    echo "Firewall verification passed - able to reach https://api.github.com as expected"
-fi
-```
-
-**init-directories-owner.sh例:**
-
-```shell
-#!/bin/bash
-
-chown -R vscode:vscode /workspace /home/vscode/.claude
-```
+これらは`features`セクションや`postCreateCommand`等で追加できます。詳細は[Dev Containers公式ドキュメント](https://containers.dev/)をご参照ください。
 
 ### DevContainer環境の起動
 
