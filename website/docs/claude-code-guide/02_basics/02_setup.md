@@ -50,8 +50,8 @@ Amazon Bedrockの提供するClaudeモデルにアクセスするようにセッ
 
 Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用します。以下のいずれかの方法で認証情報を設定してください。
 
-:::note INFO
-いずれのオプションも選択可能な場合は、より単一目的に利用可能な`オプションD：Bedrock APIキー`の利用を推奨します。
+:::note
+他にも、SSOプロファイルの利用や[Bedrock APIキーの利用](https://aws.amazon.com/blogs/machine-learning/accelerate-ai-development-with-amazon-bedrock-api-keys/)といった手段もあります。詳細については公式ドキュメントをご参照ください。
 :::
 
 - オプションA: AWS CLI設定
@@ -68,26 +68,6 @@ Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用しま�
     export AWS_SESSION_TOKEN=your-session-token
     ```
 
-- オプションC: 環境変数（SSOプロファイル）
-
-    ```bash
-    aws sso login --profile=<your-profile-name>
-
-    export AWS_PROFILE=your-profile-name
-    ```
-
-- オプションD: Bedrock APIキー
-
-    ```bash
-    export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
-    ```
-
-Bedrock APIキーは、完全なAWS認証情報を必要とせずに、よりシンプルな認証方法を提供します。[Bedrock APIキーについて詳しく学ぶ。](https://aws.amazon.com/blogs/machine-learning/accelerate-ai-development-with-amazon-bedrock-api-keys/)
-
-:::note INFO
-APIキーは最大12時間有効な「Short-term API keys」と、それ以上（最大365日あるいは無期限）設定できる「Long-term API keys」の2種類から選択が可能です。
-:::
-
 #### Claude Codeを設定する
 
 Bedrockを有効にするため、以下の環境変数を設定してください。
@@ -102,7 +82,7 @@ export AWS_REGION=ap-northeast-1
 
 ```bash
 # 推論プロファイルIDを使用
-export ANTHROPIC_MODEL='apac.anthropic.claude-sonnet-4-20250514-v1:0'
+export ANTHROPIC_MODEL='jp.anthropic.claude-sonnet-4-5-20250929-v1:0'
 export ANTHROPIC_SMALL_FAST_MODEL='apac.anthropic.claude-3-haiku-20240307-v1:0'
 
 # アプリケーション推論プロファイルARNを使用
@@ -130,16 +110,15 @@ export DISABLE_PROMPT_CACHING=1
 
 :::
 
-最終確認です。オプションDのBedrock APIキーで設定した場合、最終的に環境変数は以下のように設定されているはずです。
+最終確認です。最終的に環境変数は以下のように設定されているはずです。
 
 ```bash
 # Bedrock統合を有効にする
 export CLAUDE_CODE_USE_BEDROCK=1
 export AWS_REGION=ap-northeast-1
-export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
 
 # 推論プロファイルIDを使用
-export ANTHROPIC_MODEL='apac.anthropic.claude-sonnet-4-20250514-v1:0'
+export ANTHROPIC_MODEL='jp.anthropic.claude-sonnet-4-5-20250929-v1:0'
 export ANTHROPIC_SMALL_FAST_MODEL='apac.anthropic.claude-3-haiku-20240307-v1:0'
 
 # アプリケーション推論プロファイルARNを使用
@@ -178,26 +157,27 @@ code --version
 Dev Containerに接続して安全に利用するために、ローカルのDocker環境を準備します。
 
 **Windows:**
+
+:::warningライセンスに関する注意
+Docker Desktop for Windowsは、一定規模以上の企業での商用利用時に有償ライセンスが必要になる場合があります。詳細は[Docker社の公式サブスクリプションページ](https://www.docker.com/pricing/)をご確認ください。企業での利用を検討する場合は、ライセンス規約の確認を推奨します。
+:::
+
+### オプションA: Docker Desktop（有償ライセンスが必要なケース有）
+
 1. [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)をダウンロードする
 2. インストーラーを実行する
 3. WSL2バックエンドを有効化する
 
+### オプションB: WSL2 + Docker CE（無償だが、セットアップがやや複雑）
+
+この方法は無償で商用利用可能です。
+
+1. [Microsoft公式ドキュメント](https://learn.microsoft.com/ja-jp/windows/wsl/install)に従ってWSL2をインストールする
+2. [Docker公式ドキュメント](https://docs.docker.com/engine/install/ubuntu/)に従って、WSL2内のUbuntu上にDocker CEをインストールする
+
 **macOS:**
 1. [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/)をダウンロードする
 2. インストーラーを実行する
-
-**Linux:**
-
-```bash
-# Ubuntu/Debianの場合
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker $USER
-
-# インストール確認
-docker --version
-docker-compose --version
-```
 
 ## 3. VS Code拡張機能のインストール
 
@@ -229,250 +209,45 @@ GitHubやGitLabのリモートリポジトリを作成し、ローカルにク�
 この操作は任意です。
 :::
 
-### DevContainer設定
+### 基本構成
 
-プロジェクトルートに以下の`.devcontainer/`構成を配置してください。
+Anthropic社が公式に提供している[devcontainer feature](https://github.com/anthropics/devcontainer-features)を利用することで、簡単にClaude CodeをDev Container環境に導入できます。
 
-```text
-.devcontainer/
-├── devcontainer.json
-├── Dockerfile
-├── init-directories-owner.sh
-└── init-firewall.sh
-```
+プロジェクトルートに`.devcontainer/devcontainer.json`を作成し、以下の最小構成から始めることができます。
 
-**Dockerfile例:**
-
-```dockerfile
-FROM mcr.microsoft.com/devcontainers/python:3.12-bullseye
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-  iptables \
-  ipset \
-  dnsutils \
-  jq \
-  aggregate \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /workspace
-
-USER root
-
-# Copy and set up sudo scripts
-# 既知の課題
-#   ghcr.io/anthropics/devcontainer-features/claude-code:1 が init-firewall.sh を /usr/local/bin/ へコピーするため
-#   こちらがコピーした /usr/local/bin/init-firewall.sh が上書きされてしまう。
-#   回避策としてコピー先のファイル名を init-firewall-aicd.sh とすることで上書きされないようにしている。
-#   以下のコミットで init-firewall.sh は取り除かれたので、今後のリリースでこの課題は解消される見込み。
-#   https://github.com/anthropics/devcontainer-features/commit/ac93182947006bc79e1bf3809eb152d481686401
-COPY init-firewall.sh /usr/local/bin/init-firewall-aicd.sh
-COPY init-directories-owner.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/init-firewall-aicd.sh && \
-  echo "vscode ALL=(root) NOPASSWD: /usr/local/bin/init-firewall-aicd.sh" > /etc/sudoers.d/aicd-firewall && \
-  chmod 0440 /etc/sudoers.d/aicd-firewall && \
-  chmod +x /usr/local/bin/init-directories-owner.sh && \
-  echo "vscode ALL=(root) NOPASSWD: /usr/local/bin/init-directories-owner.sh" > /etc/sudoers.d/directories-owner && \
-  chmod 0440 /etc/sudoers.d/directories-owner && \
-  rm /etc/sudoers.d/vscode
-
-USER vscode
-```
-
-**devcontainer.json例:**
+**最小構成のdevcontainer.json例:**
 
 ```json
 {
-  "name": "AICD Project Template Environment",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "runArgs": [
-    "--cap-add=NET_ADMIN",
-    "--cap-add=NET_RAW"
-  ],
+  "name": "Claude Code Project",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "nodeGypDependencies": true,
-      "version": "lts"
-    },
     "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
-  },
-  "remoteUser": "vscode",
-  "mounts": [
-    "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume"
-  ],
-  "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
-    "POWERLEVEL9K_DISABLE_GITSTATUS": "true",
-  },
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
-  "workspaceFolder": "/workspace",
-  "postCreateCommand": "sudo /usr/local/bin/init-directories-owner.sh && sudo /usr/local/bin/init-firewall-aicd.sh",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "streetsidesoftware.code-spell-checker",
-        "bierner.markdown-mermaid",
-        "mhutchie.git-graph"
-      ]
-    }
   }
 }
 ```
 
-**init-firewall.sh例:**
+### セキュリティ強化
 
-```shell
-#!/bin/bash
-set -euo pipefail  # Exit on error, undefined vars, and pipeline failures
-IFS=$'\n\t'       # Stricter word splitting
+Claude Codeは強力なAIエージェントであるため、意図しない外部通信や破壊的な変更を防ぐためのセキュリティ対策が重要です。
 
-# 1. Extract Docker DNS info BEFORE any flushing
-DOCKER_DNS_RULES=$(iptables-save -t nat | grep "127\.0\.0\.11" || true)
+Anthropic社は、[公式リポジトリの.devcontainerディレクトリ](https://github.com/anthropics/claude-code/tree/main/.devcontainer)で以下のセキュリティ機能を加えた実装を公開しています。
 
-# Flush existing rules and delete existing ipsets
-iptables -F
-iptables -X
-iptables -t nat -F
-iptables -t nat -X
-iptables -t mangle -F
-iptables -t mangle -X
-ipset destroy allowed-domains 2>/dev/null || true
+- **iptablesによるファイアウォール設定**: 許可リストベースで必要なサービス（GitHub、npm、Bedrock等）のみ外部通信を許可
 
-# 2. Selectively restore ONLY internal Docker DNS resolution
-if [ -n "$DOCKER_DNS_RULES" ]; then
-    echo "Restoring Docker DNS rules..."
-    iptables -t nat -N DOCKER_OUTPUT 2>/dev/null || true
-    iptables -t nat -N DOCKER_POSTROUTING 2>/dev/null || true
-    echo "$DOCKER_DNS_RULES" | xargs -L 1 iptables -t nat
-else
-    echo "No Docker DNS rules to restore"
-fi
+:::note INFO
+企業環境や機密プロジェクトでClaude Codeを利用する場合は、上記の公式実装を参考にセキュリティ強化を検討しても良いでしょう。
+:::
 
-# First allow DNS and localhost before any restrictions
-# Allow outbound DNS
-iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
-# Allow inbound DNS responses
-iptables -A INPUT -p udp --sport 53 -j ACCEPT
-# Allow outbound SSH
-iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
-# Allow inbound SSH responses
-iptables -A INPUT -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
-# Allow localhost
-iptables -A INPUT -i lo -j ACCEPT
-iptables -A OUTPUT -o lo -j ACCEPT
+### カスタマイズのポイント
 
-# Create ipset with CIDR support
-ipset create allowed-domains hash:net
+プロジェクトの要件に応じて、以下のような調整が必要になる場合があります。
 
-# Fetch GitHub meta information and aggregate + add their IP ranges
-echo "Fetching GitHub IP ranges..."
-gh_ranges=$(curl -s https://api.github.com/meta)
-if [ -z "$gh_ranges" ]; then
-    echo "ERROR: Failed to fetch GitHub IP ranges"
-    exit 1
-fi
+- **言語やフレームワーク固有のツール**: Node.js、Python、Java等のランタイムやパッケージマネージャー
+- **追加の開発ツール**: linter、formatter、テストフレームワーク等
+- **プロジェクト固有の依存関係**: データベースクライアント、クラウドのCLI等
 
-if ! echo "$gh_ranges" | jq -e '.web and .api and .git' >/dev/null; then
-    echo "ERROR: GitHub API response missing required fields"
-    exit 1
-fi
-
-echo "Processing GitHub IPs..."
-while read -r cidr; do
-    if [[ ! "$cidr" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/[0-9]{1,2}$ ]]; then
-        echo "ERROR: Invalid CIDR range from GitHub meta: $cidr"
-        exit 1
-    fi
-    echo "Adding GitHub range $cidr"
-    ipset add allowed-domains "$cidr"
-done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
-
-# Resolve and add other allowed domains
-for domain in \
-    "registry.npmjs.org" \
-    "sentry.io" \
-    "marketplace.visualstudio.com" \
-    "vscode.blob.core.windows.net" \
-    "bedrock.ap-northeast-1.amazonaws.com" \
-    "bedrock-runtime.ap-northeast-1.amazonaws.com" \
-    "update.code.visualstudio.com"; do
-    echo "Resolving $domain..."
-    ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
-    if [ -z "$ips" ]; then
-        echo "ERROR: Failed to resolve $domain"
-        exit 1
-    fi
-    
-    while read -r ip; do
-        if [[ ! "$ip" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
-            echo "ERROR: Invalid IP from DNS for $domain: $ip"
-            exit 1
-        fi
-        # 重複チェックを追加
-        if ipset test allowed-domains "$ip" 2>/dev/null; then
-            echo "IP $ip for $domain already exists in set, skipping"
-        else
-            echo "Adding $ip for $domain"
-            ipset add allowed-domains "$ip"
-        fi
-    done < <(echo "$ips")
-done
-
-# Get host IP from default route
-HOST_IP=$(ip route | grep default | cut -d" " -f3)
-if [ -z "$HOST_IP" ]; then
-    echo "ERROR: Failed to detect host IP"
-    exit 1
-fi
-
-HOST_NETWORK=$(echo "$HOST_IP" | sed "s/\.[0-9]*$/.0\/24/")
-echo "Host network detected as: $HOST_NETWORK"
-
-# Set up remaining iptables rules
-iptables -A INPUT -s "$HOST_NETWORK" -j ACCEPT
-iptables -A OUTPUT -d "$HOST_NETWORK" -j ACCEPT
-
-# Set default policies to DROP first
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-iptables -P OUTPUT DROP
-
-# First allow established connections for already approved traffic
-iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-# Then allow only specific outbound traffic to allowed domains
-iptables -A OUTPUT -m set --match-set allowed-domains dst -j ACCEPT
-
-# Explicitly REJECT all other outbound traffic for immediate feedback
-iptables -A OUTPUT -j REJECT --reject-with icmp-admin-prohibited
-
-echo "Firewall configuration complete"
-echo "Verifying firewall rules..."
-if curl --connect-timeout 5 https://example.com >/dev/null 2>&1; then
-    echo "ERROR: Firewall verification failed - was able to reach https://example.com"
-    exit 1
-else
-    echo "Firewall verification passed - unable to reach https://example.com as expected"
-fi
-
-# Verify GitHub API access
-if ! curl --connect-timeout 5 https://api.github.com/zen >/dev/null 2>&1; then
-    echo "ERROR: Firewall verification failed - unable to reach https://api.github.com"
-    exit 1
-else
-    echo "Firewall verification passed - able to reach https://api.github.com as expected"
-fi
-```
-
-**init-directories-owner.sh例:**
-
-```shell
-#!/bin/bash
-
-chown -R vscode:vscode /workspace /home/vscode/.claude
-```
+これらは`features`セクションや`postCreateCommand`等で追加できます。詳細は[Dev Containers公式ドキュメント](https://containers.dev/)をご参照ください。
 
 ### DevContainer環境の起動
 
