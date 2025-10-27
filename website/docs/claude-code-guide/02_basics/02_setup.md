@@ -162,13 +162,13 @@ Dev Containerに接続して安全に利用するために、ローカルのDock
 Docker Desktop for Windowsは、一定規模以上の企業での商用利用時に有償ライセンスが必要になる場合があります。詳細は[Docker社の公式サブスクリプションページ](https://www.docker.com/pricing/)をご確認ください。企業での利用を検討する場合は、ライセンス規約の確認を推奨します。
 :::
 
-**オプションA: Docker Desktop（有償ライセンスが必要なケース有）**
+### オプションA: Docker Desktop（有償ライセンスが必要なケース有）
 
 1. [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)をダウンロードする
 2. インストーラーを実行する
 3. WSL2バックエンドを有効化する
 
-**オプションB: WSL2 + Docker CE（無償だが、セットアップがやや複雑）**
+### オプションB: WSL2 + Docker CE（無償だが、セットアップがやや複雑）
 
 この方法は無償で商用利用可能です。
 
