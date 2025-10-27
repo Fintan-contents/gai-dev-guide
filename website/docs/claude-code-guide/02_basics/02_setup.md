@@ -158,7 +158,7 @@ Dev Containerに接続して安全に利用するために、ローカルのDock
 
 **Windows:**
 
-:::warning ライセンスに関する注意
+:::warningライセンスに関する注意
 Docker Desktop for Windowsは、一定規模以上の企業での商用利用時に有償ライセンスが必要になる場合があります。詳細は[Docker社の公式サブスクリプションページ](https://www.docker.com/pricing/)をご確認ください。企業での利用を検討する場合は、ライセンス規約の確認を推奨します。
 :::
 
@@ -231,7 +231,7 @@ Anthropic社が公式に提供している[devcontainer feature](https://github.
 
 Claude Codeは強力なAIエージェントであるため、意図しない外部通信や破壊的な変更を防ぐためのセキュリティ対策が重要です。
 
-Anthropic社は、[公式リポジトリの.devcontainerディレクトリ](https://github.com/anthropics/claude-code/tree/main/.devcontainer)で以下のセキュリティ機能を加えた実装を公開しています:
+Anthropic社は、[公式リポジトリの.devcontainerディレクトリ](https://github.com/anthropics/claude-code/tree/main/.devcontainer)で以下のセキュリティ機能を加えた実装を公開しています。
 
 - **iptablesによるファイアウォール設定**: 許可リストベースで必要なサービス（GitHub、npm、Bedrock等）のみ外部通信を許可
 
@@ -241,7 +241,7 @@ Anthropic社は、[公式リポジトリの.devcontainerディレクトリ](http
 
 ### カスタマイズのポイント
 
-プロジェクトの要件に応じて、以下のような調整が必要になる場合があります:
+プロジェクトの要件に応じて、以下のような調整が必要になる場合があります。
 
 - **言語やフレームワーク固有のツール**: Node.js、Python、Java等のランタイムやパッケージマネージャー
 - **追加の開発ツール**: linter、formatter、テストフレームワーク等
