@@ -214,9 +214,7 @@ GitHubやGitLabのリモートリポジトリを作成し、ローカルにク�
 
 ### 基本構成
 
-Anthropic社が公式に提供している[devcontainer feature](https://github.com/anthropics/devcontainer-features)を利用することで、簡単にClaude CodeをDev Container環境に導入できます。
-
-プロジェクトルートに`.devcontainer/devcontainer.json`を作成し、以下の最小構成から始めることができます。
+プロジェクトルートに`.devcontainer/devcontainer.json`を作成し、以下の最小構成でClaude CodeをDev Container環境に導入できます。
 
 **最小構成のdevcontainer.json例:**
 
@@ -225,8 +223,9 @@ Anthropic社が公式に提供している[devcontainer feature](https://github.
   "name": "Claude Code Project",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
-    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
-  }
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code"
 }
 ```
 
@@ -291,8 +290,9 @@ ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
     "dockerfile": "Dockerfile"
   },
   "features": {
-    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
-  }
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code"
 }
 ```
 
