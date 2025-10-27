@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const organization = 'fintan-contents';
@@ -75,6 +75,10 @@ const config: Config = {
   ],
 
   themeConfig: {
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 5,
+    },
     colorMode: {
       defaultMode: 'light',
       disableSwitch: true,
@@ -89,7 +93,7 @@ const config: Config = {
     },
     metadata: [
       // OGP: 既存の生成AI活用ガイド(https://gen-ai-docs.jp/)のOGPを流用
-      { name: 'og:url', content: urlWithBase},
+      { name: 'og:url', content: urlWithBase },
       { name: 'og:site_name', content: 'Fintan » 生成AI エンジニアリング活用ガイド' },
       { name: 'og:locale', content: 'ja_JP' },
       { name: 'og:image', content: ogpImageUrl },
@@ -99,7 +103,8 @@ const config: Config = {
       // Twitter Card: 既存の生成AI活用ガイド(https://gen-ai-docs.jp/)のOGPを流用
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'Fintan » 生成AI エンジニアリング活用ガイド' },
-      { name: 'twitter:description', content: `AI技術を使って日常の業務をスムーズに進めたいですか？
+      {
+        name: 'twitter:description', content: `AI技術を使って日常の業務をスムーズに進めたいですか？
 生成AI エンジニアリング活用ガイドはTIS株式会社が作成している生成AIを活用するためのガイドラインです。
 ChatGPTやGitHub Copilotなどの導入方法、基本的な操作、効果的な使い方などを提供します。
 どなたでも無償で利用いただけます。` },
