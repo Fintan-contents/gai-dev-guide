@@ -156,26 +156,29 @@ code --version
 
 Dev Containerに接続して安全に利用するために、ローカルのDocker環境を準備します。
 
-**Windows:**
+#### Windows
 
-:::warning ライセンスに関する注意
-Docker Desktop for Windowsは、一定規模以上の企業での商用利用時に有償ライセンスが必要になる場合があります。詳細は[Docker社の公式サブスクリプションページ](https://www.docker.com/pricing/)をご確認ください。企業での利用を検討する場合は、ライセンス規約の確認を推奨します。
-:::
+- オプションA: Docker Desktop（有償ライセンスが必要なケース有）
 
-### オプションA: Docker Desktop（有償ライセンスが必要なケース有）
+  <!-- textlint-disable jtf-style/4.3.2.大かっこ［］-->
+  :::warning[ライセンスに関する注意]
+    Docker Desktop for Windowsは、一定規模以上の企業での商用利用時に有償ライセンスが必要になる場合があります。詳細は[Docker社の公式サブスクリプションページ](https://www.docker.com/pricing/)をご確認ください。企業での利用を検討する場合は、ライセンス規約の確認を推奨します。
+  :::
+  <!-- textlint-enable jtf-style/4.3.2.大かっこ［］-->
 
-1. [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)をダウンロードする
-2. インストーラーを実行する
-3. WSL2バックエンドを有効化する
+  1. [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)をダウンロードする
+  2. インストーラーを実行する
+  3. WSL2バックエンドを有効化する
 
-### オプションB: WSL2 + Docker CE（無償だが、セットアップがやや複雑）
+- オプションB: WSL2 + Docker CE（無償だが、セットアップがやや複雑）
 
-この方法は無償で商用利用可能です。
+  この方法は無償で商用利用可能です。
 
-1. [Microsoft公式ドキュメント](https://learn.microsoft.com/ja-jp/windows/wsl/install)に従ってWSL2をインストールする
-2. [Docker公式ドキュメント](https://docs.docker.com/engine/install/ubuntu/)に従って、WSL2内のUbuntu上にDocker CEをインストールする
+  1. [Microsoft公式ドキュメント](https://learn.microsoft.com/ja-jp/windows/wsl/install)に従ってWSL2をインストールする
+  2. [Docker公式ドキュメント](https://docs.docker.com/engine/install/ubuntu/)に従って、WSL2内のUbuntu上にDocker CEをインストールする
 
-**macOS:**
+#### macOS
+
 1. [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/)をダウンロードする
 2. インストーラーを実行する
 
