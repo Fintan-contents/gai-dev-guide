@@ -328,7 +328,7 @@ Spring Bootプロジェクトの初期構造を作成します。
 
 ### 4. Docker設定
 - Dockerfile
-- docker-compose.yml
+- compose.yaml
 - .dockerignore
 
 ### 5. ドキュメント
@@ -354,7 +354,7 @@ $1/
 │   └── test/
 ├── pom.xml
 ├── Dockerfile
-├── docker-compose.yml
+├── compose.yaml
 └── README.md
 
 レイヤードアーキテクチャに適した構成でプロジェクトを作成します。
