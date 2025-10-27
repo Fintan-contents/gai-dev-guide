@@ -179,19 +179,6 @@ Docker Desktop for Windowsは、一定規模以上の企業での商用利用時
 1. [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/)をダウンロードする
 2. インストーラーを実行する
 
-**Linux:**
-
-```bash
-# Ubuntu/Debianの場合
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker $USER
-
-# インストール確認
-docker --version
-docker compose version
-```
-
 ## 3. VS Code拡張機能のインストール
 
 ### 拡張機能のインストール
