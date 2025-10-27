@@ -158,7 +158,7 @@ Dev Containerに接続して安全に利用するために、ローカルのDock
 
 **Windows:**
 
-:::warningライセンスに関する注意
+:::warning ライセンスに関する注意
 Docker Desktop for Windowsは、一定規模以上の企業での商用利用時に有償ライセンスが必要になる場合があります。詳細は[Docker社の公式サブスクリプションページ](https://www.docker.com/pricing/)をご確認ください。企業での利用を検討する場合は、ライセンス規約の確認を推奨します。
 :::
 
