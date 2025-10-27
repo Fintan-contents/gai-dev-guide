@@ -249,6 +249,54 @@ Anthropic社は、[公式リポジトリの.devcontainerディレクトリ](http
 
 これらは`features`セクションや`postCreateCommand`等で追加できます。詳細は[Dev Containers公式ドキュメント](https://containers.dev/)をご参照ください。
 
+### 証明書エラーへの対処
+
+社内プロキシ環境などでDevContainerを利用する際、`SELF_SIGNED_CERT_IN_CHAIN`エラーを引き起こす可能性があります。原因は、社内プロキシの中間証明書をコンテナ内で信頼していないことです。
+
+**解決方法:**
+
+1. プロキシの中間証明書を`.devcontainer/ca.crt`として保存します
+2. Dockerfileで証明書をコンテナにコピーして信頼させます
+3. 環境変数で各ツールが証明書を使用するよう設定します
+
+**実装例:**
+
+`.devcontainer/Dockerfile`:
+
+```dockerfile
+FROM mcr.microsoft.com/devcontainers/base:ubuntu
+
+# CA証明書をコピー
+COPY ca.crt /usr/local/share/ca-certificates/ca.crt
+
+# CA証明書を更新
+RUN chmod 644 /usr/local/share/ca-certificates/ca.crt \
+    && update-ca-certificates
+
+# 例）git、curl、Node.jsがシステム証明書を使用するように環境変数を設定
+ENV GIT_SSL_CAINFO=/etc/ssl/certs/ca-certificates.crt
+ENV CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+```
+
+`.devcontainer/devcontainer.json`:
+
+```json
+{
+  "name": "Claude Code Project",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
+  }
+}
+```
+
+:::note INFO
+証明書ファイル（ca.crt）は環境固有の設定ファイルです。社内プロキシ環境でのみ必要となるため、汎用的なリポジトリとして管理する場合は`.gitignore`に追加し、READMEなどで証明書の配置方法を説明することを推奨します。組織内で共通の証明書を使用する場合は、チームで共有するためにコミットすることも検討してください。
+:::
+
 ### DevContainer環境の起動
 
 1. VS Codeでプロジェクトフォルダを開く
