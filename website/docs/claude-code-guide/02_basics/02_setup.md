@@ -50,8 +50,8 @@ Amazon Bedrockの提供するClaudeモデルにアクセスするようにセッ
 
 Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用します。以下のいずれかの方法で認証情報を設定してください。
 
-:::note INFO
-いずれのオプションも選択可能な場合は、より単一目的に利用可能な`オプションD：Bedrock APIキー`の利用を推奨します。
+:::note
+他にも、SSOプロファイルの利用や[Bedrock APIキーの利用](https://aws.amazon.com/blogs/machine-learning/accelerate-ai-development-with-amazon-bedrock-api-keys/)といった手段もあります。詳細については公式ドキュメントをご参照ください。
 :::
 
 - オプションA: AWS CLI設定
@@ -68,26 +68,6 @@ Claude CodeはデフォルトのAWS SDK認証情報チェーンを使用しま�
     export AWS_SESSION_TOKEN=your-session-token
     ```
 
-- オプションC: 環境変数（SSOプロファイル）
-
-    ```bash
-    aws sso login --profile=<your-profile-name>
-
-    export AWS_PROFILE=your-profile-name
-    ```
-
-- オプションD: Bedrock APIキー
-
-    ```bash
-    export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
-    ```
-
-Bedrock APIキーは、完全なAWS認証情報を必要とせずに、よりシンプルな認証方法を提供します。[Bedrock APIキーについて詳しく学ぶ。](https://aws.amazon.com/blogs/machine-learning/accelerate-ai-development-with-amazon-bedrock-api-keys/)
-
-:::note INFO
-APIキーは最大12時間有効な「Short-term API keys」と、それ以上（最大365日あるいは無期限）設定できる「Long-term API keys」の2種類から選択が可能です。
-:::
-
 #### Claude Codeを設定する
 
 Bedrockを有効にするため、以下の環境変数を設定してください。
@@ -102,7 +82,7 @@ export AWS_REGION=ap-northeast-1
 
 ```bash
 # 推論プロファイルIDを使用
-export ANTHROPIC_MODEL='apac.anthropic.claude-sonnet-4-20250514-v1:0'
+export ANTHROPIC_MODEL='jp.anthropic.claude-sonnet-4-5-20250929-v1:0'
 export ANTHROPIC_SMALL_FAST_MODEL='apac.anthropic.claude-3-haiku-20240307-v1:0'
 
 # アプリケーション推論プロファイルARNを使用
@@ -130,16 +110,15 @@ export DISABLE_PROMPT_CACHING=1
 
 :::
 
-最終確認です。オプションDのBedrock APIキーで設定した場合、最終的に環境変数は以下のように設定されているはずです。
+最終確認です。最終的に環境変数は以下のように設定されているはずです。
 
 ```bash
 # Bedrock統合を有効にする
 export CLAUDE_CODE_USE_BEDROCK=1
 export AWS_REGION=ap-northeast-1
-export AWS_BEARER_TOKEN_BEDROCK=your-bedrock-api-key
 
 # 推論プロファイルIDを使用
-export ANTHROPIC_MODEL='apac.anthropic.claude-sonnet-4-20250514-v1:0'
+export ANTHROPIC_MODEL='jp.anthropic.claude-sonnet-4-5-20250929-v1:0'
 export ANTHROPIC_SMALL_FAST_MODEL='apac.anthropic.claude-3-haiku-20240307-v1:0'
 
 # アプリケーション推論プロファイルARNを使用
