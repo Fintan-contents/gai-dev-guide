@@ -16,6 +16,12 @@ const genericOverview = [
     summary: <>GitHub Copilotを活用して生産性を向上するためのガイド</>,
   },
   {
+    title: 'Claude Code活用ガイド',
+    to: 'claude-code-guide/introduction',
+    imageUrl: 'img/undraw_Bibliophile_re_xarc.svg',
+    summary: <>Claude Codeを活用して生産性を向上するためのガイド</>,
+  },
+  {
     title: 'プロンプト',
     to: 'prompts',
     imageUrl: 'img/undraw_Bookshelves_re_lxoy.svg',
