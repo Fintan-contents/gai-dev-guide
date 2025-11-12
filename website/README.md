@@ -10,12 +10,12 @@
 
 ## アクセス数集計
 
-plausibleを用いてアクセス数を集計する。
+plausibleを用いてアクセス数を集計します。
 
 アクセス数は以下から閲覧可能  
-https://plausible.io/gai-dev-guide.fintan-contents.github.io/installation
+[https://plausible.io/gai-dev-guide.fintan-contents.github.io/installation](https://plausible.io/gai-dev-guide.fintan-contents.github.io/installation)
 
-`website\docusaurus.config.ts`の下記scriptsを追加することにより、plausibleにアクセス数が集計される仕組みになっている。
+`website\docusaurus.config.ts`の下記scriptsを追加することにより、plausibleにアクセス数が集計される仕組みになっています。
 
 ```js
   ・
@@ -39,4 +39,4 @@ https://plausible.io/gai-dev-guide.fintan-contents.github.io/installation
   ・
 ```
 
-なお、テストなどでローカルで起動したサーバーにアクセスした際は、集計対象にならない。
+なお、ローカルで起動したサーバにアクセスした際は、集計対象になりません。
