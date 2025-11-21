@@ -183,13 +183,13 @@ Mavenによるビルドの確認と、場合によってはマイグレーショ
 
 ## 3. マッパーの作成
 
-### UserMapperの作成
+### TaskMapperの作成
 
-次にMyBatisのUserMapperを作成してみましょう。  
+次にMyBatisのTaskMapperを作成してみましょう。  
 Plan Modeにしてから以下のプロンプトを入力してください。
 
 ```txt
-MyBatisのUserMapperを作成してください。
+MyBatisのTaskMapperを作成してください。
 SQLは全てxml側に記述してください。
 
 基本的なCRUDに加えて、以下のカスタムメソッドも追加：

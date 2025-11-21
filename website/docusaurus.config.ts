@@ -56,6 +56,16 @@ const config: Config = {
     locales: ['ja'],
   },
   plugins,
+  scripts: [
+    {
+      src: 'https://plausible.io/js/pa-HCRkSORSKyT_D_l9FX2DM.js',
+      async: true,
+    },
+    {
+      src: `${urlWithBase}js/plausible.js`,
+      defer: true,
+    }
+  ],
   presets: [
     [
       'classic',
